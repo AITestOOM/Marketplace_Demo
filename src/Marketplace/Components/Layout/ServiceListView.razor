@@ -27,45 +27,7 @@
     <MudStack Spacing="3">
         @foreach (var offer in FilteredOffers)
         {
-            <MudCard Elevation="0" Class="service-card">
-                <MudCardContent>
-                    <div class="d-flex">
-                        <MudAvatar Rounded="true" Class="service-avatar mr-4" />
-                        <div class="d-flex flex-column" style="width:100%;">
-                            <div class="d-flex justify-space-between">
-                                <MudStack Spacing="0">
-                                    <p class="service-title">@offer.Title</p>
-                                    <p class="service-provider">@offer.Provider</p>
-                                    <div class="mt-1 offer-category-tag">@offer.Category</div>
-                                </MudStack>
-                                <MudStack AlignItems="AlignItems.End" Spacing="0">
-                                    <div class="d-flex align-baseline">
-                                        <p class="price-text">@offer.Price</p>
-                                        <p class="service-provider" style="margin-left: 4px;">/ služba</p>
-                                    </div>
-                                    <a href="#" @onclick="@(() => OnOrderClick.InvokeAsync(offer))" @onclick:preventDefault class="order-link">Objednať</a>
-                                </MudStack>
-                            </div>
-                            <div style="flex-grow: 1;"></div> @* This is a spacer *@
-                            <MudStack Spacing="0" Class="mt-2">
-                                <div class="d-flex align-center">
-                                    <MudIcon Icon="@Icons.Material.Filled.Star" Class="mr-1 rating-icon" />
-                                    <p class="rating-text">@offer.Rating</p>
-                                    <p class="ml-1 rating-count">(@offer.RatingCount)</p>
-                                </div>
-                                <div class="d-flex align-center">
-                                    <MudIcon Icon="@Icons.Material.Filled.LocationOn" Class="mr-1 info-icon" />
-                                    <p class="info-text">@offer.DistanceKm km</p>
-                                </div>
-                                <div class="d-flex align-center">
-                                    <MudIcon Icon="@Icons.Material.Filled.Schedule" Class="mr-1 info-icon" />
-                                    <p class="info-text">Zatvára sa o @offer.ClosesAt</p>
-                                </div>
-                            </MudStack>
-                        </div>
-                    </div>
-                </MudCardContent>
-            </MudCard>
+            <OfferCard Offer="@offer" OnOrderClick="@OnOrderClick" />
         }
     </MudStack>
 </div>

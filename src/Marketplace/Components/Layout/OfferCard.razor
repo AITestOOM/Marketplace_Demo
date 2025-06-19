@@ -2,18 +2,30 @@
 @using static Marketplace.Components.Pages.Home
 @using MudBlazor
 
-<MudCard Elevation="0" Class="offer-card">
+<MudCard Elevation="0" Class="service-card">
     <MudCardContent>
         <div class="d-flex">
-            <MudAvatar Square="true" Class="offer-avatar mr-3" Src="@Offer.ImageUrl" />
-            <div class="d-flex flex-grow-1">
-                <div class="flex-grow-1">
-                    <p class="offer-title">@Offer.Title</p>
-                    <p class="offer-provider">@Offer.Provider</p>
-                    <div class="mt-1 offer-category-tag">@Offer.SubCategory</div>
-                    <div class="d-flex align-center mt-2">
+            <MudAvatar Rounded="true" Class="service-avatar mr-4" />
+            <div class="d-flex flex-column" style="width:100%;">
+                <div class="d-flex justify-space-between">
+                    <MudStack Spacing="0">
+                        <p class="service-title">@Offer.Title</p>
+                        <p class="service-provider">@Offer.Provider</p>
+                        <div class="mt-1 offer-category-tag">@Offer.Category</div>
+                    </MudStack>
+                    <MudStack AlignItems="AlignItems.End" Spacing="0">
+                        <div class="d-flex align-baseline">
+                            <p class="price-text">@Offer.Price</p>
+                            <p class="service-provider" style="margin-left: 4px;">/ služba</p>
+                        </div>
+                        <a href="#" @onclick="@(() => OnOrderClick.InvokeAsync(Offer))" @onclick:preventDefault class="order-link">Objednať</a>
+                    </MudStack>
+                </div>
+                <div style="flex-grow: 1;"></div> @* This is a spacer *@
+                <MudStack Spacing="0" Class="mt-2">
+                    <div class="d-flex align-center">
                         <MudIcon Icon="@Icons.Material.Filled.Star" Class="mr-1 rating-icon" />
-                        <p class="rating-text">@Offer.Rating.ToString("F1")</p>
+                        <p class="rating-text">@Offer.Rating</p>
                         <p class="ml-1 rating-count">(@Offer.RatingCount)</p>
                     </div>
                     <div class="d-flex align-center">
@@ -24,11 +36,7 @@
                         <MudIcon Icon="@Icons.Material.Filled.Schedule" Class="mr-1 info-icon" />
                         <p class="info-text">Zatvára sa o @Offer.ClosesAt</p>
                     </div>
-                </div>
-                <div class="d-flex flex-column align-end justify-space-between">
-                    <MudIconButton Icon="@Icons.Material.Filled.ShoppingBasket" OnClick="@(() => OnOrderClick.InvokeAsync(Offer))" Color="Color.Primary" Class="basket-icon-btn" />
-                    <MudText Class="price-text">@Offer.Price</MudText>
-                </div>
+                </MudStack>
             </div>
         </div>
     </MudCardContent>
