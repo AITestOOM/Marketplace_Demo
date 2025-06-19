@@ -16,7 +16,7 @@
                                 <MudText Style="color: #FFFFFF; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 16px; font-weight: 400; line-height: 19px;">@item.Title</MudText>
                                 <MudText Style="color: #808080; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 14px; font-weight: 400; line-height: 17px;">@item.Subtitle</MudText>
                             </div>
-                            <MudIconButton Icon="@Icons.Material.Filled.Close" Size="Size.Small" Style="color: #808080;" OnClick="HideCarousel" />
+                            @* <MudIconButton Icon="@Icons.Material.Filled.Close" Size="Size.Small" Style="color: #808080;" OnClick="HideCarousel" /> *@
                         </div>
                     </MudCardContent>
                 </MudCard>
@@ -27,12 +27,12 @@
 }
 else
 {
-    <MudButton OnClick="ShowCarousel"
+    @* <MudButton OnClick="ShowCarousel"
                FullWidth="true"
                Style="border-color: #0054A4; text-transform: none; justify-content: space-between; padding: 8px 16px; border-radius: 3px;">
         <MudText Class="carousel-title"></MudText>
         <MudIcon Icon="@Icons.Material.Filled.KeyboardArrowDown" Style="color: #0081EC;" />
-    </MudButton>
+    </MudButton> *@
 }
 
 
