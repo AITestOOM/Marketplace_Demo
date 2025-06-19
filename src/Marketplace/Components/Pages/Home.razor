@@ -1,4 +1,4 @@
-﻿@page "/"
+@page "/"
 @using Marketplace.Components.Layout
 @using MudBlazor
 @using System.Globalization
@@ -14,7 +14,7 @@
             <div class="services-section">
                 <div class="d-flex justify-space-between align-center mb-2">
                     <MudText Typo="Typo.h6" Style="font-weight: 700;">Navrhované služby</MudText>
-                    <MudIconButton Icon="@Icons.Material.Filled.FilterList" />
+                    <MudIconButton style="color:#0081EC" Icon="@Icons.Material.Filled.FilterList" />
                 </div>
                 <MudStack Spacing="2">
                     @foreach (var offer in _offers)
