@@ -1,80 +1,42 @@
 @using MudBlazor
+@using Marketplace.Components.Pages
+@using static Marketplace.Components.Pages.Home
 
-@if (_isCarouselVisible)
+@if (Offers != null && Offers.Any())
 {
     <MudCarousel Class="mud-elevation-25" Style="height:140px; border-radius: 3px;"
                  ShowArrows="false" ShowBullets="true" EnableSwipe="true"
                  AutoCycle="true" TData="object">
 
-        @foreach (var offerItem in _offers)
+        @foreach (var offerItem in Offers)
         {
             <MudCarouselItem>
-                <MudCard Style="@($"background-color: #1D1E23; background-image: url('{offerItem.ImageUrl}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100%;")">
-                    <MudCardContent>
-                        <div class="d-flex justify-space-between align-start" style="width: 100%;">
-                            <div>
-                                <MudText Style="color: #FFFFFF; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 16px; font-weight: 400; line-height: 19px;">@offerItem.Title</MudText>
-                                <MudText Style="color: #FFFFFF; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 14px; font-weight: 400; line-height: 17px;">@offerItem.Provider</MudText>
+                <div class="clickable-carousel-item" @onclick="@(() => OnOfferClick.InvokeAsync(offerItem))">
+                    <MudCard Style="@($"background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{offerItem.ImageUrl}'); background-size: cover; background-position: center; height: 100%;")" Elevation="0">
+                        <MudCardContent>
+                            <div class="d-flex justify-space-between align-start" style="width: 100%;">
+                                <div>
+                                    <MudText Style="color: #FFFFFF; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.3;">@offerItem.Title</MudText>
+                                    <MudText Style="color: #FFFFFF; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.3; opacity: 0.9;">@offerItem.Provider</MudText>
+                                </div>
                             </div>
-                            <MudIconButton Icon="@Icons.Material.Filled.Close" Size="Size.Small" Style="color: #808080;" OnClick="HideCarousel" />
-                        </div>
-                    </MudCardContent>
-                </MudCard>
+                        </MudCardContent>
+                    </MudCard>
+                </div>
             </MudCarouselItem>
         }
-
     </MudCarousel>
 }
-else
-{
-    <MudButton OnClick="ShowCarousel"
-               FullWidth="true"
-               Variant="Variant.Outlined"
-               Style="border-color: #0054A4; text-transform: none; justify-content: space-between; padding: 8px 16px; border-radius: 3px;">
-        <MudText Class="carousel-title" Style="color: #0054A4;">Show Offers</MudText> @* Added some text and color for visibility *@
-        <MudIcon Icon="@Icons.Material.Filled.KeyboardArrowDown" Style="color: #0081EC;" />
-    </MudButton>
-}
 
+<style>
+    .clickable-carousel-item {
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+    }
+</style>
 
 @code {
-    private bool _isCarouselVisible = true;
-
-    private class Offer
-    {
-        public string Title { get; set; }
-        public string Provider { get; set; }
-        public string Category { get; set; }
-        public string SubCategory { get; set; }
-        public double Rating { get; set; }
-        public int RatingCount { get; set; }
-        public double DistanceKm { get; set; }
-        public string ClosesAt { get; set; }
-        public string Price { get; set; }
-        public string ImageUrl { get; set; }
-    }
-
-    private List<Offer> _offers = new();
-
-    protected override void OnInitialized()
-    {
-        _offers = new List<Offer>
-        {
-            new() { Title = "Kompletný servis vozidla", Provider = "AutoExpert", Category = "Auto", SubCategory = "Servis", Rating = 4.7, RatingCount = 98, DistanceKm = 3.4, ClosesAt = "18:00", Price = "od 99 EUR", ImageUrl = "./Images/bike.PNG" },
-            new() { Title = "Čistenie interiéru", Provider = "CleanCar", Category = "Auto", SubCategory = "Čistenie", Rating = 4.9, RatingCount = 210, DistanceKm = 1.5, ClosesAt = "19:00", Price = "25 EUR", ImageUrl = "./Images/car.png" },
-            new() { Title = "Technická kontrola vozidla", Provider = "STK Centrum", Category = "Auto", SubCategory = "Technická kontrola", Rating = 4.6, RatingCount = 75, DistanceKm = 4.2, ClosesAt = "16:00", Price = "50 EUR", ImageUrl = "./Images/klima.png" }
-        };
-    }
-
-    private void HideCarousel()
-    {
-        _isCarouselVisible = false;
-        InvokeAsync(StateHasChanged); // Good practice if UI changes might not be picked up immediately
-    }
-
-    private void ShowCarousel()
-    {
-        _isCarouselVisible = true;
-        InvokeAsync(StateHasChanged); // Good practice
-    }
+    [Parameter] public List<Offer> Offers { get; set; } = new();
+    [Parameter] public EventCallback<Offer> OnOfferClick { get; set; }
 }

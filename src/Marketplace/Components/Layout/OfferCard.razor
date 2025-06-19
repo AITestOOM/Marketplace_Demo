@@ -2,66 +2,155 @@
 @using static Marketplace.Components.Pages.Home
 @using MudBlazor
 
-<MudCard Elevation="0" Style="background-color: #202124 !important; padding: 0.75rem !important;">
-   
-    <MudCardContent Style="padding: 0 !important;">
+<MudCard Elevation="0" Class="offer-card-container">
+    <MudCardContent>
         <div class="d-flex align-items-start">
-            <!-- Main container: Avatar + Rest of Content -->
-            <MudAvatar Rounded="true" Src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/800px-Google_2015_logo.svg.png" Alt="Service Image"
-                       Style="width: 4.5rem !important; height: 4.5rem !important; {/* 72px ->
-                4.5rem */}
-                border-radius: 0.375rem !important; margin-right: 0.75rem !important; {/* 6px -> 0.375rem, 12px -> 0.75rem */}
-                flex-shrink: 0 !important;" />
+            <!-- Avatar -->
+            <MudAvatar Rounded="true" Src="@Offer.ImageUrl" Alt="Service Image" Class="offer-avatar" />
 
-                <div class="d-flex" style="width: 100%; justify-content: space-between; align-items: start;">
-                    <!-- Left Column (Title, Provider, Category, Details) -->
-                    <div class="d-flex flex-column" style="margin-right: 0.5rem;">
-                       
-                        <MudStack Spacing="0">
-                            <p style="color: #E8EAED !important; font-weight: 500 !important; font-size: 1.375rem !important; line-height: 1.25 !important; margin-bottom: 0px !important;">@Offer.Title</p>
-                            <p style="color: #9AA0A6 !important; font-size: 0.75rem !important; line-height: 1.2 !important; margin-bottom: 0.25rem !important; margin-top: 0.125rem !important;">@Offer.Provider</p> 
-                            <div style="background-color: #3C4043 !important; color: #DADCE0 !important; font-size: 0.6875rem !important; padding: 0.125rem 0.5rem !important; border-radius: 0.75rem !important; display: inline-block !important; margin-top: 0.25rem !important; margin-bottom: 0.5rem !important;">@Offer.SubCategory</div> 
-                        </MudStack>
+            <div class="offer-content">
+                <!-- Left Column (Info) -->
+                <div class="offer-info-col">
+                    <MudStack Spacing="0">
+                        <p class="offer-title">@Offer.Title</p>
+                        <p class="offer-provider">@Offer.Provider</p>
+                        <div class="offer-subcategory-chip">@Offer.SubCategory</div>
+                    </MudStack>
 
-                        <MudStack Spacing="0" Class="">
-                            <!-- Details directly below category -->
-                            <div class="d-flex align-center" style="margin-bottom: 0.25rem;">
-                              
-                                <MudIcon Icon="@Icons.Material.Filled.Star" Style="color: #FDD663 !important; font-size: 1rem !important; margin-right: 0.3125rem !important; line-height: 1 !important;" />
-                                <p style="color: #E8EAED !important; font-size: 0.75rem !important; font-weight: 500 !important; line-height: 1 !important; margin-top: 0 !important; margin-bottom: 0 !important;">@Offer.Rating</p>
-                                <p style="color: #9AA0A6 !important; font-size: 0.75rem !important; margin-left: 0.1875rem !important; line-height: 1 !important; margin-top: 0 !important; margin-bottom: 0 !important;">(@Offer.RatingCount)</p>
-                            </div>
-                            <div class="d-flex align-center" style="margin-bottom: 0.25rem;">
-                         
-                                <MudIcon Icon="@Icons.Material.Filled.LocationOn" Style="color: #9AA0A6 !important; font-size: 1rem !important; margin-right: 0.3125rem !important; line-height: 1 !important;" />
-                                <p style="color: #9AA0A6 !important; font-size: 0.75rem !important; line-height: 1 !important; margin-top: 0 !important; margin-bottom: 0 !important;">@Offer.DistanceKm km</p>
-                            </div>
-                            <div class="d-flex align-center">
-                    
-                                <MudIcon Icon="@Icons.Material.Filled.Schedule" Style="color: #9AA0A6 !important; font-size: 1rem !important; margin-right: 0.3125rem !important; line-height: 1 !important;" />
-                                <p style="color: #9AA0A6 !important; font-size: 0.75rem !important; line-height: 1 !important; margin-top: 0 !important; margin-bottom: 0 !important;">Zatvára sa o @Offer.ClosesAt</p>
-                            </div>
-                        </MudStack>
-                    </div>
-
-                    <!-- Right Column (Price, Order Button) -->
-                    <div class="d-flex flex-column align-items-end" style="flex-shrink: 0; align-self: flex-end;">
-                        
-                        <div class="d-flex align-items-baseline" style="flex-wrap: wrap; margin-bottom: 0.125rem;">
-                   
-
-                            <p style="color: #E8EAED !important; font-size: 1.125rem !important; font-weight: 500 !important; line-height: 1.2 !important; word-break: break-all; margin-bottom: 0 !important;">@Offer.Price</p>
-   
+                    <MudStack Spacing="0" Class="offer-details">
+                        <div class="offer-detail-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Star" Class="offer-detail-icon rating-icon" />
+                            <p class="offer-detail-text rating-text">@Offer.Rating.ToString("F1")</p>
+                            <p class="offer-detail-text rating-count">(@Offer.RatingCount)</p>
                         </div>
-                        <a href="#" @onclick="@(() => OnOrderClick.InvokeAsync(Offer))" @onclick:preventDefault
-                           style="color: #0081EC !important; font-size: 0.9rem !important; text-decoration: none !important; font-weight: 500 !important; /* margin-top: 0.25rem !important; removed as margin-bottom on price div handles it */ line-height: 1.2 !important;">Objednať</a>
-                    </div>
+                        <div class="offer-detail-item">
+                            <MudIcon Icon="@Icons.Material.Filled.LocationOn" Class="offer-detail-icon" />
+                            <p class="offer-detail-text">@Offer.DistanceKm km</p>
+                        </div>
+                        <div class="offer-detail-item">
+                            <MudIcon Icon="@Icons.Material.Filled.Schedule" Class="offer-detail-icon" />
+                            <p class="offer-detail-text">Zatvára sa o @Offer.ClosesAt</p>
+                        </div>
+                    </MudStack>
                 </div>
+
+                <!-- Right Column (Price & Order) -->
+                <div class="offer-actions-col">
+                    <div class="offer-price">@Offer.Price</div>
+                    <a href="#" @onclick="@(() => OnOrderClick.InvokeAsync(Offer))" @onclick:preventDefault class="order-link">Objednať</a>
+                </div>
+            </div>
         </div>
     </MudCardContent>
 </MudCard>
 
+<style>
+    .offer-card-container {
+        background-color: #202124 !important;
+        padding: 0.75rem !important;
+    }
+    .offer-card-container .mud-card-content {
+        padding: 0 !important;
+    }
+    .offer-card-container p {
+        margin: 0;
+    }
+    .offer-avatar {
+        width: 4.5rem !important;
+        height: 4.5rem !important;
+        border-radius: 0.375rem !important;
+        margin-right: 0.75rem !important;
+        flex-shrink: 0 !important;
+    }
+    .offer-content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .offer-info-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-right: 0.5rem;
+        flex-grow: 1;
+    }
+    .offer-title {
+        color: #E8EAED;
+        font-weight: 500;
+        font-size: 1.1rem; 
+        line-height: 1.25;
+    }
+    .offer-provider {
+        color: #9AA0A6;
+        font-size: 0.75rem;
+        line-height: 1.2;
+        margin-top: 0.125rem;
+        margin-bottom: 0.25rem;
+    }
+    .offer-subcategory-chip {
+        background-color: #3C4043;
+        color: #DADCE0;
+        font-size: 0.6875rem;
+        padding: 0.125rem 0.5rem;
+        border-radius: 0.75rem;
+        display: inline-block;
+        width: fit-content;
+        margin-top: 0.25rem;
+        margin-bottom: 0.5rem;
+    }
+    .offer-details {
+        gap: 0.25rem;
+    }
+    .offer-detail-item {
+        display: flex;
+        align-items: center;
+    }
+    .offer-detail-icon {
+        font-size: 1rem !important;
+        margin-right: 0.3125rem;
+        color: #9AA0A6;
+    }
+    .offer-detail-icon.rating-icon {
+        color: #FDD663;
+    }
+    .offer-detail-text {
+        color: #9AA0A6;
+        font-size: 0.75rem;
+        line-height: 1;
+    }
+    .offer-detail-text.rating-text {
+        color: #E8EAED;
+        font-weight: 500;
+    }
+    .offer-detail-text.rating-count {
+        margin-left: 0.1875rem;
+    }
+    .offer-actions-col {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        flex-shrink: 0;
+        justify-content: flex-end;
+        height: 100%;
+    }
+    .offer-price {
+        color: #E8EAED;
+        font-size: 1.125rem;
+        font-weight: 500;
+        line-height: 1.2;
+        margin-bottom: 0.25rem;
+    }
+    .order-link {
+        color: #0081EC;
+        font-size: 0.9rem;
+        text-decoration: none;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+</style>
+
 @code {
-    [Parameter, EditorRequired] public Offer Offer { get; set; } = new Offer(); // Added default for easier testing if needed
+    [Parameter, EditorRequired] public Offer Offer { get; set; } = new Offer();
     [Parameter] public EventCallback<Offer> OnOrderClick { get; set; }
 }

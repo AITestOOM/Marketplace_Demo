@@ -9,7 +9,7 @@
     {
         case 1:
             @* The main dashboard view *@
-            <PromotionCarousel />
+            <PromotionCarousel Offers="_offers.Take(3).ToList()" OnOfferClick="HandleOrderClick" />
             <CategoryCarousel Categories="_categories" OnCategoryClick="HandleCategoryClick" />
             <div class="services-section">
                 <div class="d-flex justify-space-between align-center mb-2">
