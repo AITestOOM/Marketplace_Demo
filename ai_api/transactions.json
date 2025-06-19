@@ -1,0 +1,5424 @@
+{
+  "statement": {
+    "account_info": {
+      "bank_code": "8823",
+      "account_number": "1029384756",
+      "iban": "SK7788230000001029384756",
+      "statement_period_start": "2025-03-15",
+      "statement_period_end": "2025-06-13"
+    },
+    "transactions": [
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-17",
+        "value_date": "2025-03-17",
+        "amount": 5.63,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-13T07:29:45",
+        "merchant_details": {
+          "name": "Moja Samoška",
+          "city_or_location": "BRATISLAVA"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "5.63EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-17",
+        "value_date": "2025-03-17",
+        "amount": 5.40,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-13T08:29:28",
+        "merchant_details": {
+          "name": "Tabak Press Avion",
+          "city_or_location": "BRATISLAVA"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "5.40EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-17",
+        "value_date": "2025-03-17",
+        "amount": 2.48,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-13T08:33:14",
+        "merchant_details": {
+          "name": "HyperNova Central",
+          "city_or_location": "BRATISLAVA"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "2.48EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-17",
+        "value_date": "2025-03-17",
+        "amount": 9.40,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-13T12:31:12",
+        "merchant_details": {
+          "name": "Posedenie u Jakuba",
+          "city_or_location": "BRATISLAVA"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "9.40EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-17",
+        "value_date": "2025-03-17",
+        "amount": 1.64,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-13T17:34:32",
+        "merchant_details": {
+          "name": "Večierka Nivy",
+          "city_or_location": "BRATISLAVA"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "1.64EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-17",
+        "value_date": "2025-03-17",
+        "amount": 0.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-13T18:00:55",
+        "merchant_details": {
+          "name": "OnlineTickets SK",
+          "city_or_location": "https://leoex"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": ".50EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-17",
+        "value_date": "2025-03-17",
+        "amount": 39.15,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-13T18:39:59",
+        "merchant_details": {
+          "name": "FitPro Store",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "39.15EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-17",
+        "value_date": "2025-03-17",
+        "amount": 34.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-13T18:43:33",
+        "merchant_details": {
+          "name": "Relax Zone Eurovea",
+          "city_or_location": "BRATISLAVA"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "34.90EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-17",
+        "value_date": "2025-03-17",
+        "amount": 6.71,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-13T18:49:37",
+        "merchant_details": {
+          "name": "SuperCena Market",
+          "city_or_location": "BRATISLAVA"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "6.71EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-17",
+        "value_date": "2025-03-17",
+        "amount": 11.49,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-15T03:32:57",
+        "merchant_details": {
+          "name": "GlobalStream Inc.",
+          "city_or_location": "Los Gatos"
+        },
+        "description_code": "0",
+        "additional_description": "EUR NAKUP POS EUR",
+        "original_amount_string": "11.49EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-17",
+        "value_date": "2025-03-17",
+        "amount": 1.96,
+        "currency": "EUR",
+        "transaction_description": "Sporenie kartou EUR",
+        "counterparty_account": {
+          "bank_code": "5501",
+          "account_number": "6574839201",
+          "iban": "SK4255010000006574839201"
+        },
+        "additional_info": "DEBIT 20250317"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-10",
+        "value_date": "2025-04-10",
+        "amount": 75.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-09T14:30:00",
+        "merchant_details": {
+          "name": "Pneuservis Rýchlosť",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "75.50EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-15",
+        "value_date": "2025-04-15",
+        "amount": 95.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-14T10:15:00",
+        "merchant_details": {
+          "name": "BestDrive Services",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "95.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-02",
+        "value_date": "2025-05-02",
+        "amount": 180.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-01T16:05:00",
+        "merchant_details": {
+          "name": "Autoservis Expert Marek",
+          "city_or_location": "Žilina"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "180.20EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-10",
+        "value_date": "2025-05-10",
+        "amount": 320.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-09T09:00:00",
+        "merchant_details": {
+          "name": "Opravy Áut Kľúčik & Syn",
+          "city_or_location": "Prešov"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "320.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-20",
+        "value_date": "2025-04-20",
+        "amount": 45.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-19T11:45:00",
+        "merchant_details": {
+          "name": "Domáce Potreby Plus Nitra",
+          "city_or_location": "Nitra"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "45.90EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-22",
+        "value_date": "2025-04-22",
+        "amount": 88.30,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-21T17:20:00",
+        "merchant_details": {
+          "name": "Kutil Shop Trnava",
+          "city_or_location": "Trnava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "88.30EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-05",
+        "value_date": "2025-05-05",
+        "amount": 155.75,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-04T13:10:00",
+        "merchant_details": {
+          "name": "Stavebniny Majster BB",
+          "city_or_location": "Banská Bystrica"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "155.75EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-12",
+        "value_date": "2025-05-12",
+        "amount": 76.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-11T08:50:00",
+        "merchant_details": {
+          "name": "Farby Laky Domov Martin",
+          "city_or_location": "Martin"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "76.50EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-01",
+        "value_date": "2025-04-01",
+        "amount": 29.99,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-31T00:00:00",
+        "merchant_details": {
+          "name": "Orange Slovensko",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "29.99EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-05",
+        "value_date": "2025-04-05",
+        "amount": 55.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-04T00:00:00",
+        "merchant_details": {
+          "name": "Allianz SP",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "55.50EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-08",
+        "value_date": "2025-04-08",
+        "amount": 33.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-07T17:45:10",
+        "merchant_details": {
+          "name": "Lidl Petrzalka",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "33.20EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-12",
+        "value_date": "2025-04-12",
+        "amount": 22.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-11T19:30:25",
+        "merchant_details": {
+          "name": "Slovak Pub",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "22.80EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-18",
+        "value_date": "2025-04-18",
+        "amount": 18.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-17T15:05:50",
+        "merchant_details": {
+          "name": "Martinus Aupark",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "18.90EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-18",
+        "value_date": "2025-03-18",
+        "amount": 42.15,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-17T09:10:05",
+        "merchant_details": {
+          "name": "Tesco Petržalka",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "42.15EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-18",
+        "value_date": "2025-03-18",
+        "amount": 15.60,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-17T12:35:00",
+        "merchant_details": {
+          "name": "Lekáreň Dr.Max Avion",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "15.60EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-19",
+        "value_date": "2025-03-19",
+        "amount": 65.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-18T18:05:30",
+        "merchant_details": {
+          "name": "Shell Čerpacia Stanica Lamač",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "65.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-19",
+        "value_date": "2025-03-19",
+        "amount": 7.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-18T20:15:15",
+        "merchant_details": {
+          "name": "Kebab Haus Central",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "7.80EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-20",
+        "value_date": "2025-03-20",
+        "amount": 19.99,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-19T10:00:00",
+        "merchant_details": {
+          "name": "Telekom SK Mesacny Poplatok",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "19.99EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-20",
+        "value_date": "2025-03-20",
+        "amount": 45.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-19T14:22:45",
+        "merchant_details": {
+          "name": "Union Poisťovňa, a.s.",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "45.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-21",
+        "value_date": "2025-03-21",
+        "amount": 33.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-20T11:50:30",
+        "merchant_details": {
+          "name": "Billa Terasa",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "33.50EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-21",
+        "value_date": "2025-03-21",
+        "amount": 25.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-20T16:10:00",
+        "merchant_details": {
+          "name": "SteamGames Store",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "25.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-22",
+        "value_date": "2025-03-22",
+        "amount": 120.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-21T09:00:00",
+        "merchant_details": {
+          "name": "RegioJet Lístok BA-KE",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "120.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-22",
+        "value_date": "2025-03-22",
+        "amount": 8.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-21T13:45:20",
+        "merchant_details": {
+          "name": "Kaviareň Pohoda Žilina",
+          "city_or_location": "Žilina"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "8.90EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-23",
+        "value_date": "2025-03-23",
+        "amount": 5.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-22T10:11:12",
+        "merchant_details": {
+          "name": "Lekáreň pri Nemocnici Prešov",
+          "city_or_location": "Prešov"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "5.20EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-23",
+        "value_date": "2025-03-23",
+        "amount": 205.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-22T15:30:00",
+        "merchant_details": {
+          "name": "Oprava Strechy Majsterko",
+          "city_or_location": "Trnava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "205.50EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-24",
+        "value_date": "2025-03-24",
+        "amount": 12.99,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-23T08:20:40",
+        "merchant_details": {
+          "name": "Spotify Premium",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "12.99EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-24",
+        "value_date": "2025-03-24",
+        "amount": 38.70,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-23T11:15:55",
+        "merchant_details": {
+          "name": "Kaufland Nitra",
+          "city_or_location": "Nitra"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "38.70EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-25",
+        "value_date": "2025-03-25",
+        "amount": 99.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-24T14:40:10",
+        "merchant_details": {
+          "name": "Generali Poisťovňa, pobočka BB",
+          "city_or_location": "Banská Bystrica"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "99.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-25",
+        "value_date": "2025-03-25",
+        "amount": 17.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-24T19:05:00",
+        "merchant_details": {
+          "name": "Pizzeria Sole Martin",
+          "city_or_location": "Martin"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "17.50EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-26",
+        "value_date": "2025-03-26",
+        "amount": 85.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-25T10:30:30",
+        "merchant_details": {
+          "name": "OMV Čerpacia Stanica Trenčín",
+          "city_or_location": "Trenčín"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "85.20EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-26",
+        "value_date": "2025-03-26",
+        "amount": 29.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-25T16:00:00",
+        "merchant_details": {
+          "name": "Kníhkupectvo Panta Rhei Poprad",
+          "city_or_location": "Poprad"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "29.80EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-27",
+        "value_date": "2025-03-27",
+        "amount": 4.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-26T09:15:45",
+        "merchant_details": {
+          "name": "MHD Lístok BA",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "4.50EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-27",
+        "value_date": "2025-03-27",
+        "amount": 55.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-26T14:55:00",
+        "merchant_details": {
+          "name": "Decathlon Pharos",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "55.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-28",
+        "value_date": "2025-03-28",
+        "amount": 22.30,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-27T10:10:10",
+        "merchant_details": {
+          "name": "Teta Drogerie Ružinov",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "22.30EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-28",
+        "value_date": "2025-03-28",
+        "amount": 12.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-27T13:20:20",
+        "merchant_details": {
+          "name": "Obedové Menu Centrál",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "12.50EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-29",
+        "value_date": "2025-03-29",
+        "amount": 78.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-28T17:00:00",
+        "merchant_details": {
+          "name": "OBI Stavebniny Lamač",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "78.90EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-29",
+        "value_date": "2025-03-29",
+        "amount": 31.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-28T09:45:00",
+        "merchant_details": {
+          "name": "Jednota Coop KVP",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "31.20EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-30",
+        "value_date": "2025-03-30",
+        "amount": 150.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-29T11:00:00",
+        "merchant_details": {
+          "name": "Hotel Lomnica",
+          "city_or_location": "Tatranská Lomnica"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "150.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-30",
+        "value_date": "2025-03-30",
+        "amount": 25.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-29T18:30:30",
+        "merchant_details": {
+          "name": "Reštaurácia U Medveďa Žilina",
+          "city_or_location": "Žilina"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "25.50EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-31",
+        "value_date": "2025-03-31",
+        "amount": 40.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-30T10:00:00",
+        "merchant_details": {
+          "name": "Slovak Telekom Platba Faktury",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "40.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-31",
+        "value_date": "2025-03-31",
+        "amount": 62.30,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-30T14:15:00",
+        "merchant_details": {
+          "name": "Kooperativa Poistovna",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "62.30EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-01",
+        "value_date": "2025-04-01",
+        "amount": 19.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-31T09:20:15",
+        "merchant_details": {
+          "name": "Moja Lekáreň Nitra",
+          "city_or_location": "Nitra"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "19.80EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-01",
+        "value_date": "2025-04-01",
+        "amount": 255.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-31T15:00:00",
+        "merchant_details": {
+          "name": "Autoservis Stop & Go Banská Bystrica",
+          "city_or_location": "Banská Bystrica"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "255.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-02",
+        "value_date": "2025-04-02",
+        "amount": 47.60,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-01T10:45:30",
+        "merchant_details": {
+          "name": "Milk Agro Shop Prešov",
+          "city_or_location": "Prešov"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "47.60EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-02",
+        "value_date": "2025-04-02",
+        "amount": 16.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-01T18:10:00",
+        "merchant_details": {
+          "name": "Cinemax Bory Mall",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "16.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-03",
+        "value_date": "2025-04-03",
+        "amount": 75.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-02T11:30:00",
+        "merchant_details": {
+          "name": "SAD Trenčín Mesačník",
+          "city_or_location": "Trenčín"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "75.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-03",
+        "value_date": "2025-04-03",
+        "amount": 33.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-02T19:50:50",
+        "merchant_details": {
+          "name": "Burger King Aupark KE",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "33.80EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-04",
+        "value_date": "2025-04-04",
+        "amount": 6.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-03T10:05:15",
+        "merchant_details": {
+          "name": "DM Drogerie Markt Polus",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "6.90EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-04",
+        "value_date": "2025-04-04",
+        "amount": 68.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-03T16:20:00",
+        "merchant_details": {
+          "name": "Hornbach Devínska",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "68.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-05",
+        "value_date": "2025-04-05",
+        "amount": 29.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-04T09:00:00",
+        "merchant_details": {
+          "name": "O2 Slovensko",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "29.50EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-05",
+        "value_date": "2025-04-05",
+        "amount": 53.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-04T12:30:30",
+        "merchant_details": {
+          "name": "Fresh Market Trnava",
+          "city_or_location": "Trnava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "53.20EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-06",
+        "value_date": "2025-04-06",
+        "amount": 110.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-05T15:00:00",
+        "merchant_details": {
+          "name": "AXA Assistance",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "110.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-06",
+        "value_date": "2025-04-06",
+        "amount": 19.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-05T20:10:10",
+        "merchant_details": {
+          "name": "Kolkovňa Eurovea",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "19.90EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-07",
+        "value_date": "2025-04-07",
+        "amount": 92.60,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-06T11:45:00",
+        "merchant_details": {
+          "name": "Slovnaft Pumpa Poprad",
+          "city_or_location": "Poprad"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "92.60EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-07",
+        "value_date": "2025-04-07",
+        "amount": 42.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-06T17:30:30",
+        "merchant_details": {
+          "name": "Exisport Avion KE",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "42.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-08",
+        "value_date": "2025-04-08",
+        "amount": 250.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-07T09:10:00",
+        "merchant_details": {
+          "name": "Ryanair Letenka Vieden-Londyn",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "250.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-08",
+        "value_date": "2025-04-08",
+        "amount": 8.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-07T14:50:50",
+        "merchant_details": {
+          "name": "Optika Fokus Martin",
+          "city_or_location": "Martin"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "8.50EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-09",
+        "value_date": "2025-04-09",
+        "amount": 14.99,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-08T08:00:00",
+        "merchant_details": {
+          "name": "Netflix.com Subscription",
+          "city_or_location": "Web"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "14.99EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-09",
+        "value_date": "2025-04-09",
+        "amount": 60.10,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-08T11:20:20",
+        "merchant_details": {
+          "name": "Billa Plus Žilina",
+          "city_or_location": "Žilina"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "60.10EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-10",
+        "value_date": "2025-04-10",
+        "amount": 200.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-09T16:00:00",
+        "merchant_details": {
+          "name": "Wüstenrot Stavebné Sporenie",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "200.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-10",
+        "value_date": "2025-04-10",
+        "amount": 27.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-09T20:30:30",
+        "merchant_details": {
+          "name": "Ázijská Reštaurácia Panda",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "27.80EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-11",
+        "value_date": "2025-04-11",
+        "amount": 185.40,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-10T10:50:00",
+        "merchant_details": {
+          "name": "Servis Bicyklov BikePro",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "185.40EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-11",
+        "value_date": "2025-04-11",
+        "amount": 35.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-10T15:15:15",
+        "merchant_details": {
+          "name": "Záhradníctvo Kvetinka Trnava",
+          "city_or_location": "Trnava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "35.50EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-12",
+        "value_date": "2025-04-12",
+        "amount": 10.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-11T09:30:00",
+        "merchant_details": {
+          "name": "Bolt Kolobežka Jazda",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "10.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-12",
+        "value_date": "2025-04-12",
+        "amount": 7.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-11T14:40:40",
+        "merchant_details": {
+          "name": "Kaderníctvo Vlasy Snov",
+          "city_or_location": "Banská Bystrica"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "7.20EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-13",
+        "value_date": "2025-04-13",
+        "amount": 49.99,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-12T10:00:00",
+        "merchant_details": {
+          "name": "UPC Slovensko",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "49.99EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-13",
+        "value_date": "2025-04-13",
+        "amount": 26.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-12T13:10:10",
+        "merchant_details": {
+          "name": "Metro Devínska Nová Ves",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "26.80EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-14",
+        "value_date": "2025-04-14",
+        "amount": 175.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-13T16:30:00",
+        "merchant_details": {
+          "name": "NN Životná Poisťovňa",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "175.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-14",
+        "value_date": "2025-04-14",
+        "amount": 44.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-13T19:50:50",
+        "merchant_details": {
+          "name": "Veža Michalská Brána Reštaurácia",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "44.50EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-15",
+        "value_date": "2025-04-15",
+        "amount": 120.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-14T09:20:00",
+        "merchant_details": {
+          "name": "Výmena Oleja AutoKelly",
+          "city_or_location": "Prešov"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "120.80EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-15",
+        "value_date": "2025-04-15",
+        "amount": 22.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-14T14:00:00",
+        "merchant_details": {
+          "name": "Hudobniny Music Master",
+          "city_or_location": "Nitra"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "22.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-16",
+        "value_date": "2025-04-16",
+        "amount": 60.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-15T11:00:00",
+        "merchant_details": {
+          "name": "ZSSK Cestovný Lístok Online",
+          "city_or_location": "Web"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "60.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-16",
+        "value_date": "2025-04-16",
+        "amount": 30.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-15T17:30:30",
+        "merchant_details": {
+          "name": "Fitness Centrum Golem Club",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "30.50EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-17",
+        "value_date": "2025-04-17",
+        "amount": 18.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-16T08:45:00",
+        "merchant_details": {
+          "name": "4KA Kredit Dobitie",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "18.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-17",
+        "value_date": "2025-04-17",
+        "amount": 70.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-16T12:10:10",
+        "merchant_details": {
+          "name": "COOP Jednota Tempo Martin",
+          "city_or_location": "Martin"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "70.20EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-18",
+        "value_date": "2025-04-18",
+        "amount": 88.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-17T15:00:00",
+        "merchant_details": {
+          "name": "PZP Komunálna Poisťovňa",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "88.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-18",
+        "value_date": "2025-04-18",
+        "amount": 13.70,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-17T19:20:20",
+        "merchant_details": {
+          "name": "Mekong Restaurant Poprad",
+          "city_or_location": "Poprad"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "13.70EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-19",
+        "value_date": "2025-04-19",
+        "amount": 220.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-18T10:30:00",
+        "merchant_details": {
+          "name": "Servis Okien Majster Domu",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "220.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-19",
+        "value_date": "2025-04-19",
+        "amount": 49.60,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-18T14:45:45",
+        "merchant_details": {
+          "name": "NÁY Elektrodom Aupark BA",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "49.60EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-20",
+        "value_date": "2025-04-20",
+        "amount": 3.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-19T09:00:00",
+        "merchant_details": {
+          "name": "Parkovanie Mesto Trenčín",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "3.50EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-20",
+        "value_date": "2025-04-20",
+        "amount": 105.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-19T13:10:10",
+        "merchant_details": {
+          "name": "Aquapark Senec Vstup",
+          "city_or_location": "Senec"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "105.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-21",
+        "value_date": "2025-04-21",
+        "amount": 11.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-20T10:20:00",
+        "merchant_details": {
+          "name": "BENU Lekáreň Europa SC",
+          "city_or_location": "Banská Bystrica"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "11.80EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-21",
+        "value_date": "2025-04-21",
+        "amount": 37.70,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-20T15:00:00",
+        "merchant_details": {
+          "name": "Kraj Potraviny Petržalka",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "37.70EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-22",
+        "value_date": "2025-04-22",
+        "amount": 25.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-21T08:30:00",
+        "merchant_details": {
+          "name": "SWAN Internet Platba",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "25.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-22",
+        "value_date": "2025-04-22",
+        "amount": 95.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-21T18:40:40",
+        "merchant_details": {
+          "name": "Poisťovňa ČSOB",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "95.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-23",
+        "value_date": "2025-04-23",
+        "amount": 16.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-22T19:55:55",
+        "merchant_details": {
+          "name": "Pizza Mizza Nivy",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "16.50EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-23",
+        "value_date": "2025-04-23",
+        "amount": 140.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-22T10:10:10",
+        "merchant_details": {
+          "name": "Všeobecná Zdravotná Poisťovňa",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "140.00EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-24",
+        "value_date": "2025-04-24",
+        "amount": 290.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-23T11:00:00",
+        "merchant_details": {
+          "name": "Oprava Pračky Servis Elektro",
+          "city_or_location": "Žilina"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "290.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-24",
+        "value_date": "2025-04-24",
+        "amount": 63.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-23T14:20:20",
+        "merchant_details": {
+          "name": "Jurki Čerpacia Stanica",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "63.80EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-25",
+        "value_date": "2025-04-25",
+        "amount": 180.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-24T09:45:00",
+        "merchant_details": {
+          "name": "Booking.com Hotel Praha",
+          "city_or_location": "Web"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "180.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-25",
+        "value_date": "2025-04-25",
+        "amount": 29.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-24T17:00:00",
+        "merchant_details": {
+          "name": "ŠEVT Papiernictvo",
+          "city_or_location": "Nitra"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "29.90EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-26",
+        "value_date": "2025-04-26",
+        "amount": 42.10,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-25T10:15:15",
+        "merchant_details": {
+          "name": "Lidl Mlynské Nivy",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "42.10EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-26",
+        "value_date": "2025-04-26",
+        "amount": 20.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-25T13:30:30",
+        "merchant_details": {
+          "name": "HBO Max Slovensko",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "20.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-27",
+        "value_date": "2025-04-27",
+        "amount": 160.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-26T16:00:00",
+        "merchant_details": {
+          "name": "UNIQA Poisťovňa",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "160.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-27",
+        "value_date": "2025-04-27",
+        "amount": 38.60,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-26T20:20:20",
+        "merchant_details": {
+          "name": "Reštaurácia Flagship",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "38.60EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-28",
+        "value_date": "2025-04-28",
+        "amount": 75.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-27T09:00:00",
+        "merchant_details": {
+          "name": "STK Kontrola Vozidiel",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "75.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-28",
+        "value_date": "2025-04-28",
+        "amount": 250.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-27T14:40:40",
+        "merchant_details": {
+          "name": "Zlatníctvo Aurum",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "250.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-29",
+        "value_date": "2025-04-29",
+        "amount": 12.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-28T10:00:00",
+        "merchant_details": {
+          "name": "FlixBus Lístok Online",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "12.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-29",
+        "value_date": "2025-04-29",
+        "amount": 80.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-28T15:15:15",
+        "merchant_details": {
+          "name": "Zubná Ambulancia Dr. Veselý",
+          "city_or_location": "Trnava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "80.00EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-30",
+        "value_date": "2025-04-30",
+        "amount": 22.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-29T08:30:00",
+        "merchant_details": {
+          "name": "DIGI TV Slovensko",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "22.50EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-30",
+        "value_date": "2025-04-30",
+        "amount": 55.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-29T11:45:45",
+        "merchant_details": {
+          "name": "Yeme Farmárske Potraviny",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "55.90EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-01",
+        "value_date": "2025-05-01",
+        "amount": 70.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-30T16:00:00",
+        "merchant_details": {
+          "name": "Dôvera Zdravotná Poisťovňa",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "70.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-01",
+        "value_date": "2025-05-01",
+        "amount": 19.60,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-30T19:30:30",
+        "merchant_details": {
+          "name": "Mestský Pivovar Prešov",
+          "city_or_location": "Prešov"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "19.60EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-02",
+        "value_date": "2025-05-02",
+        "amount": 195.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-01T10:10:10",
+        "merchant_details": {
+          "name": "Klimatizácia Servis KlímaCool",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "195.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-02",
+        "value_date": "2025-05-02",
+        "amount": 68.70,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-01T14:00:00",
+        "merchant_details": {
+          "name": "Merkury Market Žilina",
+          "city_or_location": "Žilina"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "68.70EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-03",
+        "value_date": "2025-05-03",
+        "amount": 45.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-02T09:45:00",
+        "merchant_details": {
+          "name": "Taxi Bratislava Hopin",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "45.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-03",
+        "value_date": "2025-05-03",
+        "amount": 22.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-02T15:15:15",
+        "merchant_details": {
+          "name": "Masáže Relax Nitra",
+          "city_or_location": "Nitra"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "22.00EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-04",
+        "value_date": "2025-05-04",
+        "amount": 33.30,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-03T08:00:00",
+        "merchant_details": {
+          "name": "Voyo SK Predplatné",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "33.30EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-04",
+        "value_date": "2025-05-04",
+        "amount": 51.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-03T11:20:20",
+        "merchant_details": {
+          "name": "Kaufland Košice",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "51.50EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-05",
+        "value_date": "2025-05-05",
+        "amount": 130.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-04T16:00:00",
+        "merchant_details": {
+          "name": "Aegon Poistenie Domácnosti",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "130.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-05",
+        "value_date": "2025-05-05",
+        "amount": 28.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-04T19:50:50",
+        "merchant_details": {
+          "name": "Fabrika The Beer Pub",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "28.90EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-06",
+        "value_date": "2025-05-06",
+        "amount": 310.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-05T09:20:00",
+        "merchant_details": {
+          "name": "Nové Pneumatiky Pneucom",
+          "city_or_location": "Banská Bystrica"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "310.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-06",
+        "value_date": "2025-05-06",
+        "amount": 85.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-05T14:40:40",
+        "merchant_details": {
+          "name": " IKEA Bratislava Nákup",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "85.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-07",
+        "value_date": "2025-05-07",
+        "amount": 99.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-06T11:00:00",
+        "merchant_details": {
+          "name": "WizzAir Letenka Budapešť-Rím",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "99.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-07",
+        "value_date": "2025-05-07",
+        "amount": 40.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-06T15:15:15",
+        "merchant_details": {
+          "name": "BioTech USA Doplnky",
+          "city_or_location": "Martin"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "40.00EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-08",
+        "value_date": "2025-05-08",
+        "amount": 15.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-07T08:30:00",
+        "merchant_details": {
+          "name": "Magio GO Služba",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "15.50EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-08",
+        "value_date": "2025-05-08",
+        "amount": 62.40,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-07T11:45:45",
+        "merchant_details": {
+          "name": "Terno Lamač",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "62.40EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-09",
+        "value_date": "2025-05-09",
+        "amount": 210.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-08T16:00:00",
+        "merchant_details": {
+          "name": "MetLife Amslico Slovensko",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "210.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-09",
+        "value_date": "2025-05-09",
+        "amount": 33.70,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-08T19:30:30",
+        "merchant_details": {
+          "name": "UFO watch.taste.groove.",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "33.70EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-10",
+        "value_date": "2025-05-10",
+        "amount": 420.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-09T10:10:10",
+        "merchant_details": {
+          "name": "Maľovanie Bytu Profi Maliari",
+          "city_or_location": "Trnava"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "420.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-10",
+        "value_date": "2025-05-10",
+        "amount": 77.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-09T14:00:00",
+        "merchant_details": {
+          "name": "Auto Umyváreň CleanCar",
+          "city_or_location": "Poprad"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "77.20EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-11",
+        "value_date": "2025-05-11",
+        "amount": 140.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-10T09:45:00",
+        "merchant_details": {
+          "name": "Ubytovanie Chata Donovaly",
+          "city_or_location": "Donovaly"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "140.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-11",
+        "value_date": "2025-05-11",
+        "amount": 27.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-10T15:15:15",
+        "merchant_details": {
+          "name": "Alchemilka Bylinková Lekáreň",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "27.50EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-12",
+        "value_date": "2025-05-12",
+        "amount": 19.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-11T08:00:00",
+        "merchant_details": {
+          "name": "Antik Telekom Platba",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "19.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-12",
+        "value_date": "2025-05-12",
+        "amount": 59.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-11T11:20:20",
+        "merchant_details": {
+          "name": "Starý Otec Potraviny",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "59.80EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-13",
+        "value_date": "2025-05-13",
+        "amount": 65.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-12T16:00:00",
+        "merchant_details": {
+          "name": "Onlia Cestovné Poistenie",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "65.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-13",
+        "value_date": "2025-05-13",
+        "amount": 42.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-12T19:50:50",
+        "merchant_details": {
+          "name": "Soho Restaurant Aupark",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "42.90EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-14",
+        "value_date": "2025-05-14",
+        "amount": 160.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-13T09:20:00",
+        "merchant_details": {
+          "name": "Oprava Brzd Auto Hlavica",
+          "city_or_location": "Nitra"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "160.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-14",
+        "value_date": "2025-05-14",
+        "amount": 105.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-13T14:40:40",
+        "merchant_details": {
+          "name": "JYSK Nábytok a Dekorácie",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "105.50EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-15",
+        "value_date": "2025-05-15",
+        "amount": 22.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-14T11:00:00",
+        "merchant_details": {
+          "name": "Autobusová Stanica Nivy Lístok",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "22.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-15",
+        "value_date": "2025-05-15",
+        "amount": 18.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-14T15:15:15",
+        "merchant_details": {
+          "name": "Sun Pharma Lekáreň",
+          "city_or_location": "Prešov"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "18.00EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-16",
+        "value_date": "2025-05-16",
+        "amount": 35.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-15T08:30:00",
+        "merchant_details": {
+          "name": "Skylink Poplatok",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "35.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-16",
+        "value_date": "2025-05-16",
+        "amount": 72.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-15T11:45:45",
+        "merchant_details": {
+          "name": "Billa Avion Shopping Park",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "72.90EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-17",
+        "value_date": "2025-05-17",
+        "amount": 115.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-16T16:00:00",
+        "merchant_details": {
+          "name": "Colonnade Insurance S.A.",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "115.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-17",
+        "value_date": "2025-05-17",
+        "amount": 25.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-16T19:30:30",
+        "merchant_details": {
+          "name": "Gatto Matto Trnava",
+          "city_or_location": "Trnava"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "25.50EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-18",
+        "value_date": "2025-05-18",
+        "amount": 135.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-17T10:10:10",
+        "merchant_details": {
+          "name": "Klampiarstvo AutoFix",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "135.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-18",
+        "value_date": "2025-05-18",
+        "amount": 89.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-17T14:00:00",
+        "merchant_details": {
+          "name": "Intersport",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "89.90EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-19",
+        "value_date": "2025-05-19",
+        "amount": 15.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-18T09:45:00",
+        "merchant_details": {
+          "name": "Vlakový Lístok ZSSK App",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "15.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-19",
+        "value_date": "2025-05-19",
+        "amount": 55.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-18T15:15:15",
+        "merchant_details": {
+          "name": "Očná Klinika Vesely",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "55.00EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-20",
+        "value_date": "2025-05-20",
+        "amount": 28.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-19T08:00:00",
+        "merchant_details": {
+          "name": "Slovanet Platba za Služby",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "28.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-20",
+        "value_date": "2025-05-20",
+        "amount": 48.30,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-19T11:20:20",
+        "merchant_details": {
+          "name": "Delia Potraviny Fresh",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "48.30EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-21",
+        "value_date": "2025-05-21",
+        "amount": 190.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-20T16:00:00",
+        "merchant_details": {
+          "name": "Netfinancie SK Poistka",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "190.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-21",
+        "value_date": "2025-05-21",
+        "amount": 31.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-20T19:50:50",
+        "merchant_details": {
+          "name": "FOU ZOO Pan Asian Restaurant",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "31.80EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-22",
+        "value_date": "2025-05-22",
+        "amount": 250.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-21T09:20:00",
+        "merchant_details": {
+          "name": "Vodoinštalatér Rýchla Oprava",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "250.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-22",
+        "value_date": "2025-05-22",
+        "amount": 58.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-21T14:40:40",
+        "merchant_details": {
+          "name": "Lukoil Čerpacia Stanica",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "58.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-23",
+        "value_date": "2025-05-23",
+        "amount": 170.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-22T11:00:00",
+        "merchant_details": {
+          "name": "Kiwi.com Letenky",
+          "city_or_location": "Web"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "170.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-23",
+        "value_date": "2025-05-23",
+        "amount": 65.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-22T15:15:15",
+        "merchant_details": {
+          "name": "X-BIONIC SPHERE Wellness",
+          "city_or_location": "Šamorín"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "65.00EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-24",
+        "value_date": "2025-05-24",
+        "amount": 21.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-23T08:00:00",
+        "merchant_details": {
+          "name": "Fun Rádio Predplatné",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "21.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-24",
+        "value_date": "2025-05-24",
+        "amount": 39.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-23T11:20:20",
+        "merchant_details": {
+          "name": "Malina Potraviny Staré Mesto",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "39.50EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-25",
+        "value_date": "2025-05-25",
+        "amount": 220.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-24T16:00:00",
+        "merchant_details": {
+          "name": "PRIMA Poisťovňa",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "220.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-25",
+        "value_date": "2025-05-25",
+        "amount": 47.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-24T19:50:50",
+        "merchant_details": {
+          "name": "Bratislavský Meštiansky Pivovar",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "47.80EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-26",
+        "value_date": "2025-05-26",
+        "amount": 350.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-25T09:20:00",
+        "merchant_details": {
+          "name": "Oprava Notebooku PC Servis",
+          "city_or_location": "Žilina"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "350.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-26",
+        "value_date": "2025-05-26",
+        "amount": 95.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-25T14:40:40",
+        "merchant_details": {
+          "name": "Čistenie Interiéru Auta",
+          "city_or_location": "Trnava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "95.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-27",
+        "value_date": "2025-05-27",
+        "amount": 80.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-26T11:00:00",
+        "merchant_details": {
+          "name": "CK Satur Záloha Dovolenka",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "80.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-27",
+        "value_date": "2025-05-27",
+        "amount": 33.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-26T15:15:15",
+        "merchant_details": {
+          "name": "Pilulka.sk Online Lekáreň",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "33.00EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-28",
+        "value_date": "2025-05-28",
+        "amount": 24.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-27T08:00:00",
+        "merchant_details": {
+          "name": "Plustelka Aktivácia Balíka",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "24.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-28",
+        "value_date": "2025-05-28",
+        "amount": 69.70,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-27T11:20:20",
+        "merchant_details": {
+          "name": "Tesco Expres Račianske Mýto",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "69.70EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-29",
+        "value_date": "2025-05-29",
+        "amount": 145.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-28T16:00:00",
+        "merchant_details": {
+          "name": "Groupama Poisťovňa",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "145.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-29",
+        "value_date": "2025-05-29",
+        "amount": 29.60,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-28T19:50:50",
+        "merchant_details": {
+          "name": "Reštaurácia Pulitzer",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "29.60EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-30",
+        "value_date": "2025-05-30",
+        "amount": 110.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-29T09:20:00",
+        "merchant_details": {
+          "name": "Výmena Autobatérie Servis Rýchly",
+          "city_or_location": "Martin"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "110.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-30",
+        "value_date": "2025-05-30",
+        "amount": 75.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-29T14:40:40",
+        "merchant_details": {
+          "name": "Baumax Stavebniny a Záhrada",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "75.80EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-31",
+        "value_date": "2025-05-31",
+        "amount": 35.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-30T11:00:00",
+        "merchant_details": {
+          "name": "Letisko Bratislava Parkovanie",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "35.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-31",
+        "value_date": "2025-05-31",
+        "amount": 42.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-30T15:15:15",
+        "merchant_details": {
+          "name": "Fyzioterapia Progres",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "42.00EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-01",
+        "value_date": "2025-06-01",
+        "amount": 29.99,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-31T00:00:00",
+        "merchant_details": {
+          "name": "Orange Slovensko",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "29.99EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-01",
+        "value_date": "2025-06-01",
+        "amount": 33.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-31T17:45:10",
+        "merchant_details": {
+          "name": "Lidl Petrzalka",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "33.20EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-02",
+        "value_date": "2025-06-02",
+        "amount": 55.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-01T00:00:00",
+        "merchant_details": {
+          "name": "Allianz SP",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "55.50EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-02",
+        "value_date": "2025-06-02",
+        "amount": 22.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-01T19:30:25",
+        "merchant_details": {
+          "name": "Slovak Pub",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "22.80EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-03",
+        "value_date": "2025-06-03",
+        "amount": 75.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-02T14:30:00",
+        "merchant_details": {
+          "name": "Pneuservis Rýchlosť",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "75.50EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-03",
+        "value_date": "2025-06-03",
+        "amount": 18.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-02T15:05:50",
+        "merchant_details": {
+          "name": "Martinus Aupark",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "18.90EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-04",
+        "value_date": "2025-06-04",
+        "amount": 42.15,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-03T09:10:05",
+        "merchant_details": {
+          "name": "Tesco Petržalka",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "42.15EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-04",
+        "value_date": "2025-06-04",
+        "amount": 15.60,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-03T12:35:00",
+        "merchant_details": {
+          "name": "Lekáreň Dr.Max Avion",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "15.60EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-05",
+        "value_date": "2025-06-05",
+        "amount": 19.99,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-04T10:00:00",
+        "merchant_details": {
+          "name": "Telekom SK Mesacny Poplatok",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "19.99EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-05",
+        "value_date": "2025-06-05",
+        "amount": 7.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-04T20:15:15",
+        "merchant_details": {
+          "name": "Kebab Haus Central",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "7.80EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-06",
+        "value_date": "2025-06-06",
+        "amount": 45.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-05T14:22:45",
+        "merchant_details": {
+          "name": "Union Poisťovňa, a.s.",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "45.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-06",
+        "value_date": "2025-06-06",
+        "amount": 25.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-05T16:10:00",
+        "merchant_details": {
+          "name": "SteamGames Store",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "25.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-07",
+        "value_date": "2025-06-07",
+        "amount": 33.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-06T11:50:30",
+        "merchant_details": {
+          "name": "Billa Terasa",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "33.50EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-07",
+        "value_date": "2025-06-07",
+        "amount": 8.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-06T13:45:20",
+        "merchant_details": {
+          "name": "Kaviareň Pohoda Žilina",
+          "city_or_location": "Žilina"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "8.90EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-08",
+        "value_date": "2025-06-08",
+        "amount": 120.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-07T09:00:00",
+        "merchant_details": {
+          "name": "RegioJet Lístok BA-KE",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "120.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-08",
+        "value_date": "2025-06-08",
+        "amount": 5.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-07T10:11:12",
+        "merchant_details": {
+          "name": "Lekáreň pri Nemocnici Prešov",
+          "city_or_location": "Prešov"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "5.20EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-09",
+        "value_date": "2025-06-09",
+        "amount": 12.99,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-08T08:20:40",
+        "merchant_details": {
+          "name": "Spotify Premium",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "12.99EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-09",
+        "value_date": "2025-06-09",
+        "amount": 38.70,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-08T11:15:55",
+        "merchant_details": {
+          "name": "Kaufland Nitra",
+          "city_or_location": "Nitra"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "38.70EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-10",
+        "value_date": "2025-06-10",
+        "amount": 99.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-09T14:40:10",
+        "merchant_details": {
+          "name": "Generali Poisťovňa, pobočka BB",
+          "city_or_location": "Banská Bystrica"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "99.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-10",
+        "value_date": "2025-06-10",
+        "amount": 17.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-09T19:05:00",
+        "merchant_details": {
+          "name": "Pizzeria Sole Martin",
+          "city_or_location": "Martin"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "17.50EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-11",
+        "value_date": "2025-06-11",
+        "amount": 85.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-10T10:30:30",
+        "merchant_details": {
+          "name": "OMV Čerpacia Stanica Trenčín",
+          "city_or_location": "Trenčín"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "85.20EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-11",
+        "value_date": "2025-06-11",
+        "amount": 29.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-10T16:00:00",
+        "merchant_details": {
+          "name": "Kníhkupectvo Panta Rhei Poprad",
+          "city_or_location": "Poprad"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "29.80EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-12",
+        "value_date": "2025-06-12",
+        "amount": 4.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-11T09:15:45",
+        "merchant_details": {
+          "name": "MHD Lístok BA",
+          "city_or_location": "App"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "4.50EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-06-12",
+        "value_date": "2025-06-12",
+        "amount": 55.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-06-11T14:55:00",
+        "merchant_details": {
+          "name": "Decathlon Pharos",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "55.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-18",
+        "value_date": "2025-03-18",
+        "amount": 23.45,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-18T10:15:30",
+        "merchant_details": {
+          "name": "Starbucks Aupark",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "23.45EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-19",
+        "value_date": "2025-03-19",
+        "amount": 78.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-18T11:00:00",
+        "merchant_details": {
+          "name": "Alza.sk Online Nakup",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "78.90EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-20",
+        "value_date": "2025-03-20",
+        "amount": 12.30,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-19T08:45:15",
+        "merchant_details": {
+          "name": "DM Drogerie Central",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "12.30EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-21",
+        "value_date": "2025-03-21",
+        "amount": 330.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-20T17:00:00",
+        "merchant_details": {
+          "name": "Oprava Umývačky Riadu Servis Dom",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "330.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-22",
+        "value_date": "2025-03-22",
+        "amount": 55.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-21T10:30:00",
+        "merchant_details": {
+          "name": "Tank ONO",
+          "city_or_location": "Žilina"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "55.20EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-23",
+        "value_date": "2025-03-23",
+        "amount": 18.75,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-22T19:00:00",
+        "merchant_details": {
+          "name": "McDonalds OC Optima",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "18.75EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-24",
+        "value_date": "2025-03-24",
+        "amount": 9.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-24T07:15:00",
+        "merchant_details": {
+          "name": "BILLA fresh corner",
+          "city_or_location": "Prešov"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "9.90EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-25",
+        "value_date": "2025-03-25",
+        "amount": 155.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-24T12:00:00",
+        "merchant_details": {
+          "name": "Hydrotour Záloha Chorvátsko",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "155.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-26",
+        "value_date": "2025-03-26",
+        "amount": 42.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-25T09:30:45",
+        "merchant_details": {
+          "name": "Očná Optika Fokus",
+          "city_or_location": "Nitra"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "42.50EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-27",
+        "value_date": "2025-03-27",
+        "amount": 60.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-26T10:00:00",
+        "merchant_details": {
+          "name": "VSE Platba elektrina",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "60.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-28",
+        "value_date": "2025-03-28",
+        "amount": 29.88,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-27T11:45:00",
+        "merchant_details": {
+          "name": "Lidl Námestovo",
+          "city_or_location": "Námestovo"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "29.88EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-29",
+        "value_date": "2025-03-29",
+        "amount": 95.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-28T14:30:00",
+        "merchant_details": {
+          "name": "Aegon Doplnkové Dôchodkové Sporenie",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "95.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-30",
+        "value_date": "2025-03-30",
+        "amount": 16.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-29T18:15:30",
+        "merchant_details": {
+          "name": "Mondieu Cafe",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "16.90EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-03-31",
+        "value_date": "2025-03-31",
+        "amount": 250.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-30T10:00:00",
+        "merchant_details": {
+          "name": "Montáž Nábytku Hodinový Manžel",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "250.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-01",
+        "value_date": "2025-04-01",
+        "amount": 88.40,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-03-31T13:45:00",
+        "merchant_details": {
+          "name": "Diagnostika Vozidla Auto AZ",
+          "city_or_location": "Trnava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "88.40EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-02",
+        "value_date": "2025-04-02",
+        "amount": 29.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-01T09:00:00",
+        "merchant_details": {
+          "name": "Pelikan.sk Letenky",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "29.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-03",
+        "value_date": "2025-04-03",
+        "amount": 65.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-02T16:30:30",
+        "merchant_details": {
+          "name": "Zdravé Potraviny BioSvet",
+          "city_or_location": "Banská Bystrica"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "65.80EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-04",
+        "value_date": "2025-04-04",
+        "amount": 35.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-03T07:45:00",
+        "merchant_details": {
+          "name": "O2 Paušál",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "35.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-05",
+        "value_date": "2025-04-05",
+        "amount": 47.10,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-04T10:15:00",
+        "merchant_details": {
+          "name": "Kaufland Poprad",
+          "city_or_location": "Poprad"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "47.10EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-06",
+        "value_date": "2025-04-06",
+        "amount": 112.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-05T15:00:00",
+        "merchant_details": {
+          "name": "PZP Poisťovňa Online",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "112.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-07",
+        "value_date": "2025-04-07",
+        "amount": 22.40,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-06T20:00:00",
+        "merchant_details": {
+          "name": "Reštaurácia KOLIBA",
+          "city_or_location": "Liptovský Mikuláš"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "22.40EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-08",
+        "value_date": "2025-04-08",
+        "amount": 170.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-07T09:30:30",
+        "merchant_details": {
+          "name": "Servis Kotla Kúrenie SOS",
+          "city_or_location": "Martin"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "170.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-09",
+        "value_date": "2025-04-09",
+        "amount": 45.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-08T13:15:00",
+        "merchant_details": {
+          "name": "Slovnaft Tankovanie",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "45.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-10",
+        "value_date": "2025-04-10",
+        "amount": 75.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-09T10:00:00",
+        "merchant_details": {
+          "name": "CK FIFO Zájezd",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "75.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-11",
+        "value_date": "2025-04-11",
+        "amount": 38.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-10T17:00:00",
+        "merchant_details": {
+          "name": "Lekáreň Schneider",
+          "city_or_location": "Trenčín"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "38.20EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-12",
+        "value_date": "2025-04-12",
+        "amount": 25.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-11T08:15:00",
+        "merchant_details": {
+          "name": "UPC Internet",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "25.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-13",
+        "value_date": "2025-04-13",
+        "amount": 52.60,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-12T11:30:30",
+        "merchant_details": {
+          "name": "Fresh Market Lamač",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "52.60EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-14",
+        "value_date": "2025-04-14",
+        "amount": 85.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-13T14:45:00",
+        "merchant_details": {
+          "name": "Kooperativa PZP",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "85.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-15",
+        "value_date": "2025-04-15",
+        "amount": 28.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-14T19:00:00",
+        "merchant_details": {
+          "name": "Pizzeria Rustica",
+          "city_or_location": "Žilina"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "28.50EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-16",
+        "value_date": "2025-04-16",
+        "amount": 190.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-15T09:00:00",
+        "merchant_details": {
+          "name": "Stavebniny DEK",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "190.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-17",
+        "value_date": "2025-04-17",
+        "amount": 62.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-16T12:45:30",
+        "merchant_details": {
+          "name": "OMV Einsteinova",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "62.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-18",
+        "value_date": "2025-04-18",
+        "amount": 150.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-17T10:30:00",
+        "merchant_details": {
+          "name": "Letenky.SK",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "150.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-19",
+        "value_date": "2025-04-19",
+        "amount": 49.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-18T16:15:00",
+        "merchant_details": {
+          "name": "Fitness Golem Club Aupark",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "49.90EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-20",
+        "value_date": "2025-04-20",
+        "amount": 29.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-19T07:30:00",
+        "merchant_details": {
+          "name": "Telekom Internet",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "29.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-21",
+        "value_date": "2025-04-21",
+        "amount": 37.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-20T10:45:30",
+        "merchant_details": {
+          "name": "BILLA Karlova Ves",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "37.80EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-22",
+        "value_date": "2025-04-22",
+        "amount": 77.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-21T14:00:00",
+        "merchant_details": {
+          "name": "Generali Poistenie Auta",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "77.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-23",
+        "value_date": "2025-04-23",
+        "amount": 19.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-22T18:30:30",
+        "merchant_details": {
+          "name": "Street Food Park BA",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "19.50EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-24",
+        "value_date": "2025-04-24",
+        "amount": 210.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-23T09:15:00",
+        "merchant_details": {
+          "name": "Oprava Kúrenia Kúrenár Expres",
+          "city_or_location": "Prešov"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "210.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-25",
+        "value_date": "2025-04-25",
+        "amount": 53.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-24T13:00:00",
+        "merchant_details": {
+          "name": "Shell Vajnorská",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "53.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-26",
+        "value_date": "2025-04-26",
+        "amount": 92.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-25T10:45:30",
+        "merchant_details": {
+          "name": "Booking.com Hotel Viedeň",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "92.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-27",
+        "value_date": "2025-04-27",
+        "amount": 25.60,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-26T15:30:00",
+        "merchant_details": {
+          "name": "Lekáreň Benu OC Central",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "25.60EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-28",
+        "value_date": "2025-04-28",
+        "amount": 19.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-27T08:00:00",
+        "merchant_details": {
+          "name": "Netflix Mesačný Poplatok",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "19.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-29",
+        "value_date": "2025-04-29",
+        "amount": 41.90,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-28T11:00:00",
+        "merchant_details": {
+          "name": "Terno Petržalka",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "41.90EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-04-30",
+        "value_date": "2025-04-30",
+        "amount": 105.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-29T14:15:30",
+        "merchant_details": {
+          "name": "Union Poistenie Domu",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "105.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-01",
+        "value_date": "2025-05-01",
+        "amount": 33.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-04-30T18:45:00",
+        "merchant_details": {
+          "name": "Reštaurácia Staré Časy",
+          "city_or_location": "Banská Štiavnica"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "33.00EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-02",
+        "value_date": "2025-05-02",
+        "amount": 140.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-01T09:30:00",
+        "merchant_details": {
+          "name": "OBI Záhradné Centrum",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "140.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-03",
+        "value_date": "2025-05-03",
+        "amount": 72.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-02T13:30:30",
+        "merchant_details": {
+          "name": "Pneuservis Mikona",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "72.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-04",
+        "value_date": "2025-05-04",
+        "amount": 48.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-03T10:00:00",
+        "merchant_details": {
+          "name": "Slovak Lines Lístok",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "48.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-05",
+        "value_date": "2025-05-05",
+        "amount": 19.70,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-04T16:45:00",
+        "merchant_details": {
+          "name": "Dr. Max Lekáreň Online",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "19.70EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-06",
+        "value_date": "2025-05-06",
+        "amount": 42.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-05T07:15:00",
+        "merchant_details": {
+          "name": "Orange Internet",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "42.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-07",
+        "value_date": "2025-05-07",
+        "amount": 29.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-06T10:30:30",
+        "merchant_details": {
+          "name": "COOP Jednota Prievidza",
+          "city_or_location": "Prievidza"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "29.50EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-08",
+        "value_date": "2025-05-08",
+        "amount": 99.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-07T13:45:00",
+        "merchant_details": {
+          "name": "Allianz Cestovné Poistenie",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "99.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-09",
+        "value_date": "2025-05-09",
+        "amount": 45.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-08T18:00:00",
+        "merchant_details": {
+          "name": "Reštaurácia Hradná Hviezda",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "45.00EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-10",
+        "value_date": "2025-05-10",
+        "amount": 165.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-09T09:00:00",
+        "merchant_details": {
+          "name": "Domáce Potreby Orion",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "165.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-11",
+        "value_date": "2025-05-11",
+        "amount": 38.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-10T12:15:30",
+        "merchant_details": {
+          "name": "Ručné Umývanie Auta",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "38.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-12",
+        "value_date": "2025-05-12",
+        "amount": 62.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-11T10:30:00",
+        "merchant_details": {
+          "name": "Hotel Patria Štrbské Pleso",
+          "city_or_location": "Štrbské Pleso"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "62.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-13",
+        "value_date": "2025-05-13",
+        "amount": 33.50,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-12T15:45:00",
+        "merchant_details": {
+          "name": "Yves Rocher Kozmetika",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "33.50EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-14",
+        "value_date": "2025-05-14",
+        "amount": 22.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-13T07:00:00",
+        "merchant_details": {
+          "name": "Antik TV",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "22.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-15",
+        "value_date": "2025-05-15",
+        "amount": 49.20,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-14T10:00:00",
+        "merchant_details": {
+          "name": "Tesco Hypermarket Zlaté Piesky",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "49.20EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-16",
+        "value_date": "2025-05-16",
+        "amount": 68.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-15T13:15:30",
+        "merchant_details": {
+          "name": "ČSOB Poisťovňa Životné Poistenie",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "68.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-17",
+        "value_date": "2025-05-17",
+        "amount": 37.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-16T17:30:00",
+        "merchant_details": {
+          "name": "Burger Bar Banská Bystrica",
+          "city_or_location": "Banská Bystrica"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "37.00EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-18",
+        "value_date": "2025-05-18",
+        "amount": 220.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-17T08:45:00",
+        "merchant_details": {
+          "name": "Siko Kúpeľne",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "220.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-19",
+        "value_date": "2025-05-19",
+        "amount": 49.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-18T11:45:30",
+        "merchant_details": {
+          "name": "Geometria Vozidla AutoServis Pro",
+          "city_or_location": "Košice"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "49.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-20",
+        "value_date": "2025-05-20",
+        "amount": 110.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-19T09:15:00",
+        "merchant_details": {
+          "name": "Penzión U Anny Terchová",
+          "city_or_location": "Terchová"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "110.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-21",
+        "value_date": "2025-05-21",
+        "amount": 28.30,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-20T16:00:00",
+        "merchant_details": {
+          "name": "Salón Krásy Afrodita",
+          "city_or_location": "Poprad"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "28.30EUR",
+        "label": "Zdravie a starostlivosť"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-22",
+        "value_date": "2025-05-22",
+        "amount": 39.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-21T07:30:00",
+        "merchant_details": {
+          "name": "HBO GO",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "39.00EUR",
+        "label": "Telefón internet a TV"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-23",
+        "value_date": "2025-05-23",
+        "amount": 56.70,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-22T10:45:30",
+        "merchant_details": {
+          "name": "Moja Samoška Ružinov",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "56.70EUR",
+        "label": "Supermarket"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-24",
+        "value_date": "2025-05-24",
+        "amount": 125.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-23T14:00:00",
+        "merchant_details": {
+          "name": "Poisťovňa Wüstenrot",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "125.00EUR",
+        "label": "Poistenie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-25",
+        "value_date": "2025-05-25",
+        "amount": 21.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-24T18:30:30",
+        "merchant_details": {
+          "name": "KFC Avion",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "21.00EUR",
+        "label": "Reštaurácie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-26",
+        "value_date": "2025-05-26",
+        "amount": 180.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-25T09:15:00",
+        "merchant_details": {
+          "name": "Hornbach Projekt Market",
+          "city_or_location": "Bratislava"
+        },
+        "description_code": "0",
+        "additional_description": "Online Payment EUR",
+        "original_amount_string": "180.00EUR",
+        "label": "Voľný čas"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-27",
+        "value_date": "2025-05-27",
+        "amount": 65.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-26T13:00:00",
+        "merchant_details": {
+          "name": "Shell Diaľnica D1",
+          "city_or_location": "Diaľnica D1"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "65.00EUR",
+        "label": "Auto"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-28",
+        "value_date": "2025-05-28",
+        "amount": 79.00,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-27T10:45:30",
+        "merchant_details": {
+          "name": "Austrian Airlines",
+          "city_or_location": "Online"
+        },
+        "description_code": "0",
+        "additional_description": "GP NAKUP POS EUR",
+        "original_amount_string": "79.00EUR",
+        "label": "Cestovanie"
+      },
+      {
+        "type": "DEBIT",
+        "posting_date": "2025-05-29",
+        "value_date": "2025-05-29",
+        "amount": 42.80,
+        "currency": "EUR",
+        "card_info": {
+          "masked_number": "440577******4918",
+          "holder_name": "Ján Holý"
+        },
+        "transaction_datetime": "2025-05-28T15:30:00",
+        "merchant_details": {
+          "name": "Lekáreň Slniečko",
+          "city_or_location": "Žilina"
+        },
+        "description_code": "0",
+        "additional_description": "POS nakup EUR",
+        "original_amount_string": "42.80EUR",
+        "label": "Zdravie a starostlivosť"
+      }]}}
