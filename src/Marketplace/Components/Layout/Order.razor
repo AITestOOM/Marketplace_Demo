@@ -1,50 +1,107 @@
-﻿@using Marketplace.Components.Pages
+@using Marketplace.Components.Pages
 @using MudBlazor
 @using static Marketplace.Components.Pages.Home
 
-<div class="order-view">
-    <MudPaper Elevation="0" Square="true" Class="d-flex align-center pa-2" Style="background-color: #1D1E23;">
-        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" OnClick="@(() => OnBackClick.InvokeAsync(Offer))" Edge="Edge.Start" Color="Color.Primary" />
-        <MudText Style="font-weight: 700; font-size: 22px; color: #F7F7F7;">Objednávka</MudText>
+<div class="order-view" Style="background-color: #0F0F11 !important; min-height: 100vh !important; padding-bottom: 90px !important;">
+    <MudPaper Elevation="0" Square="true" Class="d-flex align-center pa-3" Style=" background-color: #1D1E23 !important; position: sticky !important; top: 0 !important; z-index: 10 !important; border-bottom: 1px solid #2A2B31 !important; margin-bottom: 5px !important;">
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" OnClick="@(() => OnBackClick.InvokeAsync(Offer))" Edge="Edge.Start" Style="color: #0081EC !important; margin-left: -4px !important;" />
+        <MudText Style=" font-weight: 700 !important; font-size: 22px !important; color: #F7F7F7 !important; margin-left: 12px !important; ">Objednávka</MudText>
     </MudPaper>
 
-    <div class="pa-2">
-        <MudPaper Elevation="0" Square="true" Class="pa-4" Style="background-color: #1D1E23; border-bottom: 1px solid #2A2B31;">
-            <MudText Style="font-size: 16px; color: #FFFFFF;">@Offer?.Provider</MudText>
-            <MudText Style="font-size: 14px; color: #808080;">Profesionálne umývanie áut</MudText>
+    <div Style="padding-left: 0 !important; padding-right: 0 !important; padding-top: 0 !important;">
+        <MudPaper Elevation="0" Square="true" Class="pa-4" Style="background-color: #1D1E23 !important; border-bottom: 1px solid #2A2B31 !important;">
+            <MudText Style="font-size: 16px !important; color: #FFFFFF !important; font-weight: 500 !important;">@Offer?.Provider</MudText>
+            <MudText Style="font-size: 14px !important; color: #808080 !important; margin-top: 4px !important;">@Offer?.SubCategory</MudText>
         </MudPaper>
-        <MudButton FullWidth="true" Variant="Variant.Text" EndIcon="@Icons.Material.Filled.ChevronRight" Color="Color.Primary" Style="background-color: #1D1E23; justify-content: space-between; text-transform: none; color: white;">
-            Profil obchodníka
+
+        <MudButton FullWidth="true" Variant="Variant.Text"
+                   Style="margin-bottom:5px; background-color: #1D1E23 !important;
+                          justify-content: space-between !important;
+                          text-transform: none !important;
+                          padding: 16px !important; /* pa-4 equivalent */
+                          border-bottom: 1px solid #2A2B31 !important;
+                          border-radius: 0 !important;">
+            <span Style="font-size: 16px !important; color: #FFFFFF !important; font-weight: normal !important;">Profil obchodníka</span>
+            <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Style="color: #0081EC !important;" />
         </MudButton>
 
-        <MudPaper Elevation="0" Square="true" Class="pa-4 mt-4" Style="background-color: #1D1E23; border-bottom: 1px solid #2A2B31;">
-            <div class="d-flex justify-space-between">
-                <MudText Style="font-size: 16px; color: #FFFFFF;">@Offer?.Title</MudText>
-                <MudLink Href="#" Style="font-size: 14px; color: #0081EC; text-decoration:none;">Podrobnosti</MudLink>
+        <MudPaper Elevation="0" Square="true" Class="pa-4" Style="background-color: #1D1E23 !important; border-bottom: 1px solid #2A2B31 !important; margin-bottom: 5px !important;">
+            <div class="d-flex justify-space-between align-center">
+                <MudText Style="font-size: 16px !important; color: #FFFFFF !important; font-weight: 500 !important;">@Offer?.Title</MudText>
+                <MudLink Href="#" Style="font-size: 14px !important; color: #0081EC !important; text-decoration:none !important; white-space: nowrap !important; margin-left: 8px !important;">Podrobnosti</MudLink>
             </div>
-            <MudText Style="font-size: 14px; color: #808080;" Class="mt-2">@Offer?.Description</MudText>
+            <div class="d-flex justify-space-between align-items-start mt-2">
+                <MudText Style="font-size: 14px !important; color: #808080 !important; max-width: 70% !important; padding-right: 8px !important;">@Offer?.Description</MudText>
+                <MudText Style="font-weight: 700 !important; font-size: 20px !important; color: #FFFFFF !important; white-space: nowrap !important;">@Offer?.Price</MudText>
+            </div>
         </MudPaper>
 
-        <div class="pa-4" Style="background: #1D1E23;">
-            <MudTextField T="string" Label="Vyberte termín" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.CalendarToday" />
+        <div Class="pa-4" Style="background: #1D1E23 !important; border-bottom: 1px solid #2A2B31 !important; margin-bottom: 5px !important;
+                                --mud-palette-text-primary: #FFFFFF !important;
+                                --mud-palette-text-secondary: #808080 !important;
+                                --mud-palette-lines-inputs: #4A4B50 !important;
+                                --mud-palette-primary: #0081EC !important;
+                                --mud-input-label-inputcontrol-outlined-margin-top: -6px !important;">
+            <MudTextField T="string" Label="Vyberte termín" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.CalendarToday" AdornmentColor="Color.Primary" InputStyle="color: #FFFFFF !important;" />
         </div>
 
-        <MudPaper Elevation="0" Square="true" Class="pa-4" Style="background-color: #1D1E23; border-bottom: 1px solid #2A2B31;">
-            <div class="d-flex justify-space-between">
-                <MudText Style="font-size: 14px; color: #808080;">Cena za službu</MudText>
-                <MudText Style="font-weight: 700; font-size: 22px; color: #FFFFFF;">@Offer?.Price</MudText>
+        <MudPaper Elevation="0" Square="true" Class="pa-4" Style="background-color: #1D1E23 !important; border-bottom: 1px solid #2A2B31 !important;">
+            <MudText Style="font-size: 16px !important; color: #FFFFFF !important; font-weight: 700 !important; margin-bottom: 16px !important;">Spôsob platby</MudText>
+
+            <div @onclick="@(() => { SelectedPaymentMethod = "ihned"; StateHasChanged(); })"
+                 Style="@GetPaymentOptionStyle("ihned")" class="mb-2">
+                <MudText Style="font-size: 14px !important; color: #FFFFFF !important; font-weight: 400 !important;">Zaplatiť ihneď</MudText>
+            </div>
+
+            <div @onclick="@(() => { SelectedPaymentMethod = "splatky"; StateHasChanged(); })"
+                 Style="@GetPaymentOptionStyle("splatky")">
+                <MudText Style="font-size: 14px !important; color: #FFFFFF !important; font-weight: 400 !important;">Kúpiť na splátky</MudText>
             </div>
         </MudPaper>
     </div>
 
-    <div class="pa-4" Style="position: fixed; bottom: 0; width: 100%; max-width: inherit;">
-        <MudButton FullWidth="true" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Style="height: 48px; border-radius: 3px;">
-            Odoslať objednávku
+    <div Style="position: fixed !important; bottom: 0 !important; left:0 !important; right: 0 !important; width: 100% !important; max-width: inherit !important; background-color: #1D1E23 !important; padding: 16px !important; box-sizing: border-box !important; border-top: 1px solid #2A2B31 !important;">
+        <MudButton FullWidth="true" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Style="height: 48px !important; border-radius: 4px !important; background-color: #0081EC !important; font-size: 16px !important; text-transform: none !important; font-weight: 500 !important;">
+            Objednať
         </MudButton>
     </div>
 </div>
 
 @code {
-    [Parameter] public Offer Offer { get; set; }
+    [Parameter]
+    public Offer Offer { get; set; } = new Offer
+    {
+        Provider = "Shine & Clean Auto",
+        Title = "Kompletné čistenie auta",
+        Description = "Ručné umývanie vozidla so šetrnou chémiou.",
+        Price = "30 EUR"
+    };
     [Parameter] public EventCallback<Offer> OnBackClick { get; set; }
+
+    private string? SelectedPaymentMethod { get; set; } = "ihned"; // Default to "Zaplatiť ihneď"
+
+    private string GetPaymentOptionStyle(string paymentMethodIdentifier)
+    {
+        string optionBackgroundColor = "#1D1E23"; // Darker background for options, like example
+        string unselectedBorderColor = "#343B4E"; // Grey-blue border from example
+        string selectedBorderColor = "#0081EC";   // App's primary blue for consistency
+        string commonStyle = $"background-color: {optionBackgroundColor} !important; border-radius: 6px !important; cursor: pointer !important; padding: 16px !important;";
+
+        if (SelectedPaymentMethod == paymentMethodIdentifier)
+        {
+            return $"{commonStyle} border: 1.5px solid {selectedBorderColor} !important;";
+        }
+        else
+        {
+            return $"{commonStyle} border: 1.5px solid {unselectedBorderColor} !important;";
+        }
+    }
+
+    // public class Offer // Definition provided for completeness if not elsewhere.
+    // {
+    //     public string? Provider { get; set; }
+    //     public string? Title { get; set; }
+    //     public string? Description { get; set; }
+    //     public string? Price { get; set; }
+    // }
 }
