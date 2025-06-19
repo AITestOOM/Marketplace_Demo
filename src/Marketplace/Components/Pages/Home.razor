@@ -9,7 +9,7 @@
     {
         case 1:
             @* The main dashboard view *@
-            <PromotionCarousel Offers="_offers.Take(3).ToList()" OnOfferClick="HandleOrderClick" />
+            <PromotionCarousel Offers="_offers.Take(3).ToList()" OnOfferClick="HandleOrderClickNoCat" />
             <CategoryCarousel Categories="_categories" OnCategoryClick="HandleCategoryClick" />
             <div class="services-section">
                 <div class="d-flex justify-space-between align-center mb-2">
@@ -17,9 +17,9 @@
                     <MudIconButton Icon="@Icons.Material.Filled.FilterList" />
                 </div>
                 <MudStack Spacing="2">
-                    @foreach (var offer in _offers.Take(4)) @* Showing a limited number of offers on the home page *@
+                    @foreach (var offer in _offers.Take(5))
                     {
-                        <OfferCard Offer="offer" OnOrderClick="HandleOrderClick" />
+                        <OfferCard Offer="offer" OnOrderClick="HandleOrderClickNoCat" />
                     }
                 </MudStack>
             </div>
@@ -82,16 +82,28 @@
         _selectedCategory = category;
         SetStep(2);
     }
-    
+
     private void HandleOrderClick(Offer offer)
     {
         _selectedOffer = offer;
         SetStep(3);
     }
 
+    private void HandleOrderClickNoCat(Offer offer)
+    {
+        _selectedCategory = null;
+        _selectedOffer = offer;
+        SetStep(3);
+    }
+
+
     private void HandleOnBackClick(Offer offer)
     {
         if (offer == null)
+        {
+            SetStep(1);
+        }
+        else if (_selectedCategory == null)
         {
             SetStep(1);
         }
