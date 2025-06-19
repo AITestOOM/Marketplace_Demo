@@ -1,21 +1,23 @@
-﻿@using Marketplace.Components.Pages
+@using Marketplace.Components.Pages
 @using MudBlazor
 @inject IDialogService DialogService
 
 <div class="menu-container-wrapper">
+    <!-- This top bar is in the original code. The provided image doesn't show it. -->
+    <!-- Assuming it should remain unless specified. -->
     <div class="d-flex align-center mb-4">
         <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" OnClick="@(() => OnClose.InvokeAsync())" Edge="Edge.Start" Color="Color.Primary" />
         <div class="ml-4">
-             <svg width="163" height="32" viewBox="0 0 163 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M27.1 3L12.376 28.7296L12.025 29.129H7.29999L22.375 3H27.1Z" fill="white"/>
-                <path d="M31 7.0545L18.4 29.129H13.45L26.05 7.0545H31Z" fill="white"/>
-                <path d="M16.15 11.4093L5.875 29.129H1L11.275 11.4093H16.15Z" fill="white"/>
+            <svg width="163" height="32" viewBox="0 0 163 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M27.1 3L12.376 28.7296L12.025 29.129H7.29999L22.375 3H27.1Z" fill="white" />
+                <path d="M31 7.0545L18.4 29.129H13.45L26.05 7.0545H31Z" fill="white" />
+                <path d="M16.15 11.4093L5.875 29.129H1L11.275 11.4093H16.15Z" fill="white" />
             </svg>
         </div>
     </div>
 
     <div class="greeting-section">
-        <MudText Typo="Typo.h5" Style="color: #FFFFFF;">Dobrý deň, Tomáš!</MudText>
+        <MudText Typo="Typo.h5" Style="color: #FFFFFF !important; font-weight: bold !important;">Dobrý deň, Tomáš!</MudText>
     </div>
 
     <MudList Clickable="true" T="string">
@@ -23,31 +25,36 @@
         <MudListItem T="string" Icon="@Icons.Material.Filled.ChatBubbleOutline" OnClick="@ShowComingSoonDialog">Správy</MudListItem>
         <MudListItem T="string" Icon="@Icons.Material.Filled.ReceiptLong" OnClick="@ShowComingSoonDialog">Objednávky</MudListItem>
         <MudListItem T="string" Icon="@Icons.Material.Filled.Settings" OnClick="@ShowComingSoonDialog">Nastavenia</MudListItem>
-        <MudListItem T="string" Icon="@Icons.Material.Filled.Logout" OnClick="@ShowComingSoonDialog">Odhlásiť</MudListItem>
+        <MudListItem T="string" Icon="@Icons.Material.Filled.Logout" OnClick="@ShowComingSoonDialog" Class="logout-item">Odhlásiť</MudListItem>
     </MudList>
 </div>
 
 <style>
     .menu-container-wrapper {
-        background-color: #121315;
-        color: #e0e0e0;
-        padding: 16px;
-        height: 100vh;
+        background-color: #1f2021 !important; /* Image background color */
+        /* color: #e0e0e0 !important; */ /* Base text color, overridden by more specific rules */
+        padding: 16px !important;
+        height: 100vh !important;
+        box-sizing: border-box;
     }
 
     .greeting-section {
-        padding: 24px 8px;
-        border-bottom: 1px solid #2A2B31;
-    }
-    
-    .mud-list-item {
-        color: #e0e0e0 !important;
-        padding-top: 16px;
-        padding-bottom: 16px;
+        padding: 24px 16px !important;
+        border-bottom: 1px solid #2A2B31 !important; /* Image separator line color */
     }
 
-    .mud-list-item .mud-icon-root {
-        color: #0081EC !important;
+    .mud-list-item {
+        color: #FFFFFF !important; /* List item text color to white, matching image */
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
+    }
+
+        .mud-list-item .mud-icon-root {
+            color: #0081EC !important; /* Icon color blue, matching image */
+        }
+
+    .logout-item.mud-list-item {
+        border-top: 1px solid #2A2B31 !important; /* Image separator line color */
     }
 </style>
 
@@ -56,6 +63,7 @@
 
     private async Task ShowComingSoonDialog()
     {
+        // Assuming ComingSoonDialog is defined elsewhere.
         await DialogService.ShowAsync<ComingSoonDialog>("Funkcia v Príprave");
     }
 }
