@@ -1,77 +1,127 @@
 ﻿@page "/"
 @using Marketplace.Components.Layout
 @using MudBlazor
-@using MudBlazor.Services
-
+@using System.Globalization
 @inject IDialogService DialogService
 
-<div class="mt-4">
-    @switch (_currentStep)
-    {
-        case 1:
-            @* The main dashboard view, composed of child components *@
-            <MudStack Spacing="2">
-                <PromotionCarousel />
-                <CategoryGrid OnCategoryClick="@(() => SetStep(2))" OnComingSoonClick="ShowComingSoon" />
-            </MudStack>
-            break;
-        case 2:
-            @* The detailed view for a selected category *@
-            <ServiceListView Offers="_offers" OnBackClick="@(() => SetStep(1))" OnOrderClick="HandleOrderClick" />
-            break;
-        case 3:
-            @* The final order page view, now using the <Offer /> component *@
-            <Order Offer="_selectedOffer" OnBackClick="@(() => SetStep(2))" />
-            break;
-    }
+<div class="dashboard-container">
+    <PromotionCarousel />
+    <CategoryCarousel Categories="_categories" OnCategoryClick="HandleCategoryClick" />
+
+    @* Section 3: List of Service Offers *@
+    <div class="services-section">
+        <div class="d-flex justify-space-between align-center mb-2">
+            <MudText Typo="Typo.h6" Style="font-weight: 700;">Navrhované služby</MudText>
+            <MudIconButton Icon="@Icons.Material.Filled.FilterList" />
+        </div>
+        <MudStack Spacing="2">
+            @foreach (var offer in _offers)
+            {
+                <MudCard Elevation="0" Class="offer-card">
+                    <MudCardContent>
+                        <div class="d-flex">
+                            <MudAvatar Square="true" Class="offer-avatar mr-3" Src="@offer.ImageUrl" />
+                            <div class="d-flex flex-grow-1">
+                                <div class="flex-grow-1">
+                                    <p class="offer-title">@offer.Title</p>
+                                    <p class="offer-provider">@offer.Provider</p>
+                                    <div class="mt-1 offer-category-tag">@offer.Category</div>
+                                    <div class="d-flex align-center mt-2">
+                                        <MudIcon Icon="@Icons.Material.Filled.Star" Class="mr-1 rating-icon" />
+                                        <p class="rating-text">@offer.Rating</p>
+                                        <p class="ml-1 rating-count">(@offer.RatingCount)</p>
+                                    </div>
+                                    <div class="d-flex align-center">
+                                        <MudIcon Icon="@Icons.Material.Filled.LocationOn" Class="mr-1 info-icon" />
+                                        <p class="info-text">@offer.DistanceKm km</p>
+                                    </div>
+                                    <div class="d-flex align-center">
+                                        <MudIcon Icon="@Icons.Material.Filled.Schedule" Class="mr-1 info-icon" />
+                                        <p class="info-text">Zatvára sa o @offer.ClosesAt</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column align-end justify-space-between">
+                                    <MudIconButton Icon="@Icons.Material.Filled.ShoppingBasket" Color="Color.Primary" Class="basket-icon-btn" />
+                                    <MudText Class="price-text">@offer.Price</MudText>
+                                </div>
+                            </div>
+                        </div>
+                    </MudCardContent>
+                </MudCard>
+            }
+        </MudStack>
+    </div>
 </div>
 
+<style>
+    /* Your existing styles are preserved */
+</style>
 
 @code {
-    private int _currentStep = 1;
+    private bool _isPromoVisible = true;
+    private List<Category> _categories = new();
     private List<Offer> _offers = new();
-    private Offer _selectedOffer;
 
-    protected override void OnInitialized()
+    public class Category
     {
-        LoadOffers();
-    }
-    
-    private async Task ShowComingSoon()
-    {
-        await DialogService.ShowAsync<ComingSoonDialog>("Funkcia v Príprave");
-    }
-
-    private void SetStep(int step)
-    {
-        _currentStep = step;
-    }
-
-    private void HandleOrderClick(Offer offer)
-    {
-        _selectedOffer = offer;
-        SetStep(3);
+        public string Name { get; set; }
+        public string IconSvg { get; set; }
+        public string BackgroundColor { get; set; }
     }
 
     public class Offer
     {
         public string Title { get; set; }
         public string Provider { get; set; }
-        public string Description { get; set; }
         public string Category { get; set; }
+        public string Description => "Description";
         public double Rating { get; set; }
         public int RatingCount { get; set; }
         public double DistanceKm { get; set; }
         public string ClosesAt { get; set; }
         public string Price { get; set; }
+        public string ImageUrl { get; set; }
+    }
+
+    protected override void OnInitialized()
+    {
+        LoadCategories();
+        LoadOffers();
+    }
+    
+    // This method is called by the child component when a category is clicked.
+    private void HandleCategoryClick(Category category)
+    {
+        ShowComingSoon();
+    }
+
+    private async Task ShowComingSoon()
+    {
+        await DialogService.ShowAsync<ComingSoonDialog>("Funkcia v Príprave");
+    }
+
+    private void LoadCategories()
+    {
+        _categories = new List<Category>
+        {
+            new() { Name = "Auto", BackgroundColor = "#1C3C37", IconSvg = @"<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M19 17H21C21.6 17 22 16.6 22 16V13C22 12.1 21.3 11.3 20.5 11.1C18.7 10.6 16 10 16 10C16 10 14.7 8.6 13.8 7.7C13.3 7.3 12.7 7 12 7H5C4.4 7 3.9 7.4 3.6 7.9L2.2 10.8C2.06758 11.1862 2 11.5917 2 12V16C2 16.6 2.4 17 3 17H5' stroke='#70D0BC' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/><path d='M7 19C8.10457 19 9 18.1046 9 17C9 15.8954 8.10457 15 7 15C5.89543 15 5 15.8954 5 17C5 18.1046 5.89543 19 7 19Z' stroke='#70D0BC' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/><path d='M9 17H15' stroke='#70D0BC' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/><path d='M17 19C18.1046 19 19 18.1046 19 17C19 15.8954 18.1046 15 17 15C15.8954 15 15 15.8954 15 17C15 18.1046 15.8954 19 17 19Z' stroke='#70D0BC' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>" },
+            new() { Name = "Domácnosť", BackgroundColor = "#4B3F18", IconSvg = @"<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M18 20V12C18 11.7348 17.8946 11.4804 17.7071 11.2929C17.5196 11.1054 17.2652 11 17 11H13C12.7348 11 12.4804 11.1054 12.2929 11.2929C12.1054 11.4804 12 11.7348 12 12V20' stroke='#D5BF68' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/><path d='M6 10C6 9.70905 6.06304 9.42173 6.18561 9.15772C6.30819 8.89371 6.48734 8.65975 6.70938 8.472L12.7094 3.473C13.0695 3.16792 13.5266 3.00049 13.9994 3.00049C14.4721 3.00049 14.9292 3.16792 15.2894 3.473L21.2894 8.472C21.5114 8.65975 21.6906 8.89371 21.8131 9.15772C21.9357 9.42173 21.9987 9.70905 21.9987 10V19C21.9987 19.5305 21.788 20.0392 21.4129 20.4142C21.0379 20.7893 20.5293 21 19.9987 21H8.00125C7.47071 21 6.96207 20.7893 6.58705 20.4142C6.21203 20.0392 6.00125 19.5305 6.00125 19V10' stroke='#D5BF68' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>" },
+            new() { Name = "Technológie", BackgroundColor = "#2D1F42", IconSvg = @"<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M20.054 15.987H3.94602M18 5C18.5305 5 19.0392 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V15.526C19.9999 15.8374 20.0725 16.1446 20.212 16.423L21.28 18.55C21.3571 18.703 21.3936 18.8732 21.386 19.0444C21.3784 19.2155 21.327 19.3818 21.2366 19.5274C21.1463 19.6729 21.0201 19.7928 20.8701 19.8756C20.7201 19.9584 20.5513 20.0012 20.38 20H3.62002C3.44871 20.0012 3.27997 19.9584 3.12997 19.8756C2.97997 19.7928 2.85374 19.6729 2.7634 19.5274C2.67305 19.3818 2.62162 19.2155 2.61402 19.0444C2.60643 18.8732 2.64293 18.703 2.72002 18.55L3.78802 16.423C3.92756 16.1446 4.00016 15.8374 4.00002 15.526V7C4.00002 6.46957 4.21073 5.96086 4.58581 5.58579C4.96088 5.21071 5.46959 5 6.00002 5H18Z' stroke='#7D5CAB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>" },
+            new() { Name = "Krása", BackgroundColor = "#471D39", IconSvg = @"<svg width='22' height='22' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z' stroke='#B7719B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>" },
+            new() { Name = "Zdravie", BackgroundColor = "#492D1B", IconSvg = @"<svg width='22' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M18 12C19.49 10.54 21 8.79 21 6.5C21 5.04131 20.4205 3.64236 19.3891 2.61091C18.3576 1.57946 16.9587 1 15.5 1C13.74 1 12.5 1.5 11 3C9.5 1.5 8.26 1 6.5 1C5.04131 1 3.64236 1.57946 2.61091 2.61091C1.57946 3.64236 1 5.04131 1 6.5C1 8.8 2.5 10.55 4 12L11 19L18 12Z' stroke='#B37A4D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>" },
+            new() { Name = "Vzdelávanie", BackgroundColor = "#1C2847", IconSvg = @"<svg width='22' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M11 5V19M11 5C11 3.93913 10.5786 2.92172 9.82843 2.17157C9.07828 1.42143 8.06087 1 7 1H2C1.73478 1 1.48043 1.10536 1.29289 1.29289C1.10536 1.48043 1 1.73478 1 2V15C1 15.2652 1.10536 15.5196 1.29289 15.7071C1.48043 15.8946 1.73478 16 2 16H8C8.79565 16 9.55871 16.3161 10.1213 16.8787C10.6839 17.4413 11 18.2044 11 19M11 5C11 3.93913 11.4214 2.92172 12.1716 2.17157C12.9217 1.42143 13.9391 1 15 1H20C20.2652 1 20.5196 1.10536 20.7071 1.29289C20.8946 1.48043 21 1.73478 21 2V15C21 15.2652 20.8946 15.5196 20.7071 15.7071C20.5196 15.8946 20.2652 16 20 16H14C13.2044 16 12.4413 16.3161 11.8787 16.8787C11.3161 17.4413 11 18.2044 11 19' stroke='#476EBB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>" },
+            new() { Name = "Potraviny", BackgroundColor = "#450E13", IconSvg = @"<svg width='22' height='22' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M6 10V4H18V10M6 10L4 20H20L18 10M6 10H18' stroke='#C30F48' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>" }
+        };
     }
 
     private void LoadOffers()
     {
         _offers = new List<Offer>
         {
-            new() { Title = "Kompletné čistenie auta", Provider = "Shine & Clean Auto", Description="Description Kompletné čistenie auta", Category = "Čistiareň a umyváreň", Rating = 4.9, RatingCount = 234, DistanceKm = 0.8, ClosesAt = "18:00", Price = "15.00€" },
-            new() { Title = "Hĺbkové tepovanie interiéru", Provider = "Detailing Pro", Description="Description Hĺbkové tepovanie interiéru", Category = "Čistiareň a umyváreň", Rating = 4.8, RatingCount = 180, DistanceKm = 1.2, ClosesAt = "19:00", Price = "45.00€" },
+            new() { Title = "Kompletné čistenie auta", Provider = "Shine & Clean Auto", Category = "Čistiareň a umyváreň", Rating = 4.9, RatingCount = 234, DistanceKm = 0.8, ClosesAt = "18:00", Price = "15 EUR", ImageUrl = "https://images.unsplash.com/photo-1605152273334-35a8a1c13511?q=80&w=2070&auto=format&fit=crop" },
+            new() { Title = "Hĺbkové tepovanie interiéru", Provider = "Detailing Pro", Category = "Čistiareň a umyváreň", Rating = 4.8, RatingCount = 180, DistanceKm = 1.2, ClosesAt = "19:00", Price = "45 € / služba", ImageUrl = "https://images.unsplash.com/photo-1550340274-b4275a5d2925?q=80&w=1964&auto=format&fit=crop" },
+            new() { Title = "Letná kontrola vozidla", Provider = "AutoServis Petržalka", Category = "Servis a údržba", Rating = 4.7, RatingCount = 150, DistanceKm = 3.5, ClosesAt = "17:00", Price = "25 EUR", ImageUrl = "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070&auto=format&fit=crop" },
+            new() { Title = "Výmena oleja a filtrov", Provider = "Rýchloservis", Category = "Servis a údržba", Rating = 4.9, RatingCount = 412, DistanceKm = 5.1, ClosesAt = "18:00", Price = "79 EUR", ImageUrl = "https://images.unsplash.com/photo-1498887960847-2a5e46312788?q=80&w=2070&auto=format&fit=crop" }
         };
     }
 }

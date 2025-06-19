@@ -1,5 +1,6 @@
 ﻿@using Marketplace.Components.Pages
 @using MudBlazor
+@using static Marketplace.Components.Pages.Home
 
 <div class="order-view">
     <MudPaper Elevation="0" Square="true" Class="d-flex align-center pa-2" Style="background-color: #1D1E23;">
@@ -44,6 +45,6 @@
 </div>
 
 @code {
-    [Parameter] public Home.Offer Offer { get; set; }
+    [Parameter] public Offer Offer { get; set; }
     [Parameter] public EventCallback OnBackClick { get; set; }
 }
