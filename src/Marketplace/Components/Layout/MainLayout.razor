@@ -6,26 +6,22 @@
 <MudSnackbarProvider />
 
 <MudLayout>
-    @* The App Bar is now conditionally rendered outside of MudMainContent *@
-    @if (!_isSearchVisible)
+    @if (_isSearchVisible)
+    {
+        <Search OnClose="ToggleSearch" />
+    }
+    else
     {
         <MudAppBar Elevation="0" Fixed="true" Class="stacked-app-bar" Style="background-color: #1D1E23; color: #F7F7F7;">
             <CustomAppBar OnSearchClick="ToggleSearch" />
         </MudAppBar>
-    }
 
-    <MudMainContent Class="@(_isSearchVisible ? "" : "main-content-padded")">
-        @if (_isSearchVisible)
-        {
-            <Search OnClose="ToggleSearch" />
-        }
-        else
-        {
+        <MudMainContent Class="main-content-padded">
             <MudContainer MaxWidth="MaxWidth.Large" Class="py-4">
                 @Body
             </MudContainer>
-        }
-    </MudMainContent>
+        </MudMainContent>
+    }
 </MudLayout>
 
 <style>
@@ -33,10 +29,6 @@
         flex-direction: column;
         align-items: stretch;
         height: auto;
-    }
-
-    .main-content-padded {
-        padding-top: 60px; /* Or whatever the height of your app bar is */
     }
 
     .sub-nav-tabs .mud-tab {
