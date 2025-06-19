@@ -11,12 +11,12 @@
             <MudCarouselItem>
                 <MudCard Style="@($"background-color: #1D1E23; background-image: url('{offerItem.ImageUrl}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100%;")">
                     <MudCardContent>
-                        <div class="d-flex justify-space-between align-start">
+                        <div class="d-flex justify-space-between align-start" style="width: 100%;">
                             <div>
                                 <MudText Style="color: #FFFFFF; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 16px; font-weight: 400; line-height: 19px;">@offerItem.Title</MudText>
                                 <MudText Style="color: #FFFFFF; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 14px; font-weight: 400; line-height: 17px;">@offerItem.Provider</MudText>
                             </div>
-                            @* <MudIconButton Icon="@Icons.Material.Filled.Close" Size="Size.Small" Style="color: #808080;" OnClick="HideCarousel" /> *@
+                            <MudIconButton Icon="@Icons.Material.Filled.Close" Size="Size.Small" Style="color: #808080;" OnClick="HideCarousel" />
                         </div>
                     </MudCardContent>
                 </MudCard>
@@ -27,12 +27,13 @@
 }
 else
 {
-    @* <MudButton OnClick="ShowCarousel"
+    <MudButton OnClick="ShowCarousel"
                FullWidth="true"
+               Variant="Variant.Outlined"
                Style="border-color: #0054A4; text-transform: none; justify-content: space-between; padding: 8px 16px; border-radius: 3px;">
-        <MudText Class="carousel-title"></MudText>
+        <MudText Class="carousel-title" Style="color: #0054A4;">Show Offers</MudText> @* Added some text and color for visibility *@
         <MudIcon Icon="@Icons.Material.Filled.KeyboardArrowDown" Style="color: #0081EC;" />
-    </MudButton> *@
+    </MudButton>
 }
 
 
@@ -68,10 +69,12 @@ else
     private void HideCarousel()
     {
         _isCarouselVisible = false;
+        InvokeAsync(StateHasChanged); // Good practice if UI changes might not be picked up immediately
     }
 
     private void ShowCarousel()
     {
         _isCarouselVisible = true;
+        InvokeAsync(StateHasChanged); // Good practice
     }
 }
