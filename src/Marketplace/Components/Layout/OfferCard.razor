@@ -1,42 +1,56 @@
-﻿@using Marketplace.Components.Pages
+@using Marketplace.Components.Pages
 @using static Marketplace.Components.Pages.Home
 @using MudBlazor
 
-<MudCard Elevation="0" Class="service-card">
-    <MudCardContent>
-        <div class="d-flex">
-            <MudAvatar Rounded="true" Class="service-avatar mr-4" />
-            <div class="d-flex flex-column" style="width:100%;">
-                <div class="d-flex justify-space-between">
+<MudCard Elevation="0" Style="background-color: #202124 !important; padding: 12px !important;">
+    <MudCardContent Style="padding: 0 !important;">
+        <div class="d-flex align-items-start">
+            <!-- Main container: Avatar + Rest of Content -->
+            <MudAvatar Rounded="true" Src="@Offer.ImageUrl" Alt="Service Image"
+                       Style="width: 72px !important; height: 72px !important;
+                              border-radius: 6px !important; margin-right: 12px !important; flex-shrink: 0 !important;" />
+
+            <div class="d-flex" style="width: 100%; justify-content: space-between; align-items: start;">
+                <!-- Left Column (Title, Provider, Category, Details) -->
+                <div class="d-flex flex-column" style="margin-right: 8px;">
                     <MudStack Spacing="0">
-                        <p class="service-title">@Offer.Title</p>
-                        <p class="service-provider">@Offer.Provider</p>
-                        <div class="mt-1 offer-category-tag">@Offer.Category</div>
+                        <p style="color: #E8EAED !important; font-weight: 500 !important; font-size: 22px !important; line-height: 1.25 !important; margin-bottom: 0px !important;">@Offer.Title</p>
+                        <p style="color: #9AA0A6 !important; font-size: 12px !important; line-height: 1.2 !important; margin-bottom: 4px !important; margin-top: 2px !important;">@Offer.Provider</p>
+                        <div style="background-color: #3C4043 !important; color: #DADCE0 !important; font-size: 11px !important; padding: 2px 8px !important; border-radius: 12px !important; display: inline-block !important; margin-top: 4px !important; margin-bottom: 8px !important;">@Offer.SubCategory</div>
                     </MudStack>
-                    <MudStack AlignItems="AlignItems.End" Spacing="0">
-                        <div class="d-flex align-baseline">
-                            <p class="price-text">@Offer.Price</p>
-                            <p class="service-provider" style="margin-left: 4px;">/ služba</p>
+
+                    <MudStack Spacing="0" Class="">
+                        <!-- Details directly below category -->
+                        <div class="d-flex align-center" style=" !important;">
+                            <MudIcon Icon="@Icons.Material.Filled.Star" Style="color: #FDD663 !important; font-size: 16px !important; margin-right: 5px !important; line-height: 1 !important;" />
+                            <p style="margin-top:15px; color: #E8EAED !important; font-size: 12px !important; font-weight: 500 !important; line-height: 1 !important;">@Offer.Rating</p>
+                            <p style="margin-top:10px; color: #9AA0A6 !important; font-size: 12px !important; margin-left: 3px !important; line-height: 1 !important;">(@Offer.RatingCount)</p>
                         </div>
-                        <a href="#" @onclick="@(() => OnOrderClick.InvokeAsync(Offer))" @onclick:preventDefault class="order-link">Objednať</a>
+                        <div class="d-flex align-center" style=" !important;">
+                            <MudIcon Icon="@Icons.Material.Filled.LocationOn" Style="color: #9AA0A6 !important; font-size: 16px !important; margin-right: 5px !important; line-height: 1 !important;" />
+                            <p style=" margin-top:15px; color: #9AA0A6 !important; font-size: 12px !important; line-height: 1 !important;">@Offer.DistanceKm km</p>
+                        </div>
+                        <div class="d-flex align-center">
+                            <MudIcon Icon="@Icons.Material.Filled.Schedule" Style="color: #9AA0A6 !important; font-size: 16px !important; margin-right: 5px !important; line-height: 1 !important;" />
+                            <p style="margin-top:15px; color: #9AA0A6 !important; font-size: 12px !important; line-height: 1 !important;">Zatvára sa o @Offer.ClosesAt</p>
+                        </div>
                     </MudStack>
                 </div>
-                <div style="flex-grow: 1;"></div> @* This is a spacer *@
-                <MudStack Spacing="0" Class="mt-2">
-                    <div class="d-flex align-center">
-                        <MudIcon Icon="@Icons.Material.Filled.Star" Class="mr-1 rating-icon" />
-                        <p class="rating-text">@Offer.Rating</p>
-                        <p class="ml-1 rating-count">(@Offer.RatingCount)</p>
+
+                <!-- Right Column (Price, Order Button) -->
+                <!-- Assume this is your parent div. Add these styles to it. -->
+                <div style="display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; height: 200px;  padding: 10px;">
+                    <!-- The content you provided, with a slight modification -->
+                    <div class="d-flex flex-column align-items-start" style="flex-shrink: 0;">
+                        <div class="d-flex align-items-baseline">
+                            <p style="color: #9AA0A6 !important; font-size: 12px !important; margin-right: 3px !important; line-height: 1 !important;">od</p>
+                            <p style="color: #E8EAED !important; font-size: 20px !important; font-weight: 500 !important; line-height: 1 !important;">@Offer.Price</p>
+                            <p style="color: #9AA0A6 !important; font-size: 12px !important; margin-left: 3px !important; line-height: 1 !important;">EUR</p>
+                        </div>
+                        <a href="#" @onclick="@(() => OnOrderClick.InvokeAsync(Offer))" @onclick:preventDefault
+                           style="color: #8AB4F8 !important; font-size: 14px !important; text-decoration: none !important; font-weight: 500 !important; margin-top: 4px !important; line-height: 1.2 !important;">Objednať</a>
                     </div>
-                    <div class="d-flex align-center">
-                        <MudIcon Icon="@Icons.Material.Filled.LocationOn" Class="mr-1 info-icon" />
-                        <p class="info-text">@Offer.DistanceKm km</p>
-                    </div>
-                    <div class="d-flex align-center">
-                        <MudIcon Icon="@Icons.Material.Filled.Schedule" Class="mr-1 info-icon" />
-                        <p class="info-text">Zatvára sa o @Offer.ClosesAt</p>
-                    </div>
-                </MudStack>
+                </div>
             </div>
         </div>
     </MudCardContent>
@@ -45,4 +59,15 @@
 @code {
     [Parameter, EditorRequired] public Offer Offer { get; set; }
     [Parameter] public EventCallback<Offer> OnOrderClick { get; set; }
+
+    // Assuming the 'Offer' object type has properties like:
+    // public string ImageUrl { get; set; }
+    // public string Title { get; set; }
+    // public string Provider { get; set; }
+    // public string Category { get; set; }
+    // public string Price { get; set; } // Or decimal/double
+    // public double Rating { get; set; }
+    // public int RatingCount { get; set; }
+    // public string DistanceKm { get; set; } // Or double
+    // public string ClosesAt { get; set; } // Or TimeSpan/DateTime
 }
