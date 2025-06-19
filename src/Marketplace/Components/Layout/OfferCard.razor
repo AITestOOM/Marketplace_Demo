@@ -64,29 +64,4 @@
 @code {
     [Parameter, EditorRequired] public Offer Offer { get; set; } = new Offer(); // Added default for easier testing if needed
     [Parameter] public EventCallback<Offer> OnOrderClick { get; set; }
-
-    // Assuming the 'Offer' object type has properties like:
-    // public string ImageUrl { get; set; }
-    // public string Title { get; set; }
-    // public string Provider { get; set; }
-    // public string SubCategory { get; set; } // Changed from Category based on usage
-    // public string Price { get; set; }
-    // public double Rating { get; set; }
-    // public int RatingCount { get; set; }
-    // public string DistanceKm { get; set; }
-    // public string ClosesAt { get; set; }
-
-    // Example Offer class for completeness (can be in a separate file)
-    // public class Offer
-    // {
-    //     public string ImageUrl { get; set; } = "https://via.placeholder.com/72";
-    //     public string Title { get; set; } = "Sample Service Title";
-    //     public string Provider { get; set; } = "Provider Name";
-    //     public string SubCategory { get; set; } = "Service SubCategory";
-    //     public string Price { get; set; } = "25.99";
-    //     public double Rating { get; set; } = 4.5;
-    //     public int RatingCount { get; set; } = 120;
-    //     public string DistanceKm { get; set; } = "2.3";
-    //     public string ClosesAt { get; set; } = "18:00";
-    // }
 }
