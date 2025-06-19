@@ -1,0 +1,62 @@
+﻿@using Marketplace.Components.Pages
+@using MudBlazor
+
+<MudGrid Spacing="2">
+    <MudItem xs="6">
+        <MudCard Class="pa-2 mud-clickable" Elevation="0" Style="border-radius: 3px; height: 81px;" @onclick="() => OnCategoryClick.InvokeAsync()">
+            <div class="d-flex align-center" style="height: 100%;">
+                <div class="pa-2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 17H21C21.6 17 22 16.6 22 16V13C22 12.1 21.3 11.3 20.5 11.1C18.7 10.6 16 10 16 10C16 10 14.7 8.6 13.8 7.7C13.3 7.3 12.7 7 12 7H5C4.4 7 3.9 7.4 3.6 7.9L2.2 10.8C2.06758 11.1862 2 11.5917 2 12V16C2 16.6 2.4 17 3 17H5" stroke="#0081EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M7 19C8.10457 19 9 18.1046 9 17C9 15.8954 8.10457 15 7 15C5.89543 15 5 15.8954 5 17C5 18.1046 5.89543 19 7 19Z" stroke="#0081EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M9 17H15" stroke="#0081EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M17 19C18.10457 19 19 18.1046 19 17C19 15.8954 18.1046 15 17 15C15.8954 15 15 15.8954 15 17C15 18.1046 15.8954 19 17 19Z" stroke="#0081EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </div>
+                <div>
+                    <MudText Style="color: #FFFFFF;font-size: 16px; font-weight: 400; line-height: 19px;">Auto</MudText>
+                    <MudText Style="color: #808080;font-size: 12px; font-weight: 400; line-height: 14px;">Servis, pneumatiky, STK</MudText>
+                </div>
+            </div>
+        </MudCard>
+    </MudItem>
+    <MudItem xs="6">
+        <MudCard Class="pa-2 mud-clickable" Elevation="0" Style="border-radius: 3px; height: 81px;" @onclick="() => OnComingSoonClick.InvokeAsync()">
+            <div class="d-flex align-center" style="height: 100%;">
+                <div class="pa-2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 20V12C18 11.7348 17.8946 11.4804 17.7071 11.2929C17.5196 11.1054 17.2652 11 17 11H13C12.7348 11 12.4804 11.1054 12.2929 11.2929C12.1054 11.4804 12 11.7348 12 12V20" stroke="#0081EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M6 10C6 9.70905 6.06304 9.42173 6.18561 9.15772C6.30819 8.89371 6.48734 8.65975 6.70938 8.472L12.7094 3.473C13.0695 3.16792 13.5266 3.00049 13.9994 3.00049C14.4721 3.00049 14.9292 3.16792 15.2894 3.473L21.2894 8.472C21.5114 8.65975 21.6906 8.89371 21.8131 9.15772C21.9357 9.42173 21.9987 9.70905 21.9987 10V19C21.9987 19.5305 21.788 20.0392 21.4129 20.4142C21.0379 20.7893 20.5293 21 19.9987 21H8.00125C7.47071 21 6.96207 20.7893 6.58705 20.4142C6.21203 20.0392 6.00125 19.5305 6.00125 19V10" stroke="#0081EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </div>
+                <div>
+                    <MudText Style="color: #FFFFFF;font-size: 16px; font-weight: 400; line-height: 19px;">Domácnosť</MudText>
+                    <MudText Style="color: #808080;font-size: 12px; font-weight: 400; line-height: 14px;">Upratovanie, opravy</MudText>
+                </div>
+            </div>
+        </MudCard>
+    </MudItem>
+    <MudItem xs="6">
+        <MudCard Class="pa-2 mud-clickable" Elevation="0" Style="border-radius: 3px; height: 81px;" @onclick="() => OnComingSoonClick.InvokeAsync()">
+            <div class="d-flex align-center" style="height: 100%;">
+                <div class="pa-2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.525 2.29502C11.5689 2.20648 11.6366 2.13195 11.7205 2.07984C11.8044 2.02773 11.9012 2.00012 12 2.00012C12.0988 2.00012 12.1956 2.02773 12.2796 2.07984C12.3635 2.13195 12.4312 2.20648 12.475 2.29502L14.785 6.97402C14.937 7.28214 15.1616 7.54871 15.4394 7.75078C15.7173 7.95286 16.0401 8.08437 16.38 8.13402L21.546 8.89002C21.6439 8.9042 21.7359 8.94549 21.8115 9.00921C21.8872 9.07294 21.9435 9.15656 21.974 9.25062C22.0046 9.34468 22.0083 9.44542 21.9846 9.54145C21.9609 9.63748 21.9108 9.72497 21.84 9.79402L18.104 13.432C17.8574 13.672 17.6729 13.9683 17.5665 14.2955C17.46 14.6227 17.4348 14.9709 17.493 15.31L18.375 20.45C18.3923 20.5479 18.3817 20.6486 18.3445 20.7407C18.3073 20.8328 18.245 20.9126 18.1646 20.971C18.0842 21.0294 17.989 21.064 17.8899 21.0709C17.7908 21.0778 17.6917 21.0567 17.604 21.01L12.986 18.582C12.6818 18.4221 12.3432 18.3385 11.9995 18.3385C11.6558 18.3385 11.3173 18.4221 11.013 18.582L6.39603 21.01C6.30836 21.0564 6.20943 21.0773 6.11048 21.0703C6.01153 21.0632 5.91655 21.0286 5.83632 20.9702C5.7561 20.9119 5.69386 20.8322 5.65669 20.7402C5.61951 20.6483 5.60889 20.5477 5.62603 20.45L6.50703 15.311C6.5654 14.9717 6.54027 14.6234 6.43382 14.296C6.32736 13.9686 6.14278 13.6721 5.89603 13.432L2.16003 9.79502C2.08862 9.72605 2.03802 9.63841 2.01399 9.44577C1.98996 9.34463 1.99347 9.25021 2.02411 9.15578C2.05475 9.07186 2.1113 9.008 2.18731 8.94414C2.26332 8.88291 2.35573 8.84168 2.45403 8.88902L7.61903 8.13402C7.95934 8.08468 8.28255 7.9533 8.56077 7.75121C8.83899 7.54912 9.06387 7.28239 9.21603 6.97402L11.525 2.29502Z" stroke="#0081EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </div>
+                <div>
+                    <MudText Style="color: #FFFFFF;font-size: 16px; font-weight: 400; line-height: 19px;">Krása</MudText>
+                    <MudText Style="color: #808080;font-size: 12px; font-weight: 400; line-height: 14px;">Kaderníctvo, wellness</MudText>
+                </div>
+            </div>
+        </MudCard>
+    </MudItem>
+    <MudItem xs="6">
+        <MudCard Class="pa-2 mud-clickable" Elevation="0" Style="border-radius: 3px; height: 81px;" @onclick="() => OnComingSoonClick.InvokeAsync()">
+            <div class="d-flex align-center" style="height: 100%;">
+                <div class="pa-2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.054 15.987H3.94602M18 5C18.5305 5 19.0392 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V15.526C19.9999 15.8374 20.0725 16.1446 20.212 16.423L21.28 18.55C21.3571 18.703 21.3936 18.8732 21.386 19.0444C21.3784 19.2155 21.327 19.3818 21.2366 19.5274C21.1463 19.6729 21.0201 19.7928 20.8701 19.8756C20.7201 19.9584 20.5513 20.0012 20.38 20H3.62002C3.44871 20.0012 3.27997 19.9584 3.12997 19.8756C2.97997 19.7928 2.85374 19.6729 2.7634 19.5274C2.67305 19.3818 2.62162 19.2155 2.61402 19.0444C2.60643 18.8732 2.64293 18.703 2.72002 18.55L3.78802 16.423C3.92756 16.1446 4.00016 15.8374 4.00002 15.526V7C4.00002 6.46957 4.21073 5.96086 4.58581 5.58579C4.96088 5.21071 5.46959 5 6.00002 5H18Z" stroke="#0081EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </div>
+                <div>
+                    <MudText Style="color: #FFFFFF;font-size: 16px; font-weight: 400; line-height: 19px;">Technológie</MudText>
+                    <MudText Style="color: #808080;font-size: 12px; font-weight: 400; line-height: 14px;">IT služby, oprava</MudText>
+                </div>
+            </div>
+        </MudCard>
+    </MudItem>
+</MudGrid>
+
+@code {
+    [Parameter] public EventCallback OnCategoryClick { get; set; }
+    [Parameter] public EventCallback OnComingSoonClick { get; set; }
+}

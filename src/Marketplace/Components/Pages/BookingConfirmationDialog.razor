@@ -1,0 +1,21 @@
+﻿@using MudBlazor
+
+<MudDialog>
+    <DialogContent>
+        <MudText>Chcete sa objednať v službe <strong>@ServiceName</strong> na výmenu pneumatík?</MudText>
+        <MudText Typo="Typo.caption" Class="mt-4">Termín si môžete vybrať v nasledujúcom kroku alebo vás budeme kontaktovať telefonicky.</MudText>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Zrušiť</MudButton>
+        <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="Submit">Pokračovať</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] IMudDialogInstance MudDialog { get; set; }
+
+    [Parameter] public string ServiceName { get; set; }
+
+    void Submit() => MudDialog.Close(DialogResult.Ok(true));
+    void Cancel() => MudDialog.Cancel();
+}

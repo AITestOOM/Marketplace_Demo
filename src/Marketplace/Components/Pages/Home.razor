@@ -1,0 +1,77 @@
+﻿@page "/"
+@using Marketplace.Components.Layout
+@using MudBlazor
+@using MudBlazor.Services
+
+@inject IDialogService DialogService
+
+<div class="mt-4">
+    @switch (_currentStep)
+    {
+        case 1:
+            @* The main dashboard view, composed of child components *@
+            <MudStack Spacing="2">
+                <PromotionCarousel />
+                <CategoryGrid OnCategoryClick="@(() => SetStep(2))" OnComingSoonClick="ShowComingSoon" />
+            </MudStack>
+            break;
+        case 2:
+            @* The detailed view for a selected category *@
+            <ServiceListView Offers="_offers" OnBackClick="@(() => SetStep(1))" OnOrderClick="HandleOrderClick" />
+            break;
+        case 3:
+            @* The final order page view, now using the <Offer /> component *@
+            <Order Offer="_selectedOffer" OnBackClick="@(() => SetStep(2))" />
+            break;
+    }
+</div>
+
+
+@code {
+    private int _currentStep = 1;
+    private List<Offer> _offers = new();
+    private Offer _selectedOffer;
+
+    protected override void OnInitialized()
+    {
+        LoadOffers();
+    }
+    
+    private async Task ShowComingSoon()
+    {
+        await DialogService.ShowAsync<ComingSoonDialog>("Funkcia v Príprave");
+    }
+
+    private void SetStep(int step)
+    {
+        _currentStep = step;
+    }
+
+    private void HandleOrderClick(Offer offer)
+    {
+        _selectedOffer = offer;
+        SetStep(3);
+    }
+
+    public class Offer
+    {
+        public string Title { get; set; }
+        public string Provider { get; set; }
+        public string Description { get; set; }
+        public string Category { get; set; }
+        public double Rating { get; set; }
+        public int RatingCount { get; set; }
+        public double DistanceKm { get; set; }
+        public string ClosesAt { get; set; }
+        public string Price { get; set; }
+    }
+
+    private void LoadOffers()
+    {
+        _offers = new List<Offer>
+        {
+            new() { Title = "Kompletné čistenie auta", Provider = "Shine & Clean Auto", Description="Description Kompletné čistenie auta", Category = "Čistiareň a umyváreň", Rating = 4.9, RatingCount = 234, DistanceKm = 0.8, ClosesAt = "18:00", Price = "15.00€" },
+            new() { Title = "Hĺbkové tepovanie interiéru", Provider = "Detailing Pro", Description="Description Hĺbkové tepovanie interiéru", Category = "Čistiareň a umyváreň", Rating = 4.8, RatingCount = 180, DistanceKm = 1.2, ClosesAt = "19:00", Price = "45.00€" },
+        };
+    }
+}

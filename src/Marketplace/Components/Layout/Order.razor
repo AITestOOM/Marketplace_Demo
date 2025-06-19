@@ -1,0 +1,49 @@
+﻿@using Marketplace.Components.Pages
+@using MudBlazor
+
+<div class="order-view">
+    <MudPaper Elevation="0" Square="true" Class="d-flex align-center pa-2" Style="background-color: #1D1E23;">
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" OnClick="@(() => OnBackClick.InvokeAsync())" Edge="Edge.Start" Color="Color.Primary" />
+        <MudText Style="font-weight: 700; font-size: 22px; color: #F7F7F7;">Objednávka</MudText>
+    </MudPaper>
+
+    <div class="pa-2">
+        <MudPaper Elevation="0" Square="true" Class="pa-4" Style="background-color: #1D1E23; border-bottom: 1px solid #2A2B31;">
+            <MudText Style="font-size: 16px; color: #FFFFFF;">@Offer?.Provider</MudText>
+            <MudText Style="font-size: 14px; color: #808080;">Profesionálne umývanie áut</MudText>
+        </MudPaper>
+        <MudButton FullWidth="true" Variant="Variant.Text" EndIcon="@Icons.Material.Filled.ChevronRight" Color="Color.Primary" Style="background-color: #1D1E23; justify-content: space-between; text-transform: none; color: white;">
+            Profil obchodníka
+        </MudButton>
+
+        <MudPaper Elevation="0" Square="true" Class="pa-4 mt-4" Style="background-color: #1D1E23; border-bottom: 1px solid #2A2B31;">
+            <div class="d-flex justify-space-between">
+                <MudText Style="font-size: 16px; color: #FFFFFF;">@Offer?.Title</MudText>
+                <MudLink Href="#" Style="font-size: 14px; color: #0081EC; text-decoration:none;">Podrobnosti</MudLink>
+            </div>
+            <MudText Style="font-size: 14px; color: #808080;" Class="mt-2">@Offer?.Description</MudText>
+        </MudPaper>
+
+        <div class="pa-4" Style="background: #1D1E23;">
+            <MudTextField T="string" Label="Vyberte termín" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.CalendarToday" />
+        </div>
+
+        <MudPaper Elevation="0" Square="true" Class="pa-4" Style="background-color: #1D1E23; border-bottom: 1px solid #2A2B31;">
+            <div class="d-flex justify-space-between">
+                <MudText Style="font-size: 14px; color: #808080;">Cena za službu</MudText>
+                <MudText Style="font-weight: 700; font-size: 22px; color: #FFFFFF;">@Offer?.Price</MudText>
+            </div>
+        </MudPaper>
+    </div>
+
+    <div class="pa-4" Style="position: fixed; bottom: 0; width: 100%; max-width: inherit;">
+        <MudButton FullWidth="true" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Style="height: 48px; border-radius: 3px;">
+            Odoslať objednávku
+        </MudButton>
+    </div>
+</div>
+
+@code {
+    [Parameter] public Home.Offer Offer { get; set; }
+    [Parameter] public EventCallback OnBackClick { get; set; }
+}

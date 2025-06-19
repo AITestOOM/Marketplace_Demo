@@ -1,0 +1,14 @@
+﻿/* Target all indicator buttons */
+::deep .mud-carousel-indicator-button {
+    background-color: #808080 !important; /* Grey color for inactive dots */
+    width: 4px !important;
+    height: 4px !important;
+    transform: scale(1.0);
+    transition: transform 150ms ease-in-out;
+}
+
+    /* Target only the active indicator button */
+    ::deep .mud-carousel-indicator-button.active {
+        background-color: #0081EC !important; /* Blue color for the active dot */
+        transform: scale(1.5); /* Makes the active dot larger */
+    }

@@ -1,0 +1,38 @@
+﻿@using MudBlazor
+
+<MudToolBar Dense="true" Style="background-color: #1D1E23;" >
+    <div class="sub-nav-tabs" style="width: 100%;">
+        <MudTabs Elevation="0"
+                 Color="Color.Inherit"
+                 Centered="true"
+                 Style="font-size: 16px;">
+
+            <MudTabPanel Text="Všetko" />
+            <MudTabPanel Text="Pre mňa" />
+            <MudTabPanel Text="Populárne" />
+
+        </MudTabs>
+    </div>
+
+</MudToolBar>
+
+
+<style>
+    .sub-nav-tabs .mud-tab {
+        color: #808080; /* Sets the inactive tab text color */
+        text-transform: none; /* Prevents MudBlazor from making text ALL CAPS */
+    }
+
+        .sub-nav-tabs .mud-tab.mud-tab-active {
+            color: #FFFFFF !important; /* Sets the active tab text color to white */
+        }
+
+    .sub-nav-tabs .mud-tabs-indicator {
+        background-color: #0081EC !important; /* Sets the underline color */
+        height: 1px !important; /* Matches the thin underline from the design */
+    }
+</style>
+
+@code {
+
+}

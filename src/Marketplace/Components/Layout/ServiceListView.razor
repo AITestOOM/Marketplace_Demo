@@ -1,0 +1,224 @@
+﻿@using MudBlazor
+@using Marketplace.Components.Pages
+@using static Marketplace.Components.Pages.Home
+
+<div class="service-list-view">
+    <div class="d-flex align-center">
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" OnClick="@(() => OnBackClick.InvokeAsync())" Edge="Edge.Start" Class="mr-2" Color="Color.Primary" />
+        <MudText Typo="Typo.h5">Automobilové služby</MudText>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2 my-4">
+        @foreach (var filterText in Filters)
+        {
+            <MudButton Variant="@GetFilterVariant(filterText)"
+                       OnClick="@(() => HandleFilterClick(filterText))"
+                       Class="filter-btn">
+                @filterText
+            </MudButton>
+        }
+    </div>
+
+    <MudText Typo="Typo.subtitle2">Aktuálny filter: @_selectedFilter</MudText>
+    <MudText Typo="Typo.subtitle2">Počet ponúk: @FilteredOffers.Count()</MudText>
+
+    <div class="d-flex justify-space-between align-center mt-6 mb-2">
+        <MudText Typo="Typo.h6">Navrhované služby</MudText>
+        <MudIconButton Icon="@Icons.Material.Filled.FilterList" />
+    </div>
+
+    <MudStack Spacing="3">
+        @foreach (var offer in FilteredOffers)
+        {
+            <MudCard Elevation="0" Class="service-card">
+                <MudCardContent>
+                    <div class="d-flex">
+                        <MudAvatar Rounded="true" Class="service-avatar mr-4" />
+                        <div class="d-flex flex-column" style="width:100%;">
+                            <div class="d-flex justify-space-between">
+                                <MudStack Spacing="0">
+                                    <p class="service-title">@offer.Title</p>
+                                    <p class="service-provider">@offer.Provider</p>
+                                    <div class="mt-1 offer-category-tag">@offer.Category</div>
+                                </MudStack>
+                                <MudStack AlignItems="AlignItems.End" Spacing="0">
+                                    <div class="d-flex align-baseline">
+                                        <p class="price-text">@offer.Price</p>
+                                        <p class="service-provider" style="margin-left: 4px;">/ služba</p>
+                                    </div>
+                                    <a href="#" @onclick="@(() => OnOrderClick.InvokeAsync(offer))" @onclick:preventDefault class="order-link">Objednať</a>
+                                </MudStack>
+                            </div>
+                            <div style="flex-grow: 1;"></div> @* This is a spacer *@
+                            <MudStack Spacing="0" Class="mt-2">
+                                <div class="d-flex align-center">
+                                    <MudIcon Icon="@Icons.Material.Filled.Star" Class="mr-1 rating-icon" />
+                                    <p class="rating-text">@offer.Rating</p>
+                                    <p class="ml-1 rating-count">(@offer.RatingCount)</p>
+                                </div>
+                                <div class="d-flex align-center">
+                                    <MudIcon Icon="@Icons.Material.Filled.LocationOn" Class="mr-1 info-icon" />
+                                    <p class="info-text">@offer.DistanceKm km</p>
+                                </div>
+                                <div class="d-flex align-center">
+                                    <MudIcon Icon="@Icons.Material.Filled.Schedule" Class="mr-1 info-icon" />
+                                    <p class="info-text">Zatvára sa o @offer.ClosesAt</p>
+                                </div>
+                            </MudStack>
+                        </div>
+                    </div>
+                </MudCardContent>
+            </MudCard>
+        }
+    </MudStack>
+</div>
+
+<style>
+    .service-card p {
+        margin: 0;
+        padding: 0;
+        line-height: 1.4;
+    }
+
+    .filter-btn.mud-button {
+        background: transparent;
+        border: 1px solid #1D1E23;
+        border-radius: 16px;
+        color: #808080;
+        font-family: 'Nimbus Sans D OT', sans-serif;
+        font-size: 14px;
+        text-transform: none;
+        padding: 6px 16px;
+    }
+
+    .filter-btn.mud-button-filled {
+        background: #1D1E23;
+        color: #FFFFFF;
+    }
+
+    .service-card {
+        background-color: #1D1E23;
+        border-radius: 3px;
+    }
+
+    .service-avatar {
+        height: 56px;
+        width: 56px;
+        background-color: #D9D9D9;
+        border-radius: 3px;
+        flex-shrink: 0;
+    }
+
+    .offer-category-tag {
+        width: fit-content;
+        padding: 5px 10px;
+        background: #2A2B31;
+        border-radius: 10px;
+        color: #FFFFFF;
+        font-family: 'Nimbus Sans D OT', sans-serif;
+        font-size: 12px;
+        line-height: 1;
+    }
+
+    .service-title {
+        font-family: 'Nimbus Sans D OT', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        color: #FFFFFF;
+    }
+
+    .service-provider {
+        font-family: 'Nimbus Sans D OT', sans-serif;
+        font-size: 12px;
+        line-height: 14px;
+        color: #808080;
+    }
+
+    .rating-icon {
+        color: #0081EC;
+        font-size: 12px;
+    }
+
+    .rating-text {
+        font-family: 'Nimbus Sans D OT', sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 14px;
+        color: #FFFFFF;
+    }
+
+    .rating-count {
+        font-family: 'Nimbus Sans D OT', sans-serif;
+        font-size: 12px;
+        line-height: 14px;
+        color: #808080;
+    }
+
+    .info-icon {
+        color: #808080;
+        font-size: 12px;
+    }
+
+    .info-text {
+        font-family: 'Nimbus Sans D OT', sans-serif;
+        font-size: 12px;
+        line-height: 14px;
+        color: #808080;
+    }
+
+    .price-text {
+        font-family: 'Nimbus Sans D OT', sans-serif;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 26px;
+        color: #FFFFFF;
+    }
+
+    .order-link {
+        font-family: 'Nimbus Sans D OT', sans-serif;
+        font-size: 14px;
+        line-height: 17px;
+        color: #0081EC;
+        text-decoration: none;
+    }
+</style>
+
+@code {
+    [Parameter] public List<Offer> Offers { get; set; } = new();
+    [Parameter] public EventCallback OnBackClick { get; set; }
+    [Parameter] public EventCallback<Offer> OnOrderClick { get; set; }
+
+    private readonly string[] Filters = new[]
+    {
+        "Výmena pneumatík",
+        "Čistiareň a umyváreň",
+        "Predaj vozidla",
+        "Technická kontrola"
+    };
+
+    private string _selectedFilter;
+
+    private IEnumerable<Offer> FilteredOffers
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(_selectedFilter))
+            {
+                return Offers;
+            }
+            return Offers.Where(o => o.Category == _selectedFilter);
+        }
+    }
+
+    private void HandleFilterClick(string newFilter)
+    {
+        _selectedFilter = newFilter;
+        StateHasChanged();
+    }
+
+    private Variant GetFilterVariant(string filterText)
+    {
+        return filterText == _selectedFilter ? Variant.Filled : Variant.Outlined;
+    }
+}
