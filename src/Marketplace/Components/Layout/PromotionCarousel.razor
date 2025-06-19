@@ -1,4 +1,4 @@
-﻿@using MudBlazor
+@using MudBlazor
 
 @if (_isCarouselVisible)
 {
@@ -6,15 +6,15 @@
                  ShowArrows="false" ShowBullets="true" EnableSwipe="true"
                  AutoCycle="true" TData="object">
 
-        @foreach (var item in _promotionItems)
+        @foreach (var offerItem in _offers)
         {
             <MudCarouselItem>
-                <MudCard Style="background-color: #1D1E23; height: 100%;">
+                <MudCard Style="@($"background-color: #1D1E23; background-image: url('{offerItem.ImageUrl}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100%;")">
                     <MudCardContent>
                         <div class="d-flex justify-space-between align-start">
                             <div>
-                                <MudText Style="color: #FFFFFF; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 16px; font-weight: 400; line-height: 19px;">@item.Title</MudText>
-                                <MudText Style="color: #808080; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 14px; font-weight: 400; line-height: 17px;">@item.Subtitle</MudText>
+                                <MudText Style="color: #FFFFFF; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 16px; font-weight: 400; line-height: 19px;">@offerItem.Title</MudText>
+                                <MudText Style="color: #FFFFFF; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 14px; font-weight: 400; line-height: 17px;">@offerItem.Provider</MudText>
                             </div>
                             @* <MudIconButton Icon="@Icons.Material.Filled.Close" Size="Size.Small" Style="color: #808080;" OnClick="HideCarousel" /> *@
                         </div>
@@ -39,21 +39,30 @@ else
 @code {
     private bool _isCarouselVisible = true;
 
-    private class PromotionItem
+    private class Offer
     {
         public string Title { get; set; }
-        public string Subtitle { get; set; }
+        public string Provider { get; set; }
+        public string Category { get; set; }
+        public string SubCategory { get; set; }
+        public double Rating { get; set; }
+        public int RatingCount { get; set; }
+        public double DistanceKm { get; set; }
+        public string ClosesAt { get; set; }
+        public string Price { get; set; }
+        public string ImageUrl { get; set; }
     }
 
-    private List<PromotionItem> _promotionItems = new();
+    private List<Offer> _offers = new();
 
     protected override void OnInitialized()
     {
-        _promotionItems = new List<PromotionItem>
+        _offers = new List<Offer>
         {
-            new() { Title = "Záhradné služby", Subtitle = "Údržba záhrady počas celého roka" },
-            new() { Title = "Jarné Upratovanie", Subtitle = "Nechajte svoj domov zažiariť" },
-            new() { Title = "Nové Technológie", Subtitle = "Objavte najnovšie gadgety" }
+            new() { Title = "Výmena pneumatík", Provider = "PneuServis Bratislava", Category = "Auto", SubCategory = "Výmena pneumatík", Rating = 4.8, RatingCount = 120, DistanceKm = 2.1, ClosesAt = "17:00", Price = "30 EUR", ImageUrl = "https://images.unsplash.com/photo-1511918984145-48de785d4c4e?q=80&w=800&auto=format&fit=crop" },
+            new() { Title = "Kompletný servis vozidla", Provider = "AutoExpert", Category = "Auto", SubCategory = "Servis", Rating = 4.7, RatingCount = 98, DistanceKm = 3.4, ClosesAt = "18:00", Price = "od 99 EUR", ImageUrl = "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?q=80&w=800&auto=format&fit=crop" },
+            new() { Title = "Čistenie interiéru", Provider = "CleanCar", Category = "Auto", SubCategory = "Čistenie", Rating = 4.9, RatingCount = 210, DistanceKm = 1.5, ClosesAt = "19:00", Price = "25 EUR", ImageUrl = "https://images.unsplash.com/photo-1464983953574-0892a716854b?q=80&w=800&auto=format&fit=crop" },
+            new() { Title = "Technická kontrola vozidla", Provider = "STK Centrum", Category = "Auto", SubCategory = "Technická kontrola", Rating = 4.6, RatingCount = 75, DistanceKm = 4.2, ClosesAt = "16:00", Price = "50 EUR", ImageUrl = "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop" }
         };
     }
 
