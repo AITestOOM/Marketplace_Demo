@@ -4,7 +4,7 @@
 
 <div class="order-view">
     <MudPaper Elevation="0" Square="true" Class="d-flex align-center pa-2" Style="background-color: #1D1E23;">
-        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" OnClick="@(() => OnBackClick.InvokeAsync())" Edge="Edge.Start" Color="Color.Primary" />
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" OnClick="@(() => OnBackClick.InvokeAsync(Offer))" Edge="Edge.Start" Color="Color.Primary" />
         <MudText Style="font-weight: 700; font-size: 22px; color: #F7F7F7;">Objednávka</MudText>
     </MudPaper>
 
@@ -46,5 +46,5 @@
 
 @code {
     [Parameter] public Offer Offer { get; set; }
-    [Parameter] public EventCallback OnBackClick { get; set; }
+    [Parameter] public EventCallback<Offer> OnBackClick { get; set; }
 }

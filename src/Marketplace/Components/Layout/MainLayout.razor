@@ -1,30 +1,30 @@
 ﻿@inherits LayoutComponentBase
 @using MudBlazor
 
-@inject IDialogService DialogService
-@inject ISnackbar Snackbar
-
 <MudThemeProvider Theme="_myCustomTheme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
 <MudLayout>
-    <MudAppBar Elevation="0" Fixed="true" Class="stacked-app-bar" Style="background-color: #1D1E23; color: #F7F7F7;">
-        <CustomAppBar/>
-    </MudAppBar>
+    @* The App Bar is now conditionally rendered outside of MudMainContent *@
+    @if (!_isSearchVisible)
+    {
+        <MudAppBar Elevation="0" Fixed="true" Class="stacked-app-bar" Style="background-color: #1D1E23; color: #F7F7F7;">
+            <CustomAppBar OnSearchClick="ToggleSearch" />
+        </MudAppBar>
+    }
 
-    @*  <MudDrawer @bind-Open="_drawerOpen"
-               ClipMode="DrawerClipMode.Always"
-               Elevation="2"
-               Variant="DrawerVariant.Responsive"
-               Breakpoint="Breakpoint.Sm">
-         <NavMenu />
-    </MudDrawer> *@
-
-    <MudMainContent Class="main-content-padded">
-        <MudContainer MaxWidth="MaxWidth.Large" Class="py-4">
-            @Body
-        </MudContainer>
+    <MudMainContent Class="@(_isSearchVisible ? "" : "main-content-padded")">
+        @if (_isSearchVisible)
+        {
+            <Search OnClose="ToggleSearch" />
+        }
+        else
+        {
+            <MudContainer MaxWidth="MaxWidth.Large" Class="py-4">
+                @Body
+            </MudContainer>
+        }
     </MudMainContent>
 </MudLayout>
 
@@ -36,7 +36,7 @@
     }
 
     .main-content-padded {
-        padding-top: 60px;
+        padding-top: 60px; /* Or whatever the height of your app bar is */
     }
 
     .sub-nav-tabs .mud-tab {
@@ -55,6 +55,13 @@
 </style>
 
 @code {
+    private bool _isSearchVisible = false;
+
+    private void ToggleSearch()
+    {
+        _isSearchVisible = !_isSearchVisible;
+    }
+    
     private bool _drawerOpen = true;
 
     private void ToggleDrawer()
@@ -66,13 +73,12 @@
     {
         PaletteLight = new PaletteLight()
         {
-            Primary = "#0081EC", // The blue accent color from icons and underline
-            AppbarBackground = "#1D1E23", // The dark background from app bar
-            AppbarText = "#808080", // The white text color from app bar title
-            Background = "#121315",        // The darkest color for the main page background
+            Primary = "#0081EC", 
+            AppbarBackground = "#1D1E23",
+            AppbarText = "#808080",
+            Background = "#121315",
             TextPrimary = "#F7F7F7",
             Surface = "#1D1E23"
-
         },
         Typography = new Typography()
         {

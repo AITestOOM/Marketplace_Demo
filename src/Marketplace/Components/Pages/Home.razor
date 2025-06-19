@@ -35,7 +35,7 @@
             
         case 3:
              @* This step is ready for your final Order page *@
-             <Offer OfferData="_selectedOffer" OnBackClick="@(() => SetStep(2))" />
+            <Order Offer="_selectedOffer" OnBackClick="@(HandleOnBackClick)" />
             break;
     }
 </div>
@@ -46,6 +46,13 @@
     private List<Offer> _offers = new();
     private Category _selectedCategory;
     private Offer _selectedOffer;
+
+    private bool _isSearchVisible = false;
+
+    private void ToggleSearch()
+    {
+        _isSearchVisible = !_isSearchVisible;
+    }
 
     public class Category
     {
@@ -88,6 +95,19 @@
     {
         _selectedOffer = offer;
         SetStep(3);
+    }
+
+    private void HandleOnBackClick(Offer offer)
+    {
+        if (offer == null)
+        {
+            SetStep(1);
+        }
+        else
+        {
+            _selectedOffer = offer;
+            SetStep(2);
+        }
     }
 
     private void SetStep(int step)

@@ -5,12 +5,11 @@
 <div class="service-list-view">
     <div class="d-flex align-center">
         <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" OnClick="@(() => OnBackClick.InvokeAsync())" Edge="Edge.Start" Class="mr-2" Color="Color.Primary" />
-        @* The title is now dynamic, passed in from the parent. *@
         <MudText Typo="Typo.h5">@Category.Name</MudText>
     </div>
 
     <div class="d-flex flex-wrap gap-2 my-4">
-        @foreach (var filterText in Category.Filters)
+        @foreach (var filterText in Category?.Filters)
         {
             <MudButton Variant="@GetFilterVariant(filterText)"
                        OnClick="@(() => HandleFilterClick(filterText))"
@@ -187,27 +186,34 @@
 
     [Parameter] public Category Category { get; set; }
 
-    private string _selectedFilter;
+    private List<string> _selectedFilters = new();
 
     private IEnumerable<Offer> FilteredOffers
     {
         get
         {
-            if (string.IsNullOrEmpty(_selectedFilter))
+            if (_selectedFilters.Count == 0)
             {
                 return Offers.Where(o => o.Category == Category.Name);
             }
-            return Offers.Where(o => o.SubCategory == _selectedFilter);
+            return Offers.Where(o => _selectedFilters.Contains(o.SubCategory));
         }
     }
 
     private void HandleFilterClick(string newFilter)
     {
-        _selectedFilter = newFilter;
+        if (_selectedFilters.Contains(newFilter))
+        {
+            _selectedFilters.Remove(newFilter);
+        }
+        else
+        {
+            _selectedFilters.Add(newFilter);
+        }
     }
 
     private Variant GetFilterVariant(string filterText)
     {
-        return filterText == _selectedFilter ? Variant.Filled : Variant.Outlined;
+        return _selectedFilters.Contains(filterText) ? Variant.Filled : Variant.Outlined;
     }
 }
