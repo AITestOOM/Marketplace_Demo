@@ -10,13 +10,16 @@
     {
         <Search OnClose="ToggleSearch" />
     }
+    else if (_isMenuVisible)
+    {
+        <MenuView OnClose="ToggleMenu" />
+    }
     else
     {
         <MudAppBar Elevation="0" Fixed="true" Class="stacked-app-bar" Style="background-color: #1D1E23; color: #F7F7F7;">
-            <CustomAppBar OnSearchClick="ToggleSearch" />
+            <CustomAppBar OnSearchClick="ToggleSearch" OnMenuClick="ToggleMenu"/>
         </MudAppBar>
-
-        <MudMainContent Class="main-content-padded">
+        <MudMainContent>
             <MudContainer MaxWidth="MaxWidth.Large" Class="py-4">
                 @Body
             </MudContainer>
@@ -30,28 +33,20 @@
         align-items: stretch;
         height: auto;
     }
-
-    .sub-nav-tabs .mud-tab {
-        color: #808080;
-        text-transform: none;
-    }
-
-        .sub-nav-tabs .mud-tab.mud-tab-active {
-            color: #FFFFFF !important;
-        }
-
-    .sub-nav-tabs .mud-tabs-indicator {
-        background-color: #0081EC !important;
-        height: 1px !important;
-    }
 </style>
 
 @code {
     private bool _isSearchVisible = false;
+    private bool _isMenuVisible = false;
 
     private void ToggleSearch()
     {
         _isSearchVisible = !_isSearchVisible;
+    }
+
+    private void ToggleMenu()
+    {
+        _isMenuVisible = !_isMenuVisible;
     }
     
     private bool _drawerOpen = true;

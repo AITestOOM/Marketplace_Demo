@@ -2,19 +2,17 @@
 
     <MudToolBar>
         <div class="d-flex justify-space-between align-center" style="width: 100%;">
-
-        @* Left Icon: User *@
             <div>
-                <MudIconButton>
+                <MudIconButton OnClick="@(() => OnMenuClick.InvokeAsync())">
                     <svg width="26" height="18" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 9H25M1 17H25M1 1H25" stroke="#0081EC" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </MudIconButton>
             </div>
-
+            
             @* Center Content: Logo *@
             <div>
-                <svg width="163" height="32" viewBox="0 0 163 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <svg width="163" height="32" viewBox="0 0 163 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M27.1 3L12.376 28.7296L12.025 29.129H7.29999L22.375 3H27.1Z" fill="white" />
                     <path d="M31 7.0545L18.4 29.129H13.45L26.05 7.0545H31Z" fill="white" />
                     <path d="M16.15 11.4093L5.875 29.129H1L11.275 11.4093H16.15Z" fill="white" />Add commentMore actions
@@ -28,7 +26,7 @@
             </div>
         </div>
     </MudToolBar>
-
 @code {
+    [Parameter] public EventCallback OnMenuClick { get; set; }
     [Parameter] public EventCallback OnSearchClick { get; set; }
 }
