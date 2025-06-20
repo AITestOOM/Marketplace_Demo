@@ -5,49 +5,59 @@
 @using System.Globalization
 @inject IDialogService DialogService
 
-<div class="dashboard-container">
-    @switch (_currentStep)
+<div>
+    @if (_isSearchVisible)
     {
-        case 1:
-            @* The main dashboard view *@
-            <PromotionCarousel Offers="_offers.Take(3).ToList()" OnOfferClick="HandleOrderClick" />
-            <CategoryCarousel Categories="_categories" OnCategoryClick="HandleCategoryClick" OnShowAllClick="@(() => SetStep(5))" />
-            <div class="services-section">
-                <div class="d-flex justify-space-between align-center mb-2">
-                    <MudText Typo="Typo.h6" Style="font-weight: 700;">Navrhované služby</MudText>
-                    <MudIconButton OnClick="ShowComingSoon" Style="color:#0081EC" Icon="@Icons.Material.Filled.FilterList" />
-                </div>
-                <MudStack Spacing="2">
-                    @foreach (var offer in _offers.Skip(3).Take(8))
-                    {
-                        <OfferCard Offer="offer" OnOrderClick="HandleOrderClick" />
-                    }
-                </MudStack>
-            </div>
-            break;
+        <Search OnClose="ToggleSearch" AllOffers="_offers" OnOfferClick="HandleOrderClick" />
+    }
+    else if (_isMenuVisible)
+    {
+        <MenuView OnClose="ToggleMenu" />
+    }
+    else
+    {
+        <MudAppBar Elevation="0" Fixed="true" Class="stacked-app-bar" Style="background-color: #1D1E23; color: #F7F7F7;">
+            <CustomAppBar OnSearchClick="ToggleSearch" OnMenuClick="ToggleMenu"/>
+        </MudAppBar>
 
-        case 2:
-            @* The detailed view for the selected category *@
-            <ServiceListView Offers="_offers"
-                             Category="_selectedCategory"
-                             OnBackClick="@(() => SetStep(1))"
-                             OnOrderClick="@(HandleOrderClick)" />
-            break;
-
-        case 3:
-            @* The Order page, which now knows which step to go back to *@
-            <Order Offer="_selectedOffer" PreviousStep="_previousStep" OnBackClick="HandleOnBackClick" OnConfirmOrder="HandleConfirmOrder" />
-            break;
-            
-        case 4:
-            @* The new order confirmation screen *@
-            <OrderConfirmation OnViewOrder="ShowComingSoon" OnClose="@(() => SetStep(1))" />
-            break;
-            
-        case 5:
-            @* The new screen showing all categories *@
-            <AllCategoriesView Categories="_categories" OnCategoryClick="HandleCategoryClick" OnBackClick="@(() => SetStep(1))" />
-            break;
+        <div class="main-content-padded">
+            <MudContainer MaxWidth="MaxWidth.Large" Class="py-4">
+                @switch (_currentStep)
+                {
+                    case 1:
+                        <PromotionCarousel Offers="_offers.Take(3).ToList()" OnOfferClick="HandleOrderClick" />
+                        <CategoryCarousel Categories="_categories" OnCategoryClick="HandleCategoryClick" OnShowAllClick="@(() => SetStep(5))" />
+                        <div class="services-section">
+                            <div class="d-flex justify-space-between align-center mb-2">
+                                <MudText Typo="Typo.h6" Style="font-weight: 700;">Navrhované služby</MudText>
+                                <MudIconButton Icon="@Icons.Material.Filled.FilterList" OnClick="ShowComingSoon" Style="color:#0081EC" />
+                            </div>
+                            <MudStack Spacing="2">
+                                @foreach (var offer in _offers.Skip(3).Take(8))
+                                {
+                                    <OfferCard Offer="offer" OnOrderClick="HandleOrderClick" />
+                                }
+                            </MudStack>
+                        </div>
+                        break;
+                    case 2:
+                        <ServiceListView Offers="_offers"
+                                         Category="_selectedCategory"
+                                         OnBackClick="@(() => SetStep(1))"
+                                         OnOrderClick="@(HandleOrderClick)" />
+                        break;
+                    case 3:
+                        <Order Offer="_selectedOffer" PreviousStep="_previousStep" OnBackClick="HandleOnBackClick" OnConfirmOrder="HandleConfirmOrder" />
+                        break;
+                    case 4:
+                        <OrderConfirmation OnViewOrder="ShowComingSoon" OnClose="@(() => SetStep(1))" />
+                        break;
+                    case 5:
+                        <AllCategoriesView Categories="_categories" OnCategoryClick="HandleCategoryClick" OnBackClick="@(() => SetStep(1))" />
+                        break;
+                }
+            </MudContainer>
+        </div>
     }
 </div>
 
@@ -56,10 +66,12 @@
     private int _currentStep = 1;
     private int _previousStep;
     private List<Category> _categories = new();
+    private List<Offer> _offers = new();
     private Category _selectedCategory;
     private Offer _selectedOffer;
 
-    [CascadingParameter] private List<Offer> _offers { get; set; } = new();
+    private bool _isSearchVisible = false;
+    private bool _isMenuVisible = false;
 
     public class Category
     {
@@ -68,11 +80,31 @@
         public string BackgroundColor { get; set; }
         public string[] Filters { get; set; }
     }
+    
+    public class Offer
+    {
+        public string Title { get; set; }
+        public string Provider { get; set; }
+        public string Category { get; set; }
+        public string SubCategory { get; set; }
+        public string Description { get; set; }
+        public double Rating { get; set; }
+        public int RatingCount { get; set; }
+        public double DistanceKm { get; set; }
+        public string ClosesAt { get; set; }
+        public string Price { get; set; }
+        public string ImageUrl { get; set; }
+        public string NLquery { get; set; }
+    }
 
     protected override void OnInitialized()
     {
         LoadCategories();
+        LoadOffers();
     }
+    
+    private void ToggleSearch() => _isSearchVisible = !_isSearchVisible;
+    private void ToggleMenu() => _isMenuVisible = !_isMenuVisible;
 
     private void HandleCategoryClick(Category category)
     {
@@ -83,20 +115,19 @@
     private void HandleOrderClick(Offer offer)
     {
         _selectedOffer = offer;
-        _previousStep = _currentStep; // Store the step we are coming from
+        _previousStep = _currentStep;
+        
+        if (_isSearchVisible)
+        {
+            _isSearchVisible = false;
+        }
+
         SetStep(3);
     }
     
-    private void HandleConfirmOrder()
-    {
-        SetStep(4);
-    }
-
-    // This method now receives the step to go back to from the Order page
-    private void HandleOnBackClick(int step)
-    {
-        SetStep(step);
-    }
+    private void HandleConfirmOrder() => SetStep(4);
+    
+    private void HandleOnBackClick(int step) => SetStep(step);
 
     private void SetStep(int step)
     {
@@ -109,6 +140,25 @@
         await DialogService.ShowAsync<ComingSoonDialog>("Funkcia v Príprave");
     }
 
+    private static readonly Random _random = new Random();
+
+    private static readonly List<string> _imageUrls = new List<string>
+    {
+        "./Images/Automoto1.jpg",
+        "./Images/Hobby1.jpg",
+        "./Images/JazykoveKurzy1.jpg",
+        "./Images/MaliarskePrace1.jpg",
+        "./Images/Uctovnictvo1.jpg",
+        "./Images/upratovanie1.jpg",
+        "./Images/Wellness1.jpg"
+    };
+
+
+    private static string GetRandomImageUrl()
+    {
+        int index = _random.Next(_imageUrls.Count);
+        return _imageUrls[index];
+    }
 
     private void LoadCategories() => _categories = new List<Category>
     {
@@ -148,4 +198,1249 @@
             IconSvg = @"<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z' stroke='#7D5CAB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/><path d='M12 22C14.7614 22 17 17.5228 17 12C17 6.47715 14.7614 2 12 2C9.23858 2 7 6.47715 7 12C7 17.5228 9.23858 22 12 22Z' stroke='#7D5CAB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/><path d='M2 12H22' stroke='#7D5CAB' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>"
         }
     };
+
+    private void LoadOffers()
+    {
+        _offers = new List<Offer>
+    {
+        new()
+        {
+            Title = "E-bike Karol",
+            Provider = "Karol's E-Bikes",
+            Description = "Kompletný servis elektrobicyklov.",
+            Category = "Cestovanie a voľný čas",
+            SubCategory = "Športové aktivity",
+            Rating = 4.8,
+            RatingCount = 89,
+            DistanceKm = 1.1,
+            ClosesAt = "20:00",
+            Price = "od 109 EUR",
+            ImageUrl = "images/banner_bicykel.png",
+            NLquery = "Potrebujem servis elektrobicykla"
+        },
+        new()
+        {
+            Title = "Pneuservis Ferko",
+            Provider = "Ferko's Pneu",
+            Description = "Rýchla oprava defektov a sezónne prezutie pneumatík.",
+            Category = "Auto",
+            SubCategory = "Výmena pneumatík",
+            Rating = 4.8,
+            RatingCount = 134,
+            DistanceKm = 1.5,
+            ClosesAt = "18:00",
+            Price = "od 20 EUR",
+            ImageUrl = "images/banner_auto.png",
+            NLquery = "Dostal som defekt"
+        },
+        new()
+        {
+            Title = "Klíma Frozen",
+            Provider = "Frozen Klíma SK",
+            Description = "Predaj klimatizácií vrátane montáže v Bratislave a okolí.",
+            Category = "Remeselníci",
+            SubCategory = "Vykurovanie a chladenie",
+            Rating = 4.7,
+            RatingCount = 112,
+            DistanceKm = 1.3,
+            ClosesAt = "18:00",
+            Price = "od 1079 EUR",
+            ImageUrl = "images/banner_klima.png",
+            NLquery = "Chcem kúpiť klimatizáciu s montážou"
+        },
+        new()
+        {
+            Title = "Klimatizácie s montážou",
+            Provider = "Klíma Frozen",
+            Description = "Predaj klimatizácií vrátane montáže v Bratislave a okolí.",
+            Category = "Remeselníci",
+            SubCategory = "Vykurovanie a chladenie",
+            Rating = 4.7,
+            RatingCount = 112,
+            DistanceKm = 1.3,
+            ClosesAt = "18:00",
+            Price = "od 1079 EUR",
+            ImageUrl = "./Images/klima1.jpg",
+            NLquery = "Hľadám montáž klimatizácie"
+        },
+        new()
+        {
+            Title = "Bezúčelový úver",
+            Provider = "Tatra banka",
+            Description = "Zoberte si Bezúčelový úverTB a zrýchlite si splácanie úveru s Extra splátkami",
+            Category = "Auto",
+            SubCategory = "Financovanie",
+            Rating = 5.0,
+            RatingCount = 1324,
+            DistanceKm = 0.1,
+            ClosesAt = "21:00",
+            Price = "od 6,49 % p.a.",
+            ImageUrl = "./Images/tb_logo.jpg",
+            NLquery = "Potrebujem bezúčelový úver na auto"
+        },
+        new()
+        {
+            Title = "Oprava defektu a prezutie pneumatík",
+            Provider = "Pneuservis Ferko",
+            Description = "Rýchla oprava defektov a sezónne prezutie pneumatík za výhodné ceny.",
+            Category = "Auto",
+            SubCategory = "Výmena pneumatík",
+            Rating = 4.8,
+            RatingCount = 134,
+            DistanceKm = 1.5,
+            ClosesAt = "18:00",
+            Price = "od 20 EUR",
+            ImageUrl = "./Images/Automoto1.jpg",
+            NLquery = "Kde mi opravia defekt a prezujú pneumatiky?"
+        },
+        new()
+        {
+            Title = "Maliarske práce",
+            Provider = "Maliar Picasso",
+            Description = "Maľovanie v Bratislave a okolí.",
+            Category = "Remeselníci",
+            SubCategory = "Maliarske práce",
+            Rating = 4.5,
+            RatingCount = 72,
+            DistanceKm = 0.8,
+            ClosesAt = "16:00",
+            Price = "od 2 EUR / m²",
+            ImageUrl = "./Images/MaliarskePrace1.jpg",
+            NLquery = "Potrebujem vymaľovať byt"
+        },
+        new()
+        {
+            Title = "Servis elektrobicyklov",
+            Provider = "E-bike Karol",
+            Description = "Kompletný servis elektrobicyklov.",
+            Category = "Cestovanie a voľný čas",
+            SubCategory = "Športové aktivity",
+            Rating = 4.8,
+            RatingCount = 89,
+            DistanceKm = 1.1,
+            ClosesAt = "20:00",
+            Price = "od 109 EUR",
+            ImageUrl = "./Images/Hobby1.jpg",
+            NLquery = "Kde opravujú e-biky?"
+        },
+        new()
+        {
+            Title = "Servis klimatizácie a doplnenie chladiva",
+            Provider = "AutoKlíma Servis Novák",
+            Description = "Profesionálny servis autoklimatizácie, kontrola tesnosti a doplnenie chladiva.",
+            Category = "Auto",
+            SubCategory = "Servis",
+            Rating = 4.9,
+            RatingCount = 98,
+            DistanceKm = 15.2,
+            ClosesAt = "17:00",
+            Price = "od 50EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem doplniť klímu v aute"
+        },
+        new()
+        {
+            Title = "Výmena oleja a filtrov",
+            Provider = "Rýchloservis Starý Háj",
+            Description = "Kvalitná a rýchla výmena motorového oleja a všetkých filtrov.",
+            Category = "Auto",
+            SubCategory = "Servis",
+            Rating = 4.7,
+            RatingCount = 212,
+            DistanceKm = 2.1,
+            ClosesAt = "18:00",
+            Price = "od 80EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Kedy treba meniť olej v aute?"
+        },
+        new()
+        {
+            Title = "Oprava drobných karosárskych poškodení",
+            Provider = "Karosár Jano",
+            Description = "Opravy preliačin, škrabancov a iných drobných poškodení karosérie.",
+            Category = "Auto",
+            SubCategory = "Servis",
+            Rating = 4.6,
+            RatingCount = 76,
+            DistanceKm = 8.4,
+            ClosesAt = "17:30",
+            Price = "od 50EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Mám škrabanec na aute, kto to opraví?"
+        },
+        new()
+        {
+            Title = "Inštalatérske práce - oprava vodovodných batérií",
+            Provider = "Vodár Peter Malý",
+            Description = "Oprava kvapkajúcich batérií, výmena tesnení a drobné inštalatérske práce.",
+            Category = "Remeselníci",
+            SubCategory = "Vodoinštalácie",
+            Rating = 4.9,
+            RatingCount = 155,
+            DistanceKm = 3.7,
+            ClosesAt = "19:00",
+            Price = "od 30EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Kvapká mi kohútik"
+        },
+        new()
+        {
+            Title = "Maľovanie izieb a drobné maliarske práce",
+            Provider = "Maliarstvo Farebný Domov",
+            Description = "Profesionálne maľovanie interiérov, stierkovanie a tapetovanie.",
+            Category = "Remeselníci",
+            SubCategory = "Maliarske práce",
+            Rating = 4.8,
+            RatingCount = 89,
+            DistanceKm = 6.1,
+            ClosesAt = "18:00",
+            Price = "od 15EUR / hod",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Chcem vymaľovať izbu a ošetriť steny"
+        },
+        new()
+        {
+            Title = "Oprava a údržba záhradnej techniky",
+            Provider = "Servis Záhrada Kováč",
+            Description = "Opravy kosačiek, motorových píl a inej záhradnej techniky.",
+            Category = "Bývanie",
+            SubCategory = "Záhradnícke služby",
+            Rating = 4.5,
+            RatingCount = 45,
+            DistanceKm = 11.8,
+            ClosesAt = "17:00",
+            Price = "od 25EUR / hod",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Pokazila sa mi kosačka, kde ju opravia?"
+        },
+        new()
+        {
+            Title = "Elektrikárske práce - výmena zásuviek a vypínačov",
+            Provider = "Elektroinštalácie Svetlo",
+            Description = "Bezpečná výmena a montáž zásuviek, vypínačov a svietidiel.",
+            Category = "Remeselníci",
+            SubCategory = "Elektroinštalácie",
+            Rating = 5.0,
+            RatingCount = 180,
+            DistanceKm = 4.3,
+            ClosesAt = "18:00",
+            Price = "od 25EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem vymeniť zásuvku"
+        },
+        new()
+        {
+            Title = "Čistenie a tepovanie kobercov a čalúnenia",
+            Provider = "Čistotka Express",
+            Description = "Hĺbkové čistenie kobercov, sedačiek a iného čalúneného nábytku.",
+            Category = "Bývanie",
+            SubCategory = "Upratovanie",
+            Rating = 4.7,
+            RatingCount = 112,
+            DistanceKm = 0.8,
+            ClosesAt = "20:00",
+            Price = "od 40EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem vytepovať koberec"
+        },
+        new()
+        {
+            Title = "Montáž nábytku a políc",
+            Provider = "Hodinový Manžel Mišo",
+            Description = "Profesionálna montáž nábytku z obchodných domov, vŕtanie políc.",
+            Category = "Bývanie",
+            SubCategory = "Nábytok",
+            Rating = 4.9,
+            RatingCount = 240,
+            DistanceKm = 2.5,
+            ClosesAt = "19:00",
+            Price = "20EUR / hod",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Kto mi zmontuje nábytok?"
+        },
+        new()
+        {
+            Title = "Oprava bielej techniky (práčky, chladničky)",
+            Provider = "Servis Elektro Dom",
+            Description = "Diagnostika a oprava porúch práčok, umývačiek riadu, chladničiek.",
+            Category = "Bývanie",
+            SubCategory = "Elektronika",
+            Rating = 4.6,
+            RatingCount = 105,
+            DistanceKm = 5.0,
+            ClosesAt = "17:30",
+            Price = "od 40EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Pokazila sa mi práčka, hľadám opravára"
+        },
+        new()
+        {
+            Title = "Renovácia a brúsenie parkiet",
+            Provider = "Parkety Majster Juraj",
+            Description = "Odborné brúsenie, lakovanie a renovácia drevených podláh.",
+            Category = "Remeselníci",
+            SubCategory = "Stavebné práce",
+            Rating = 4.8,
+            RatingCount = 67,
+            DistanceKm = 3.9,
+            ClosesAt = "18:00",
+            Price = "od 15EUR / m²",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem zrenovovať parkety"
+        },
+        new()
+        {
+            Title = "Výroba a montáž vstavaných skríň na mieru",
+            Provider = "Stolárstvo PresneNaMieru",
+            Description = "Individuálne riešenia vstavaných skríň a úložných priestorov.",
+            Category = "Remeselníci",
+            SubCategory = "Stolárske práce",
+            Rating = 4.9,
+            RatingCount = 91,
+            DistanceKm = 18.0,
+            ClosesAt = "17:00",
+            Price = "od 300EUR / meter",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Chcem vstavanú skriňu na mieru"
+        },
+        new()
+        {
+            Title = "Čistenie odkvapov a strešných žľabov",
+            Provider = "Strechy Čisté",
+            Description = "Preventívne čistenie odkvapov od lístia a nečistôt, drobné opravy.",
+            Category = "Bývanie",
+            SubCategory = "Upratovanie",
+            Rating = 4.4,
+            RatingCount = 33,
+            DistanceKm = 7.6,
+            ClosesAt = "18:00",
+            Price = "od 60EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem vyčistiť odkvapy na dome"
+        },
+        new()
+        {
+            Title = "Krtkovanie a čistenie kanalizácie",
+            Provider = "KrtkoStop Servis",
+            Description = "Profesionálne čistenie upchatých odpadov a kanalizácie.",
+            Category = "Remeselníci",
+            SubCategory = "Vodoinštalácie",
+            Rating = 4.7,
+            RatingCount = 142,
+            DistanceKm = 1.1,
+            ClosesAt = "24/7",
+            Price = "od 60EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Mám upchatý odtok, potrebujem krtkovanie"
+        },
+        new()
+        {
+            Title = "Geometria kolies",
+            Provider = "Auto Geometria Presná",
+            Description = "Presné nastavenie geometrie kolies pre lepšiu stabilitu a životnosť pneumatík.",
+            Category = "Auto",
+            SubCategory = "Servis",
+            Rating = 4.8,
+            RatingCount = 188,
+            DistanceKm = 4.5,
+            ClosesAt = "18:00",
+            Price = "od 35EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem nastaviť geometriu kolies"
+        },
+        new()
+        {
+            Title = "Oprava výfukov a katalyzátorov",
+            Provider = "Výfuky Tichošľap",
+            Description = "Opravy a výmeny poškodených častí výfukového systému, zváranie.",
+            Category = "Auto",
+            SubCategory = "Servis",
+            Rating = 4.5,
+            RatingCount = 61,
+            DistanceKm = 9.2,
+            ClosesAt = "17:00",
+            Price = "od 45EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Mám deravý výfuk, kde to opravia?"
+        },
+        new()
+        {
+            Title = "Pokládka laminátovej a vinylovej podlahy",
+            Provider = "Podlahy Nový Domov",
+            Description = "Odborná pokládka plávajúcich podláh, vrátane líšt a prechodov.",
+            Category = "Remeselníci",
+            SubCategory = "Stavebné práce",
+            Rating = 4.9,
+            RatingCount = 78,
+            DistanceKm = 10.5,
+            ClosesAt = "18:00",
+            Price = "od 10EUR / m²",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Kto mi položí laminátovú podlahu?"
+        },
+        new()
+        {
+            Title = "Údržba a rez stromov v záhrade",
+            Provider = "Záhradník Jožko",
+            Description = "Odborný rez ovocných a okrasných stromov, tvarovanie živých plotov.",
+            Category = "Bývanie",
+            SubCategory = "Záhradnícke služby",
+            Rating = 4.8,
+            RatingCount = 55,
+            DistanceKm = 12.3,
+            ClosesAt = "17:00",
+            Price = "od 25EUR / hod",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem orezať stromy v záhrade"
+        },
+        new()
+        {
+            Title = "Čistenie okien a žalúzií",
+            Provider = "OknáBezŠmúh",
+            Description = "Profesionálne umývanie okien, rámov a čistenie vonkajších aj vnútorných žalúzií.",
+            Category = "Bývanie",
+            SubCategory = "Upratovanie",
+            Rating = 4.9,
+            RatingCount = 99,
+            DistanceKm = 0.5,
+            ClosesAt = "19:00",
+            Price = "od 2EUR / okno",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem umyť okná a vyčistiť žalúzie"
+        },
+        new()
+        {
+            Title = "Oprava bicyklov a cykloservis",
+            Provider = "Bicykle Fit & Fun",
+            Description = "Kompletný servis bicyklov, nastavenie prehadzovačiek, oprava bŕzd.",
+            Category = "Cestovanie a voľný čas",
+            SubCategory = "Športové aktivity",
+            Rating = 5.0,
+            RatingCount = 130,
+            DistanceKm = 1.8,
+            ClosesAt = "18:30",
+            Price = "od 30EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Pokazil sa mi bicykel, hľadám cykloservis"
+        },
+        new()
+        {
+            Title = "Výmena a oprava zámkov",
+            Provider = "Zámky Bezpečný Kľúč",
+            Description = "Núdzové otváranie dverí, výmena cylindrických vložiek, oprava zámkov.",
+            Category = "Bývanie",
+            SubCategory = "Doplnky", // Could be Remeselníci as well
+            Rating = 4.7,
+            RatingCount = 84,
+            DistanceKm = 2.2,
+            ClosesAt = "24/7",
+            Price = "od 45EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Zabuchol som si dvere, potrebujem otvoriť"
+        },
+        new()
+        {
+            Title = "Montáž a oprava satelitnej a TV techniky",
+            Provider = "TV Signál Majster",
+            Description = "Inštalácia satelitných antén, nastavenie TV signálu, oprava set-top boxov.",
+            Category = "Bývanie",
+            SubCategory = "Elektronika",
+            Rating = 4.6,
+            RatingCount = 71,
+            DistanceKm = 6.8,
+            ClosesAt = "18:00",
+            Price = "od 30EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem namontovať satelit"
+        },
+        new()
+        {
+            Title = "Čalúnnické práce a oprava nábytku",
+            Provider = "Čalúnnictvo Starý Štýl",
+            Description = "Prečalúnenie stoličiek, kresiel, sedačiek, oprava poškodeného čalúnenia.",
+            Category = "Remeselníci",
+            SubCategory = "Stolárske práce", // More accurately Čalúnnictvo
+            Rating = 4.8,
+            RatingCount = 59,
+            DistanceKm = 8.1,
+            ClosesAt = "17:00",
+            Price = "od 50EUR / stolička",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem prečalúniť sedačku"
+        },
+        new()
+        {
+            Title = "Deratizácia a dezinsekcia",
+            Provider = "DDD Služby Bez Hmyzu",
+            Description = "Profesionálne hubenie škodcov – hlodavcov, hmyzu, mravcov.",
+            Category = "Bývanie",
+            SubCategory = "Upratovanie", // Or a dedicated DDD category
+            Rating = 4.9,
+            RatingCount = 115,
+            DistanceKm = 3.3,
+            ClosesAt = "19:00",
+            Price = "od 50EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Máme doma mravce, potrebujem dezinsekciu"
+        },
+        new()
+        {
+            Title = "Oprava a servis kávovarov",
+            Provider = "Káva Majster Servis",
+            Description = "Diagnostika a oprava domácich a profesionálnych kávovarov.",
+            Category = "Bývanie",
+            SubCategory = "Elektronika",
+            Rating = 4.7,
+            RatingCount = 82,
+            DistanceKm = 0.9,
+            ClosesAt = "18:00",
+            Price = "od 35EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Nefunguje mi kávovar, kto ho opraví?"
+        },
+        new()
+        {
+            Title = "Kosenie trávy a údržba trávnikov",
+            Provider = "Trávniky Zelené",
+            Description = "Pravidelné kosenie trávnikov, vertikutácia, hnojenie a dosev.",
+            Category = "Bývanie",
+            SubCategory = "Záhradnícke služby",
+            Rating = 4.8,
+            RatingCount = 49,
+            DistanceKm = 4.6,
+            ClosesAt = "17:30",
+            Price = "od 20EUR / hod",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem pokosiť trávnik"
+        },
+        new()
+        {
+            Title = "Diagnostika a oprava elektroniky (mobily, tablety)",
+            Provider = "Mobil Servis Expres",
+            Description = "Oprava rozbitých displejov, výmena batérií, riešenie softvérových problémov.",
+            Category = "Bývanie",
+            SubCategory = "Elektronika",
+            Rating = 4.6,
+            RatingCount = 289,
+            DistanceKm = 1.3,
+            ClosesAt = "19:00",
+            Price = "od 25EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Rozbil sa mi displej na mobile, kde to opravia?"
+        },
+        new()
+        {
+            Title = "Oprava obuvi a koženej galantérie",
+            Provider = "Obuvník Šikovné Ruky",
+            Description = "Oprava podpätkov, podrážok, výmena zipsov na taškách a batožine.",
+            Category = "Cestovanie a voľný čas",
+            SubCategory = "Hobby", // Or Služby
+            Rating = 4.9,
+            RatingCount = 119,
+            DistanceKm = 0.4,
+            ClosesAt = "17:00",
+            Price = "od 5EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem opraviť topánky"
+        },
+        new()
+        {
+            Title = "Sklenárske práce - rezanie a montáž skla",
+            Provider = "Sklenárstvo Krištáľ",
+            Description = "Rezanie skla na mieru, zasklievanie okien a dverí, výroba zrkadiel.",
+            Category = "Remeselníci",
+            SubCategory = "Okná a tieniaca technika",
+            Rating = 4.7,
+            RatingCount = 41,
+            DistanceKm = 3.1,
+            ClosesAt = "16:30",
+            Price = "od 20EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem sklenára, rozbilo sa mi sklo"
+        },
+        new()
+        {
+            Title = "Hĺbkové čistenie automobilov (interiér)",
+            Provider = "AutoČistota Detail",
+            Description = "Detailné čistenie interiéru vozidla, tepovanie sedačiek, ošetrenie plastov.",
+            Category = "Auto",
+            SubCategory = "Čistenie",
+            Rating = 5.0,
+            RatingCount = 162,
+            DistanceKm = 5.5,
+            ClosesAt = "18:00",
+            Price = "od 70EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Chcem vyčistiť interiér auta"
+        },
+        new()
+        {
+            Title = "Oprava a servis plynových kotlov",
+            Provider = "PlynoServis TeploDomova",
+            Description = "Pravidelné revízie a opravy plynových kotlov a ohrievačov vody.",
+            Category = "Remeselníci",
+            SubCategory = "Vykurovanie a chladenie",
+            Rating = 4.8,
+            RatingCount = 191,
+            DistanceKm = 6.2,
+            ClosesAt = "17:00",
+            Price = "od 70EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Nefunguje mi plynový kotol"
+        },
+        new()
+        {
+            Title = "Zasklievanie balkónov a lodžií",
+            Provider = "Balkóny Pohoda",
+            Description = "Výroba a montáž systémov na zasklievanie balkónov a lodžií.",
+            Category = "Remeselníci",
+            SubCategory = "Okná a tieniaca technika",
+            Rating = 4.7,
+            RatingCount = 65,
+            DistanceKm = 9.8,
+            ClosesAt = "17:00",
+            Price = "od 800EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Chcem dať zaskliť balkón"
+        },
+        new()
+        {
+            Title = "Oprava šijacích strojov",
+            Provider = "Šijacie Stroje Servis Ihla",
+            Description = "Servis a oprava domácich a priemyselných šijacích strojov.",
+            Category = "Bývanie",
+            SubCategory = "Elektronika",
+            Rating = 4.9,
+            RatingCount = 38,
+            DistanceKm = 7.1,
+            ClosesAt = "16:30",
+            Price = "od 30EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Pokazil sa mi šijací stroj"
+        },
+        new()
+        {
+            Title = "Brúsenie nožov a nožníc",
+            Provider = "Ostré Čepele Majster",
+            Description = "Profesionálne brúsenie kuchynských nožov, nožníc a iných rezných nástrojov.",
+            Category = "Cestovanie a voľný čas",
+            SubCategory = "Hobby", // Or Služby
+            Rating = 5.0,
+            RatingCount = 95,
+            DistanceKm = 2.8,
+            ClosesAt = "18:00",
+            Price = "od 2EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem nabrúsiť nože"
+        },
+        new()
+        {
+            Title = "Leštenie a voskovanie karosérie",
+            Provider = "AutoLesk Profi",
+            Description = "Profesionálne leštenie laku a aplikácia ochranného vosku pre dlhotrvajúci lesk.",
+            Category = "Auto",
+            SubCategory = "Čistenie",
+            Rating = 4.9,
+            RatingCount = 111,
+            DistanceKm = 3.0,
+            ClosesAt = "19:00",
+            Price = "od 100EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Chcem vyleštiť auto a navoskovať"
+        },
+        new()
+        {
+            Title = "Oprava a servis počítačov a notebookov",
+            Provider = "PC Doktor Rýchlo",
+            Description = "Diagnostika hardvérových a softvérových problémov, odvírenie, zrýchlenie systému.",
+            Category = "Bývanie",
+            SubCategory = "Elektronika",
+            Rating = 4.8,
+            RatingCount = 310,
+            DistanceKm = 1.0,
+            ClosesAt = "18:30",
+            Price = "od 25EUR / hod",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Pokazil sa mi notebook, potrebujem opravu"
+        },
+        new()
+        {
+            Title = "Inštalácia a montáž kuchynských spotrebičov",
+            Provider = "Kuchyne Mont Expert",
+            Description = "Odborná montáž umývačiek riadu, varných dosiek, rúr a digestorov.",
+            Category = "Remeselníci",
+            SubCategory = "Elektroinštalácie",
+            Rating = 4.9,
+            RatingCount = 122,
+            DistanceKm = 4.8,
+            ClosesAt = "18:00",
+            Price = "od 35EUR / ks",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem namontovať umývačku riadu"
+        },
+        new()
+        {
+            Title = "Núdzové otváranie dverí a trezorov",
+            Provider = "Zámková Pohotovosť 24/7",
+            Description = "Rýchle a bezpečné otváranie zabuchnutých dverí bytov, domov a trezorov.",
+            Category = "Bývanie",
+            SubCategory = "Doplnky", // Or Služby, Bezpečnosť
+            Rating = 4.9,
+            RatingCount = 254,
+            DistanceKm = 1.4,
+            ClosesAt = "24/7",
+            Price = "od 50EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Zabuchol som si kľúče v byte, potrebujem zámočníka"
+        },
+        new()
+        {
+            Title = "Umývanie fasád a čistenie vonkajších plôch",
+            Provider = "Fasády Ako Nové",
+            Description = "Čistenie fasád od machov a nečistôt, umývanie terás a chodníkov vysokým tlakom.",
+            Category = "Bývanie",
+            SubCategory = "Upratovanie",
+            Rating = 4.7,
+            RatingCount = 81,
+            DistanceKm = 7.3,
+            ClosesAt = "18:00",
+            Price = "od 3EUR / m²",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem umyť fasádu domu"
+        },
+        new()
+        {
+            Title = "Hubenie ploštíc a iného lezúceho hmyzu",
+            Provider = "StopŠkodcom Garancia",
+            Description = "Účinná likvidácia ploštíc, švábov, mravcov a iného nepríjemného hmyzu.",
+            Category = "Bývanie",
+            SubCategory = "Upratovanie", // Or DDD
+            Rating = 4.8,
+            RatingCount = 136,
+            DistanceKm = 2.6,
+            ClosesAt = "19:00",
+            Price = "od 80EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Máme doma ploštice, čo robiť?"
+        },
+        new()
+        {
+            Title = "Návrh a realizácia záhrad",
+            Provider = "Záhrady Snov Dizajn",
+            Description = "Komplexné služby od návrhu až po realizáciu okrasných a úžitkových záhrad.",
+            Category = "Bývanie",
+            SubCategory = "Záhradnícke služby",
+            Rating = 5.0,
+            RatingCount = 73,
+            DistanceKm = 10.1,
+            ClosesAt = "17:00",
+            Price = "od 200EUR / návrh",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Chcem si dať navrhnúť záhradu"
+        },
+        new()
+        {
+            Title = "Doučovanie anglického a nemeckého jazyka",
+            Provider = "Jazykovka Lingua Pro",
+            Description = "Individuálne a skupinové kurzy angličtiny a nemčiny pre všetky úrovne.",
+            Category = "Vzdelávanie a rozvoj",
+            SubCategory = "Jazykové kurzy",
+            Rating = 4.9,
+            RatingCount = 68,
+            DistanceKm = 0.7,
+            ClosesAt = "20:00",
+            Price = "od 15EUR / hod",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem doučovanie z angličtiny"
+        },
+        new()
+        {
+            Title = "Strihanie a úprava psov",
+            Provider = "Salón pre Psov Hafík",
+            Description = "Kompletná starostlivosť o srsť psov, kúpanie, strihanie, trimovanie.",
+            Category = "Cestovanie a voľný čas",
+            SubCategory = "Domáce zvieratá",
+            Rating = 4.9,
+            RatingCount = 195,
+            DistanceKm = 3.5,
+            ClosesAt = "18:00",
+            Price = "od 25EUR",
+            ImageUrl = GetRandomImageUrl(),
+            NLquery = "Potrebujem ostrihať psa"
+        },
+            new() {
+                Title = "Servis a pneuservis", Provider = "Premium Car Slovakia", Description = "Komplexný servis vozidiel všetkých značiek a sezónna výmena pneumatík.", Category = "Auto", SubCategory = "Výmena pneumatík", Rating = 4.8, RatingCount = 125, DistanceKm = 5.3, ClosesAt = "18:00", Price = "od 15EUR / výmena", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám kompletný autoservis a pneuservis"
+            },
+            new() {
+                Title = "Rýchla výmena pneu", Provider = "PneuExpres Bratislava", Description = "Expresná výmena pneumatík pre osobné a dodávkové vozidlá. Kontrola tlaku a vyváženie v cene.", Category = "Auto", SubCategory = "Výmena pneumatík", Rating = 4.5, RatingCount = 89, DistanceKm = 7.2, ClosesAt = "19:00", Price = "od 12EUR / výmena", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem rýchlo prezuť auto"
+            },
+            new() {
+                Title = "Autoservis MasterCar", Provider = "MasterCar Slovakia s.r.o.", Description = "Profesionálny autoservis pre osobné a úžitkové vozidlá. Diagnostika, opravy motorov a podvozkov.", Category = "Auto", SubCategory = "Servis", Rating = 4.9, RatingCount = 210, DistanceKm = 3.8, ClosesAt = "17:30", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kde nájdem dobrý autoservis?"
+            },
+            new() {
+                Title = "Autoopravovňa Expres", Provider = "Expres Servis", Description = "Rýchle opravy, pravidelné servisné prehliadky a príprava vozidla na STK.", Category = "Auto", SubCategory = "Servis", Rating = 4.6, RatingCount = 155, DistanceKm = 6.5, ClosesAt = "18:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem opraviť auto a pripraviť na STK"
+            },
+            new() {
+                Title = "Profesionálne čistenie interiérov vozidiel", Provider = "Čisté Auto s.r.o.", Description = "Hĺbkové čistenie interiérov vozidiel, tepovanie, dezinfekcia ozónom.", Category = "Auto", SubCategory = "Čistenie", Rating = 4.7, RatingCount = 95, DistanceKm = 4.1, ClosesAt = "17:00", Price = "od 50EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hĺbkové čistenie interiéru auta a dezinfekcia"
+            },
+            new() {
+                Title = "Autoumývareň a čistenie Lux", Provider = "Lux Car Detailing", Description = "Ručné umývanie, voskovanie a kompletné čistenie vozidiel. Používame ekologické prípravky.", Category = "Auto", SubCategory = "Čistenie", Rating = 4.8, RatingCount = 110, DistanceKm = 8.0, ClosesAt = "19:00", Price = "od 20EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kde mi ručne umyjú a navoskujú auto?"
+            },
+            new() {
+                Title = "STK a EK Kontrola – Bezpečne na ceste", Provider = "Kontrola Vozidiel Bratislava", Description = "Kompletné vykonanie technickej a emisnej kontroly pre všetky typy vozidiel.", Category = "Auto", SubCategory = "Technická kontrola", Rating = 4.5, RatingCount = 180, DistanceKm = 9.5, ClosesAt = "16:00", Price = "od 80EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem spraviť STK a emisnú kontrolu"
+            },
+            new() {
+                Title = "Overená STK a EK", Provider = "Spokojný Vodič", Description = "Certifikovaná stanica technickej a emisnej kontroly s online objednávkovým systémom.", Category = "Auto", SubCategory = "Technická kontrola", Rating = 4.7, RatingCount = 205, DistanceKm = 6.0, ClosesAt = "17:00", Price = "od 75EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kde je overená STK s online objednaním?"
+            },
+            new() {
+                Title = "Autopožičovňa", Provider = "KomfortRent s.r.o.", Description = "Široký výber vozidiel na krátkodobý a dlhodobý prenájom. Individuálne podmienky.", Category = "Auto", SubCategory = "Prenájom", Rating = 4.9, RatingCount = 140, DistanceKm = 2.5, ClosesAt = "20:00", Price = "od 30EUR / deň", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem si požičať auto na víkend"
+            },
+            new() {
+                Title = "Prenájom áut", Provider = "EasyDrive Car Rental", Description = "Flexibilné možnosti prenájmu áut od ekonomických modelov po luxusné vozidlá.", Category = "Auto", SubCategory = "Prenájom", Rating = 4.6, RatingCount = 115, DistanceKm = 11.0, ClosesAt = "21:00", Price = "od 25EUR / deň", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám lacnú autopožičovňu"
+            },
+            new() {
+                Title = "Predaj jazdených vozidiel", Provider = "AutoMarket Plus s.r.o.", Description = "Široká ponuka preverených jazdených vozidiel s garanciou pôvodu a technického stavu.", Category = "Auto", SubCategory = "Kúpa", Rating = 4.8, RatingCount = 190, DistanceKm = 7.8, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem kúpiť overené jazdené auto"
+            },
+            new() {
+                Title = "AutoBazár TopCars", Provider = "TopCars SK", Description = "Nákup a predaj jazdených automobilov. Možnosť výkupu protiúčtom.", Category = "Auto", SubCategory = "Kúpa", Rating = 4.7, RatingCount = 160, DistanceKm = 13.2, ClosesAt = "18:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kde je dobrý autobazár s možnosťou výkupu?"
+            },
+            new() {
+                Title = "Chiptuning a úpravy", Provider = "Power Performance Slovakia", Description = "Optimalizácia výkonu motora, chiptuning a individuálne úpravy vozidiel.", Category = "Auto", SubCategory = "Tuning", Rating = 4.9, RatingCount = 75, DistanceKm = 9.0, ClosesAt = "17:00", Price = "od 250EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem zvýšiť výkon motora auta"
+            },
+            new() {
+                Title = "Autotuning Style – Exteriér a interiér", Provider = "Style Auto Tuning", Description = "Dizajnové úpravy exteriéru a interiéru vozidiel, body kity, fólie, LED osvetlenie.", Category = "Auto", SubCategory = "Tuning", Rating = 4.6, RatingCount = 55, DistanceKm = 4.5, ClosesAt = "18:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Tuning auta, fólie a body kity"
+            },
+            new() {
+                Title = "PZP a havarijné poistenie", Provider = "AutoPoisťovňa SK", Description = "Výhodné podmienky PZP a havarijného poistenia. Asistenčné služby v cene.", Category = "Auto", SubCategory = "Poistenie", Rating = 4.7, RatingCount = 200, DistanceKm = 2.0, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem výhodné PZP a havarijné poistenie"
+            },
+            new() {
+                Title = "Poistenie vozidiel", Provider = "Bez Starostí Poistenie", Description = "Kompletné poistné riešenia pre vaše auto. Porovnanie ponúk viacerých poisťovní.", Category = "Auto", SubCategory = "Poistenie", Rating = 4.8, RatingCount = 185, DistanceKm = 5.0, ClosesAt = "18:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem porovnať ponuky poistenia auta"
+            },
+            new() {
+                Title = "Všetko pre vaše auto", Provider = "AutoDoplnky SK", Description = "Široký sortiment auto doplnkov a príslušenstva. Od rohoží po strešné nosiče.", Category = "Auto", SubCategory = "Doplnky", Rating = 4.5, RatingCount = 90, DistanceKm = 8.5, ClosesAt = "17:30", Price = "od 5EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kde kúpiť autodoplnky a príslušenstvo?"
+            },
+            new() {
+                Title = "Autolampy a elektrické doplnky", Provider = "Svetlo Auta", Description = "Špecializovaný obchod na autolampy, LED osvetlenie a elektrické doplnky pre vozidlá.", Category = "Auto", SubCategory = "Doplnky", Rating = 4.6, RatingCount = 70, DistanceKm = 10.0, ClosesAt = "18:00", Price = "od 10EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem nové žiarovky do auta alebo LED svetlá"
+            },
+            new() {
+                Title = "Autoúvery a leasing", Provider = "Financie Auto s.r.o.", Description = "Výhodné podmienky financovania kúpy nového alebo jazdeného vozidla. Rýchle schválenie.", Category = "Auto", SubCategory = "Financovanie", Rating = 4.7, RatingCount = 130, DistanceKm = 3.5, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem auto na úver alebo leasing"
+            },
+            new() {
+                Title = "Financovanie áut", Provider = "Jednoduché Riešenia", Description = "Poradenstvo a sprostredkovanie autoúverov a leasingu. Ponuky od viacerých bánk.", Category = "Auto", SubCategory = "Financovanie", Rating = 4.8, RatingCount = 100, DistanceKm = 6.8, ClosesAt = "18:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem poradiť s financovaním auta"
+            },
+            new() {
+                Title = "Upratovanie domácností a firiem", Provider = "Čistý Domov s.r.o.", Description = "Pravidelné a generálne upratovanie domácností a komerčných priestorov.", Category = "Bývanie", SubCategory = "Upratovanie", Rating = 4.9, RatingCount = 150, DistanceKm = 3.0, ClosesAt = "18:00", Price = "od 20EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám upratovanie bytu alebo kancelárie"
+            },
+            new() {
+                Title = "Eko Upratovanie", Provider = "Prírodná Čistota", Description = "Ekologické upratovanie s použitím prírodných a hypoalergénnych prostriedkov.", Category = "Bývanie", SubCategory = "Upratovanie", Rating = 4.8, RatingCount = 90, DistanceKm = 7.5, ClosesAt = "17:00", Price = "od 25EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem ekologické upratovanie domácnosti"
+            },
+            // Offer "Návrh a realizácia záhrad" by "Záhrady Snov Dizajn" is a duplicate of a previous entry, keeping unique NLquery
+            new() {
+                Title = "Návrh a realizácia záhrad", Provider = "Záhrady Snov Dizajn", Description = "Komplexné služby od návrhu až po realizáciu okrasných a úžitkových záhrad.", Category = "Bývanie", SubCategory = "Záhradnícke služby", Rating = 5.0, RatingCount = 73, DistanceKm = 10.1, ClosesAt = "17:00", Price = "od 200EUR / návrh", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem si dať spraviť záhradu na kľúč"
+            },
+            new() {
+                Title = "Údržba a revitalizácia záhrad", Provider = "Zelený Relax", Description = "Pravidelná údržba záhrad, kosenie, strihanie, výsadba a sezónne práce.", Category = "Bývanie", SubCategory = "Záhradnícke služby", Rating = 4.7, RatingCount = 60, DistanceKm = 6.7, ClosesAt = "18:00", Price = "od 15EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem pravidelnú údržbu záhrady"
+            },
+            new() {
+                Title = "Nábytok na mieru", Provider = "Stolárstvo DrevoDom", Description = "Výroba nábytku na mieru pre kuchyne, obývacie izby a spálne. Používame kvalitné materiály.", Category = "Bývanie", SubCategory = "Nábytok", Rating = 4.9, RatingCount = 85, DistanceKm = 12.0, ClosesAt = "16:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem kuchyňu na mieru od stolára"
+            },
+            new() {
+                Title = "Moderný nábytok a interiérový dizajn", Provider = "Dizajn Bývania", Description = "Predaj moderného nábytku a bytových doplnkov. Služby interiérového dizajnu.", Category = "Bývanie", SubCategory = "Nábytok", Rating = 4.8, RatingCount = 110, DistanceKm = 4.0, ClosesAt = "19:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám moderný nábytok a interiérového dizajnéra"
+            },
+            new() {
+                Title = "Predaj a servis elektroniky", Provider = "Elektro Svet s.r.o.", Description = "Široký výber spotrebnej elektroniky, bielej techniky a IT produktov. Záručný a pozáručný servis.", Category = "Bývanie", SubCategory = "Elektronika", Rating = 4.7, RatingCount = 170, DistanceKm = 5.5, ClosesAt = "20:00", Price = "od 20EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kde kúpiť televízor a kto mi ho opraví?"
+            },
+            new() {
+                Title = "Smart Home systémy", Provider = "Inteligentné Bývanie", Description = "Návrh a inštalácia smart home systémov pre moderné domácnosti. Bezpečnosť a komfort.", Category = "Bývanie", SubCategory = "Elektronika", Rating = 4.9, RatingCount = 70, DistanceKm = 8.8, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem si dať nainštalovať inteligentnú domácnosť"
+            },
+            new() {
+                Title = "Reality Bratislava – Predaj bytov a domov", Provider = "Reality Domov s.r.o.", Description = "Sprostredkovanie kúpy a predaja nehnuteľností v Bratislave a okolí. Právne poradenstvo.", Category = "Bývanie", SubCategory = "Kúpa nehnuteľností", Rating = 4.8, RatingCount = 130, DistanceKm = 1.5, ClosesAt = "18:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem kúpiť byt v Bratislave cez realitku"
+            },
+            new() {
+                Title = "Investície do nehnuteľností", Provider = "Investičné Reality", Description = "Poradenstvo pri investovaní do nehnuteľností, predaj pozemkov a developerských projektov.", Category = "Bývanie", SubCategory = "Kúpa nehnuteľností", Rating = 4.7, RatingCount = 90, DistanceKm = 9.2, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Ako investovať do nehnuteľností?"
+            },
+            new() {
+                Title = "Prenájom bytov a kancelárií", Provider = "Prenájom Plus s.r.o.", Description = "Sprostredkovanie prenájmu bytov, domov a kancelárskych priestorov. Dlhodobé prenájmy.", Category = "Bývanie", SubCategory = "Prenájom nehnuteľností", Rating = 4.6, RatingCount = 115, DistanceKm = 2.8, ClosesAt = "18:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám byt na prenájom v Bratislave"
+            },
+            new() {
+                Title = "Manažment nehnuteľností", Provider = "Správa Bytov SK", Description = "Komplexná správa bytov a nehnuteľností na prenájom. Zabezpečenie nájomcov a údržby.", Category = "Bývanie", SubCategory = "Prenájom nehnuteľností", Rating = 4.7, RatingCount = 75, DistanceKm = 7.0, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem spravovať byt, ktorý prenajímam"
+            },
+            new() {
+                Title = "Sťahovanie bez Stresu", Provider = "Sťahovacia služba Bez Stresu", Description = "Kompletné sťahovacie služby pre domácnosti a firmy. Balenie, preprava a montáž.", Category = "Bývanie", SubCategory = "Sťahovanie", Rating = 4.9, RatingCount = 105, DistanceKm = 6.0, ClosesAt = "20:00", Price = "od 50EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem sa presťahovať bez starostí"
+            },
+            new() {
+                Title = "Profi Sťahovanie – Rýchlo a bezpečne", Provider = "Profi Sťahovanie", Description = "Profesionálne sťahovanie nábytku, spotrebičov a ťažkých bremien. Poistenie majetku.", Category = "Bývanie", SubCategory = "Sťahovanie", Rating = 4.8, RatingCount = 80, DistanceKm = 11.5, ClosesAt = "19:00", Price = "od 60EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám profesionálnu sťahovaciu službu"
+            },
+            new() {
+                Title = "Poistenie domácnosti", Provider = "Domov v Bezpečí Poisťovňa", Description = "Výhodné poistenie nehnuteľností a domácnosti. Krytie proti živelným pohromám a krádežiam.", Category = "Bývanie", SubCategory = "Poistenie", Rating = 4.7, RatingCount = 140, DistanceKm = 3.3, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem poistiť svoju domácnosť"
+            },
+            new() {
+                Title = "Poistenie nehnuteľností", Provider = "Poisťovňa Rodina", Description = "Komplexné poistné riešenia pre bytové domy, rodinné domy a byty.", Category = "Bývanie", SubCategory = "Poistenie", Rating = 4.6, RatingCount = 120, DistanceKm = 8.0, ClosesAt = "18:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem poistenie bytu alebo domu"
+            },
+            new() {
+                Title = "Interiérové doplnky", Provider = "Dizajnérsky Dotyk", Description = "Originálne bytové doplnky, dekorácie a umelecké predmety pre štýlové bývanie.", Category = "Bývanie", SubCategory = "Doplnky", Rating = 4.8, RatingCount = 65, DistanceKm = 4.5, ClosesAt = "19:00", Price = "od 10EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kde kúpiť pekné bytové doplnky?"
+            },
+            new() {
+                Title = "Záclony a tieniaca technika", Provider = "Svetlo Domova", Description = "Široký výber záclon, žalúzií, roliet a tieniacej techniky na mieru.", Category = "Bývanie", SubCategory = "Doplnky", Rating = 4.7, RatingCount = 50, DistanceKm = 9.8, ClosesAt = "17:30", Price = "od 30EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem záclony a žalúzie na mieru"
+            },
+            new() {
+                Title = "Elektroinštalácie Domov a Firiem", Provider = "Bezpečný Prúd s.r.o.", Description = "Kompletné elektroinštalačné práce pre novostavby a rekonštrukcie. Revízie a poruchová služba.", Category = "Remeselníci", SubCategory = "Elektroinštalácie", Rating = 4.9, RatingCount = 95, DistanceKm = 5.0, ClosesAt = "17:00", Price = "od 30EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem elektrikára na rekonštrukciu domu"
+            },
+            new() {
+                Title = "Elektrikár Expres – Rýchla pomoc", Provider = "Elektrikár Expres", Description = "Nonstop elektrikárska pohotovosť. Opravy porúch, montáž zásuviek a vypínačov.", Category = "Remeselníci", SubCategory = "Elektroinštalácie", Rating = 4.7, RatingCount = 70, DistanceKm = 8.0, ClosesAt = "24:00", Price = "od 40EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem urgentne elektrikára, mám poruchu"
+            },
+            new() {
+                Title = "Vodoinštalácie a kúrenie", Provider = "Voda Teplo s.r.o.", Description = "Inštalácia a oprava vodovodných a vykurovacích systémov. Montáž sanity.", Category = "Remeselníci", SubCategory = "Vodoinštalácie", Rating = 4.8, RatingCount = 80, DistanceKm = 6.5, ClosesAt = "17:00", Price = "od 35EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám vodára a kúrenára"
+            },
+            new() {
+                Title = "Krtkovanie a havarijná služba", Provider = "Odpad Bez Problémov", Description = "Čistenie odpadov, krtkovanie a havarijná služba pre vodovodné systémy.", Category = "Remeselníci", SubCategory = "Vodoinštalácie", Rating = 4.6, RatingCount = 60, DistanceKm = 10.0, ClosesAt = "24:00", Price = "od 50EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Mám upchatý odpad, potrebujem havarijnú službu"
+            },
+            new() {
+                Title = "Stolárstvo na mieru", Provider = "DrevoArt s.r.o.", Description = "Výroba nábytku na mieru, dvere, okná a iné drevené výrobky. Kvalitné spracovanie.", Category = "Remeselníci", SubCategory = "Stolárske práce", Rating = 4.9, RatingCount = 70, DistanceKm = 11.0, ClosesAt = "16:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám stolára na výrobu nábytku na mieru"
+            },
+            new() {
+                Title = "Podlahy a drevené konštrukcie", Provider = "Majster Dreva", Description = "Pokládka drevených podláh, renovácia parkiet a realizácia drevených konštrukcií.", Category = "Remeselníci", SubCategory = "Stolárske práce", Rating = 4.7, RatingCount = 55, DistanceKm = 7.2, ClosesAt = "17:00", Price = "od 25EUR / m²", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem položiť drevenú podlahu alebo zrenovovať parkety"
+            },
+            new() {
+                Title = "Inštalácia solárnych panelov", Provider = "Slnko Energia s.r.o.", Description = "Návrh a inštalácia fotovoltických systémov pre domácnosti a firmy. Dotácie a poradenstvo.", Category = "Remeselníci", SubCategory = "Solárne panely", Rating = 4.9, RatingCount = 100, DistanceKm = 15.0, ClosesAt = "16:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem si dať nainštalovať solárne panely na dom"
+            },
+            new() {
+                Title = "Solárne riešenia pre dom", Provider = "Zelená Strecha", Description = "Komplexné riešenia pre solárne ohrevy vody a fotovoltické elektrárne na strechách.", Category = "Remeselníci", SubCategory = "Solárne panely", Rating = 4.8, RatingCount = 85, DistanceKm = 13.5, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Fotovoltika na strechu domu"
+            },
+            new() {
+                Title = "Maliarske a natieračské práce", Provider = "Farby Domu s.r.o.", Description = "Maliarske práce interiérov a exteriérov, natieračské práce, stierkovanie.", Category = "Remeselníci", SubCategory = "Maliarske práce", Rating = 4.7, RatingCount = 75, DistanceKm = 4.0, ClosesAt = "17:00", Price = "od 5EUR / m²", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem vymaľovať byt a natrieť fasádu"
+            },
+            new() {
+                Title = "Dekoratívne maľby", Provider = "Art Steny", Description = "Originálne dekoratívne maľby, tapetovanie a umelecké techniky pre steny.", Category = "Remeselníci", SubCategory = "Maliarske práce", Rating = 4.8, RatingCount = 60, DistanceKm = 9.0, ClosesAt = "18:00", Price = "od 10EUR / m²", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem dekoratívnu maľbu na stenu alebo tapetovanie"
+            },
+            new() {
+                Title = "Okná a dvere", Provider = "Kvalitné Okná SK", Description = "Predaj a montáž plastových, hliníkových a drevených okien a dverí. Rolety a žalúzie.", Category = "Remeselníci", SubCategory = "Okná a tieniaca technika", Rating = 4.9, RatingCount = 110, DistanceKm = 6.0, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem nové plastové okná a dvere"
+            },
+            new() {
+                Title = "Tieniaca technika", Provider = "Slnečná Ochrana", Description = "Široký výber vnútornej a vonkajšej tieniacej techniky. Markízy, pergoly a screenové rolety.", Category = "Remeselníci", SubCategory = "Okná a tieniaca technika", Rating = 4.7, RatingCount = 80, DistanceKm = 10.5, ClosesAt = "18:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám markízy alebo pergoly na terasu"
+            },
+            new() {
+                Title = "Stavebné práce na kľúč", Provider = "Stavba Snov s.r.o.", Description = "Kompletná realizácia stavieb na kľúč. Rodinné domy, rekonštrukcie a prístavby.", Category = "Remeselníci", SubCategory = "Stavebné práce", Rating = 4.9, RatingCount = 90, DistanceKm = 14.0, ClosesAt = "16:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem postaviť rodinný dom na kľúč"
+            },
+            new() {
+                Title = "Murárske a fasádne práce", Provider = "Majster Múr", Description = "Murárske práce, omietky, fasády a zatepľovanie budov. Opravy a rekonštrukcie.", Category = "Remeselníci", SubCategory = "Stavebné práce", Rating = 4.8, RatingCount = 70, DistanceKm = 8.5, ClosesAt = "17:00", Price = "od 15EUR / m²", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem murára na omietky a zateplenie fasády"
+            },
+            new() {
+                Title = "Vykurovanie a klimatizácia", Provider = "Teplo Chlad s.r.o.", Description = "Montáž a servis vykurovacích systémov, tepelných čerpadiel a klimatizácie.", Category = "Remeselníci", SubCategory = "Vykurovanie a chladenie", Rating = 4.9, RatingCount = 100, DistanceKm = 7.0, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Montáž tepelného čerpadla a klimatizácie"
+            },
+            new() {
+                Title = "Servis klimatizácií", Provider = "Čistý Vzduch", Description = "Pravidelný servis a čistenie klimatizačných jednotiek pre domácnosti a kancelárie.", Category = "Remeselníci", SubCategory = "Vykurovanie a chladenie", Rating = 4.7, RatingCount = 65, DistanceKm = 5.5, ClosesAt = "18:00", Price = "od 60EUR / jednotka", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem vyčistiť klimatizáciu doma"
+            },
+            new() {
+                Title = "Všeobecná ambulancia pre dospelých", Provider = "Zdravie Plus s.r.o.", Description = "Komplexná primárna zdravotná starostlivosť. Preventívne prehliadky a očkovanie.", Category = "Zdravie", SubCategory = "Zdravotná starostlivosť", Rating = 4.8, RatingCount = 150, DistanceKm = 2.0, ClosesAt = "16:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám všeobecného lekára pre dospelých"
+            },
+            new() {
+                Title = "Pediatrická ambulancia", Provider = "Detské Zdravie", Description = "Špecializovaná starostlivosť pre deti a dorast. Pravidelné kontroly a poradenstvo pre rodičov.", Category = "Zdravie", SubCategory = "Zdravotná starostlivosť", Rating = 4.9, RatingCount = 120, DistanceKm = 3.5, ClosesAt = "15:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám detského lekára pre moje dieťa"
+            },
+            new() {
+                Title = "Psychologické poradenstvo", Provider = "Duševná Pohoda", Description = "Individuálne a párové psychologické poradenstvo. Terapia úzkosti, depresie a stresu.", Category = "Zdravie", SubCategory = "Duševné zdravie", Rating = 4.9, RatingCount = 85, DistanceKm = 5.0, ClosesAt = "19:00", Price = "od 50EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem psychológa alebo terapiu"
+            },
+            new() {
+                Title = "Koučing a sebarozvoj", Provider = "Rozvoj Mysle", Description = "Life coaching, kariérne poradenstvo a techniky na zlepšenie duševnej pohody.", Category = "Zdravie", SubCategory = "Duševné zdravie", Rating = 4.8, RatingCount = 60, DistanceKm = 8.0, ClosesAt = "18:00", Price = "od 70EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám life coacha pre osobný rozvoj"
+            },
+            new() {
+                Title = "Fitness centrum Power Gym", Provider = "Power Gym Bratislava", Description = "Moderné fitness centrum s vybavením pre silový a kardio tréning. Skupinové lekcie.", Category = "Zdravie", SubCategory = "Fitness a šport", Rating = 4.7, RatingCount = 200, DistanceKm = 4.0, ClosesAt = "22:00", Price = "od 30EUR / mesiac", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kde je dobré fitko v Bratislave?"
+            },
+            new() {
+                Title = "Joga štúdio Harmónia", Provider = "Joga Harmónia", Description = "Kurzy jogy pre začiatočníkov a pokročilých. Relaxačné a meditačné techniky.", Category = "Zdravie", SubCategory = "Fitness a šport", Rating = 4.9, RatingCount = 110, DistanceKm = 6.5, ClosesAt = "20:00", Price = "od 10EUR / lekcia", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem začať chodiť na jogu"
+            },
+            new() {
+                Title = "Výživové poradenstvo", Provider = "Zdravé Stravovanie", Description = "Individuálne výživové plány, poradenstvo pre chudnutie a naberanie svalovej hmoty.", Category = "Zdravie", SubCategory = "Výživa a doplnky", Rating = 4.8, RatingCount = 90, DistanceKm = 3.0, ClosesAt = "17:00", Price = "od 40EUR / konzultácia", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem poradiť s chudnutím od odborníka"
+            },
+            new() {
+                Title = "Prírodné doplnky výživy", Provider = "Vitalita SK", Description = "Predaj kvalitných prírodných doplnkov výživy, vitamínov a minerálov pre zdravie.", Category = "Zdravie", SubCategory = "Výživa a doplnky", Rating = 4.7, RatingCount = 75, DistanceKm = 7.0, ClosesAt = "18:00", Price = "od 5EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kde kúpiť kvalitné vitamíny a doplnky výživy?"
+            },
+            new() {
+                Title = "Wellness a Spa Relax", Provider = "Wellness Relax Centrum", Description = "Bazény, sauny, masáže a relaxačné procedúry pre dokonalý oddych a regeneráciu.", Category = "Zdravie", SubCategory = "Wellness a relax", Rating = 4.9, RatingCount = 130, DistanceKm = 9.0, ClosesAt = "22:00", Price = "od 20EUR / vstup", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem ísť do wellness centra na relax"
+            },
+            new() {
+                Title = "Thajské masáže", Provider = "Ázia Relax Masáže", Description = "Tradičné thajské masáže, relaxačné masáže a aromaterapia pre uvoľnenie tela i mysle.", Category = "Zdravie", SubCategory = "Wellness a relax", Rating = 4.8, RatingCount = 100, DistanceKm = 5.5, ClosesAt = "21:00", Price = "od 35EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám dobrú thajskú masáž"
+            },
+            new() {
+                Title = "Komplexná preventívna prehliadka", Provider = "ProHealth Klinika", Description = "Kompletné preventívne prehliadky, laboratórne testy a diagnostika.", Category = "Zdravie", SubCategory = "Preventívne prehliadky", Rating = 4.9, RatingCount = 115, DistanceKm = 1.8, ClosesAt = "16:00", Price = "od 150EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem absolvovať komplexnú preventívnu prehliadku"
+            },
+            new() {
+                Title = "Programy pre zdravie", Provider = "Zdravie na Prvom Mieste", Description = "Individuálne programy pre zlepšenie životného štýlu a prevenciu chorôb.", Category = "Zdravie", SubCategory = "Preventívne prehliadky", Rating = 4.7, RatingCount = 80, DistanceKm = 4.2, ClosesAt = "17:00", Price = "od 100EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Program na zlepšenie zdravia a životného štýlu"
+            },
+            new() {
+                Title = "Zdravotné poistenie", Provider = "Poistenie Pre Každého", Description = "Ponuka zdravotného poistenia od rôznych poisťovní. Poradenstvo a asistencia.", Category = "Zdravie", SubCategory = "Zdravotné poistenie", Rating = 4.8, RatingCount = 140, DistanceKm = 2.5, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Aké zdravotné poistenie si vybrať?"
+            },
+            new() {
+                Title = "Súkromné zdravotné poistenie", Provider = "Premium Zdravie Poisťovňa", Description = "Možnosti súkromného zdravotného poistenia s rozšíreným krytím a službami.", Category = "Zdravie", SubCategory = "Zdravotné poistenie", Rating = 4.9, RatingCount = 95, DistanceKm = 6.0, ClosesAt = "18:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem si uzavrieť súkromné zdravotné poistenie"
+            },
+            new() {
+                Title = "Fyzioterapia a rehabilitácia", Provider = "Pohyb Bez Bolesti", Description = "Fyzioterapia, masáže a rehabilitácia po úrazoch a operáciách. Individuálny prístup.", Category = "Zdravie", SubCategory = "Rehabilitácia", Rating = 4.9, RatingCount = 100, DistanceKm = 3.8, ClosesAt = "18:00", Price = "od 30EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem fyzioterapiu po úraze"
+            },
+            new() {
+                Title = "Rehabilitačné cvičenia", Provider = "Zdravý Chrbát Centrum", Description = "Cvičenia na posilnenie chrbta a kĺbov. Prevencia a liečba bolesti pohybového aparátu.", Category = "Zdravie", SubCategory = "Rehabilitácia", Rating = 4.8, RatingCount = 70, DistanceKm = 7.5, ClosesAt = "19:00", Price = "od 25EUR / lekcia", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Cvičenia na boľavý chrbát a kĺby"
+            },
+            new() {
+                Title = "Kaderníctvo pre dámy a pánov", Provider = "Kaderníctvo Trendy Vlasy", Description = "Strihanie, farbenie, melírovanie a spoločenské účesy. Profesionálna starostlivosť o vlasy.", Category = "Zdravie", SubCategory = "Kaderníctvo", Rating = 4.7, RatingCount = 120, DistanceKm = 2.2, ClosesAt = "19:00", Price = "od 15EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám dobré kaderníctvo na strihanie a farbenie"
+            },
+            new() {
+                Title = "Barber shop", Provider = "Pánsky Strih", Description = "Klasické a moderné pánske strihy, úprava brady a holenie britvou.", Category = "Zdravie", SubCategory = "Kaderníctvo", Rating = 4.8, RatingCount = 90, DistanceKm = 5.0, ClosesAt = "20:00", Price = "od 12EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kde je dobrý barber shop na pánsky strih a bradu?"
+            },
+            new() {
+                Title = "Kozmetický salón Krása Pleť", Provider = "Kozmetický salón Krása Pleť", Description = "Kompletné kozmetické ošetrenia tváre a tela. Masáže, depilácia, líčenie.", Category = "Zdravie", SubCategory = "Kozmetika", Rating = 4.9, RatingCount = 110, DistanceKm = 3.0, ClosesAt = "18:00", Price = "od 25EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem ísť na kozmetické ošetrenie tváre"
+            },
+            new() {
+                Title = "Mejkap a vizážistika", Provider = "Glamour Look Studio", Description = "Profesionálne líčenie na rôzne príležitosti. Kurzy líčenia a vizážistiky.", Category = "Zdravie", SubCategory = "Kozmetika", Rating = 4.8, RatingCount = 70, DistanceKm = 6.8, ClosesAt = "19:00", Price = "od 40EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem profesionálny mejkap na svadbu"
+            },
+            new() {
+                Title = "Manikúra a pedikúra", Provider = "Pekné Ruky Nohy Salón", Description = "Kompletná starostlivosť o ruky a nohy. Gélové nechty, lakovanie, parafínové zábaly.", Category = "Zdravie", SubCategory = "Manikúra a pedikúra", Rating = 4.7, RatingCount = 95, DistanceKm = 2.5, ClosesAt = "18:00", Price = "od 15EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám manikúru a pedikúru v okolí"
+            },
+            new() {
+                Title = "Nechtové štúdio", Provider = "Art Nails Bratislava", Description = "Kreatívne nail art, japonská manikúra a wellness pedikúra.", Category = "Zdravie", SubCategory = "Manikúra a pedikúra", Rating = 4.8, RatingCount = 80, DistanceKm = 4.5, ClosesAt = "19:00", Price = "od 18EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem si dať spraviť gélové nechty alebo nail art"
+            },
+            new() {
+                Title = "Angličtina pre všetkých", Provider = "Jazyková škola Lingua", Description = "Kurzy anglického jazyka pre všetky úrovne. Príprava na medzinárodné certifikáty.", Category = "Vzdelávanie a rozvoj", SubCategory = "Školy a kurzy", Rating = 4.8, RatingCount = 150, DistanceKm = 3.0, ClosesAt = "20:00", Price = "od 150EUR / kurz", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kurz angličtiny pre začiatočníkov aj pokročilých"
+            },
+            new() {
+                Title = "Kurzy pre dospelých", Provider = "Centrum Vzdelávania", Description = "Kurzy pre dospelých v oblasti IT, marketingu, financií a osobného rozvoja.", Category = "Vzdelávanie a rozvoj", SubCategory = "Školy a kurzy", Rating = 4.7, RatingCount = 110, DistanceKm = 5.5, ClosesAt = "19:00", Price = "od 100EUR / kurz", ImageUrl = GetRandomImageUrl(),
+                NLquery = "IT kurzy pre dospelých alebo kurz marketingu"
+            },
+            new() {
+                Title = "Online kurzy Programovanie pre začiatočníkov", Provider = "Kód Akadémia", Description = "Interaktívne online kurzy programovania v jazykoch Python, Java a JavaScript.", Category = "Vzdelávanie a rozvoj", SubCategory = "Online vzdelávanie", Rating = 4.9, RatingCount = 90, DistanceKm = 0.0, ClosesAt = "24:00", Price = "od 99EUR / kurz", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem sa naučiť programovať online"
+            },
+            new() {
+                Title = "E-learning platforma", Provider = "Vedomosti Online", Description = "Široká ponuka online kurzov z rôznych oblastí. Certifikované programy.", Category = "Vzdelávanie a rozvoj", SubCategory = "Online vzdelávanie", Rating = 4.8, RatingCount = 75, DistanceKm = 0.0, ClosesAt = "24:00", Price = "od 50EUR / kurz", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám online kurzy s certifikátom"
+            },
+            new() {
+                Title = "Doučovanie matematiky a fyziky", Provider = "Majster Školy", Description = "Individuálne doučovanie pre žiakov základných a stredných škôl. Príprava na prijímačky.", Category = "Vzdelávanie a rozvoj", SubCategory = "Doučovanie", Rating = 4.9, RatingCount = 80, DistanceKm = 4.0, ClosesAt = "19:00", Price = "od 15EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem doučovanie z matematiky pre syna"
+            },
+            new() {
+                Title = "Príprava na maturitu", Provider = "Maturita Bez Stresu", Description = "Intenzívne kurzy a doučovanie pre prípravu na maturitné skúšky zo všetkých predmetov.", Category = "Vzdelávanie a rozvoj", SubCategory = "Doučovanie", Rating = 4.7, RatingCount = 65, DistanceKm = 6.5, ClosesAt = "20:00", Price = "od 20EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Príprava na maturitu zo slovenčiny a angličtiny"
+            },
+            new() {
+                Title = "Kariérne poradenstvo a koučing", Provider = "Cesta K Úspechu", Description = "Poradenstvo pri hľadaní práce, príprava na pohovory a plánovanie kariéry.", Category = "Vzdelávanie a rozvoj", SubCategory = "Kariérne poradenstvo", Rating = 4.9, RatingCount = 50, DistanceKm = 3.5, ClosesAt = "18:00", Price = "od 60EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám kariérneho poradcu na zmenu práce"
+            },
+            new() {
+                Title = "Headhunting a personalistika", Provider = "Talent Hunters s.r.o.", Description = "Poradenstvo pre firmy pri hľadaní zamestnancov a pre uchádzačov pri hľadaní ideálnej pozície.", Category = "Vzdelávanie a rozvoj", SubCategory = "Kariérne poradenstvo", Rating = 4.8, RatingCount = 40, DistanceKm = 7.0, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Pomoc pri hľadaní zamestnania od personalistu"
+            },
+            new() {
+                Title = "Jazykové kurzy pre firmy – Business English", Provider = "Business English Academy", Description = "Firemné jazykové kurzy zamerané na obchodnú angličtinu a komunikáciu.", Category = "Vzdelávanie a rozvoj", SubCategory = "Jazykové kurzy", Rating = 4.9, RatingCount = 80, DistanceKm = 2.0, ClosesAt = "20:00", Price = "od 200EUR / kurz", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Firemný kurz obchodnej angličtiny"
+            },
+            new() {
+                Title = "Nemecký jazyk – Goethe Inštitút", Provider = "Goethe Inštitút Bratislava", Description = "Komplexné kurzy nemeckého jazyka pre všetky úrovne. Kultúrne podujatia.", Category = "Vzdelávanie a rozvoj", SubCategory = "Jazykové kurzy", Rating = 4.8, RatingCount = 95, DistanceKm = 4.5, ClosesAt = "18:00", Price = "od 180EUR / kurz", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kurz nemčiny v Goethe Inštitúte"
+            },
+            new() {
+                Title = "IT Certifikácie", Provider = "Tech Academy", Description = "Prípravné kurzy a certifikačné skúšky pre IT špecialistov (Cisco, Microsoft, CompTIA).", Category = "Vzdelávanie a rozvoj", SubCategory = "Certifikácie a školenia", Rating = 4.9, RatingCount = 100, DistanceKm = 5.0, ClosesAt = "19:00", Price = "od 300EUR / kurz", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem získať IT certifikát Cisco alebo Microsoft"
+            },
+            new() {
+                Title = "Manažérske školenia", Provider = "Líderská Akadémia", Description = "Rozvoj líderských a manažérskych zručností. Komunikácia, motivácia, time management.", Category = "Vzdelávanie a rozvoj", SubCategory = "Certifikácie a školenia", Rating = 4.8, RatingCount = 70, DistanceKm = 8.0, ClosesAt = "17:00", Price = "od 250EUR / školenie", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Školenie manažérskych zručností a líderstva"
+            },
+            new() {
+                Title = "Montessori škôlka", Provider = "Montessori škôlka Hravé Detstvo", Description = "Montessori pedagogika pre deti od 3 do 6 rokov. Individuálny prístup a rozvoj potenciálu.", Category = "Vzdelávanie a rozvoj", SubCategory = "Detské vzdelávanie", Rating = 4.9, RatingCount = 60, DistanceKm = 6.0, ClosesAt = "16:00", Price = "od 350EUR / mesiac", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám Montessori škôlku pre dieťa"
+            },
+            new() {
+                Title = "Detské krúžky", Provider = "Kreatívne Deti Centrum", Description = "Rôznorodé krúžky pre deti. Výtvarná výchova, hudobná škola, športové aktivity.", Category = "Vzdelávanie a rozvoj", SubCategory = "Detské vzdelávanie", Rating = 4.7, RatingCount = 85, DistanceKm = 2.5, ClosesAt = "18:00", Price = "od 50EUR / mesiac", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Výtvarný krúžok alebo športový krúžok pre deti"
+            },
+            new() {
+                Title = "Osobný mentoring", Provider = "Múdry Mentor", Description = "Individuálny mentoring pre osobný a profesionálny rast. Pomoc pri dosahovaní cieľov.", Category = "Vzdelávanie a rozvoj", SubCategory = "Mentoring a koučing", Rating = 4.9, RatingCount = 45, DistanceKm = 4.0, ClosesAt = "19:00", Price = "od 80EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem osobného mentora pre kariérny rast"
+            },
+            new() {
+                Title = "Business koučing", Provider = "Rast V Biznise", Description = "Koučing pre podnikateľov a manažérov. Strategické plánovanie a rozvoj firmy.", Category = "Vzdelávanie a rozvoj", SubCategory = "Mentoring a koučing", Rating = 4.8, RatingCount = 35, DistanceKm = 7.5, ClosesAt = "17:00", Price = "od 100EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Koučing pre podnikateľov na rozvoj firmy"
+            },
+            new() {
+                Title = "Zakladanie s.r.o. a živnosti", Provider = "Firma Rýchlo s.r.o.", Description = "Kompletné služby pre založenie s.r.o., živnosti a iných právnych foriem. Online konzultácie.", Category = "Administratíva", SubCategory = "Zakladanie firmy", Rating = 4.9, RatingCount = 90, DistanceKm = 2.0, ClosesAt = "17:00", Price = "od 150EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem si založiť s.r.o. alebo živnosť"
+            },
+            new() {
+                Title = "Zmeny v obchodnom registri", Provider = "Biznis Zmeny", Description = "Realizácia zmien v obchodnom registri, likvidácia firiem a predaj ready-made spoločností.", Category = "Administratíva", SubCategory = "Zakladanie firmy", Rating = 4.8, RatingCount = 70, DistanceKm = 5.0, ClosesAt = "16:00", Price = "od 100EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem urobiť zmenu v obchodnom registri"
+            },
+            new() {
+                Title = "Komplexné účtovníctvo", Provider = "Účto Expert s.r.o.", Description = "Vedenie podvojného a jednoduchého účtovníctva. Mzdové účtovníctvo a daňové poradenstvo.", Category = "Administratíva", SubCategory = "Účtovníctvo a dane", Rating = 4.9, RatingCount = 110, DistanceKm = 3.0, ClosesAt = "17:00", Price = "od 80EUR / mesiac", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám účtovníka pre moju firmu"
+            },
+            new() {
+                Title = "Daňové poradenstvo", Provider = "Daňový Radca", Description = "Komplexné daňové poradenstvo pre fyzické a právnické osoby. Optimalizácia daní.", Category = "Administratíva", SubCategory = "Účtovníctvo a dane", Rating = 4.8, RatingCount = 85, DistanceKm = 6.5, ClosesAt = "16:30", Price = "od 50EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem daňového poradcu na optimalizáciu daní"
+            },
+            new() {
+                Title = "Právne služby", Provider = "Advokátska Kancelária Lex", Description = "Poskytovanie právnych služieb v oblasti občianskeho, obchodného a pracovného práva.", Category = "Administratíva", SubCategory = "Právne služby", Rating = 4.9, RatingCount = 95, DistanceKm = 1.5, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám advokáta pre obchodné právo"
+            },
+            new() {
+                Title = "Online právne poradenstvo", Provider = "Právnik Online", Description = "Rýchle a efektívne právne poradenstvo prostredníctvom online komunikácie.", Category = "Administratíva", SubCategory = "Právne služby", Rating = 4.7, RatingCount = 70, DistanceKm = 0.0, ClosesAt = "18:00", Price = "od 30EUR / konzultácia", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem rýchlu právnu radu online"
+            },
+            new() {
+                Title = "Vývoj webových aplikácií", Provider = "Web Dev Solutions s.r.o.", Description = "Návrh a vývoj moderných webových aplikácií a firemných webstránok. E-commerce riešenia.", Category = "Administratíva", SubCategory = "Programovanie", Rating = 4.9, RatingCount = 80, DistanceKm = 4.0, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem vytvoriť webstránku alebo e-shop"
+            },
+            new() {
+                Title = "Mobilné aplikácie", Provider = "App Creators", Description = "Vývoj natívnych a hybridných mobilných aplikácií pre iOS a Android platformy.", Category = "Administratíva", SubCategory = "Programovanie", Rating = 4.8, RatingCount = 65, DistanceKm = 8.0, ClosesAt = "18:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem si dať vyvinúť mobilnú aplikáciu"
+            },
+            new() {
+                Title = "Digitálny marketing", Provider = "Online Rast Agentúra", Description = "Komplexné služby digitálneho marketingu. SEO, PPC kampane, sociálne siete, obsahový marketing.", Category = "Administratíva", SubCategory = "Marketing", Rating = 4.9, RatingCount = 100, DistanceKm = 3.0, ClosesAt = "17:00", Price = "od 300EUR / mesiac", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám marketingovú agentúru na SEO a PPC"
+            },
+            new() {
+                Title = "Grafický dizajn a branding", Provider = "Kreatívna Reklama", Description = "Tvorba firemnej identity, loga, vizitiek, letákov a grafických návrhov.", Category = "Administratíva", SubCategory = "Marketing", Rating = 4.8, RatingCount = 75, DistanceKm = 5.5, ClosesAt = "18:00", Price = "od 100EUR / projekt", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem vytvoriť logo a firemnú identitu"
+            },
+            new() {
+                Title = "Zájazdy a dovolenky", Provider = "Cestovná Kancelária Svet", Description = "Široká ponuka zájazdov do celého sveta. Exotické dovolenky, poznávacie zájazdy a pobyty pri mori.", Category = "Cestovanie a voľný čas", SubCategory = "Dovolenky a pobyty", Rating = 4.9, RatingCount = 180, DistanceKm = 2.0, ClosesAt = "18:00", Price = "od 300EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám exotickú dovolenku alebo poznávací zájazd"
+            },
+            new() {
+                Title = "Wellness pobyty na Slovensku", Provider = "Relax na Horách", Description = "Pobyty v slovenských horách s wellness a relaxačnými balíčkami.", Category = "Cestovanie a voľný čas", SubCategory = "Dovolenky a pobyty", Rating = 4.8, RatingCount = 120, DistanceKm = 0.0, ClosesAt = "24:00", Price = "od 80EUR / noc", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Wellness pobyt na Slovensku pre dvoch víkend"
+            },
+            new() {
+                Title = "Divadlo a koncerty", Provider = "Kultúra Bratislava", Description = "Predpredaj vstupeniek na divadelné predstavenia, koncerty a hudobné festivaly.", Category = "Cestovanie a voľný čas", SubCategory = "Kultúrne podujatia", Rating = 4.7, RatingCount = 150, DistanceKm = 1.0, ClosesAt = "20:00", Price = "od 10EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kam na koncert alebo do divadla v Bratislave?"
+            },
+            new() {
+                Title = "Múzeá a galérie", Provider = "Umenie V Meste", Description = "Prehľad výstav, múzeí a galérií v Bratislave. Komentované prehliadky.", Category = "Cestovanie a voľný čas", SubCategory = "Kultúrne podujatia", Rating = 4.8, RatingCount = 90, DistanceKm = 0.5, ClosesAt = "17:00", Price = "od 5EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Aké sú aktuálne výstavy v múzeách a galériách?"
+            },
+            new() {
+                Title = "Tenisové kurty a tréning", Provider = "Tenis Klub Bratislava", Description = "Prenájom tenisových kurtov a individuálny tréning s profesionálnymi trénermi.", Category = "Cestovanie a voľný čas", SubCategory = "Športové aktivity", Rating = 4.8, RatingCount = 100, DistanceKm = 7.0, ClosesAt = "21:00", Price = "od 15EUR / hod", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem si zahrať tenis, hľadám kurt alebo trénera"
+            },
+            new() {
+                Title = "Plaváreň a Aqua Park", Provider = "Vodný Svet", Description = "Vodný park s bazénmi, tobogánmi a wellness zónou pre celú rodinu.", Category = "Cestovanie a voľný čas", SubCategory = "Športové aktivity", Rating = 4.7, RatingCount = 130, DistanceKm = 12.0, ClosesAt = "20:00", Price = "od 10EUR / vstup", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kde je najbližšia plaváreň alebo aquapark?"
+            },
+            new() {
+                Title = "Kreatívne kurzy a dielne", Provider = "Hobby Art Studio", Description = "Kurzy maľovania, keramiky, šitia a iných kreatívnych činností pre dospelých.", Category = "Cestovanie a voľný čas", SubCategory = "Hobby", Rating = 4.9, RatingCount = 60, DistanceKm = 4.5, ClosesAt = "19:00", Price = "od 25EUR / kurz", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kurz maľovania alebo keramiky pre dospelých"
+            },
+            new() {
+                Title = "Zberateľské predmety", Provider = "Svet Zberateľov", Description = "Predaj a výkup zberateľských predmetov. Mince, známky, starožitnosti.", Category = "Cestovanie a voľný čas", SubCategory = "Hobby", Rating = 4.6, RatingCount = 40, DistanceKm = 8.0, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kde môžem predať alebo kúpiť zberateľské mince?"
+            },
+            new() {
+                Title = "Kulinársky Zážitok", Provider = "Reštaurácia Gurmán", Description = "Elegantná reštaurácia s ponukou medzinárodnej a slovenskej kuchyne. Degustačné menu.", Category = "Cestovanie a voľný čas", SubCategory = "Reštaurácie a gastro", Rating = 4.9, RatingCount = 180, DistanceKm = 0.8, ClosesAt = "23:00", Price = "od 20EUR / jedlo", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Hľadám dobrú reštauráciu na večeru v centre"
+            },
+            new() {
+                Title = "Kaviareň a cukráreň Sladký Raj", Provider = "Sladký Raj", Description = "Príjemná kaviareň s ponukou čerstvej kávy, zákuskov a raňajkového menu.", Category = "Cestovanie a voľný čas", SubCategory = "Reštaurácie a gastro", Rating = 4.7, RatingCount = 150, DistanceKm = 1.5, ClosesAt = "21:00", Price = "od 3EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kam na dobrú kávu a koláč?"
+            },
+            new() {
+                Title = "Veterinárna klinika Zvieratko", Provider = "Veterinárna klinika Zvieratko", Description = "Komplexná veterinárna starostlivosť pre domáce zvieratá. Očkovanie, operácie, diagnostika.", Category = "Cestovanie a voľný čas", SubCategory = "Domáce zvieratá", Rating = 4.9, RatingCount = 110, DistanceKm = 5.0, ClosesAt = "18:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem veterinára pre môjho psa alebo mačku"
+            },
+            new() {
+                Title = "Chovateľské potreby", Provider = "Pet Shop Happy Pet", Description = "Široký výber krmív, hračiek a doplnkov pre psov, mačky a iné domáce zvieratá.", Category = "Cestovanie a voľný čas", SubCategory = "Domáce zvieratá", Rating = 4.7, RatingCount = 85, DistanceKm = 3.0, ClosesAt = "19:00", Price = "od 2EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Kde kúpiť krmivo a hračky pre psa?"
+            },
+            new() {
+                Title = "Turistické trasy a vybavenie", Provider = "Hory Lesy", Description = "Informácie o turistických trasách, predaj turistického vybavenia a sprievodcovské služby.", Category = "Cestovanie a voľný čas", SubCategory = "Outdoor a turistika", Rating = 4.8, RatingCount = 70, DistanceKm = 6.0, ClosesAt = "17:00", Price = "od 5EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Turistika v Malých Karpatoch, trasy a vybavenie"
+            },
+            new() {
+                Title = "Adrenalínové zážitky", Provider = "Extrémne Športy SK", Description = "Ponuka adrenalínových zážitkov. Parašutizmus, rafting, lezenie, ferraty.", Category = "Cestovanie a voľný čas", SubCategory = "Outdoor a turistika", Rating = 4.9, RatingCount = 50, DistanceKm = 15.0, ClosesAt = "18:00", Price = "od 50EUR", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Chcem zažiť adrenalín, parašutizmus alebo rafting"
+            },
+            new() {
+                Title = "Cestovné poistenie", Provider = "Poistenie Pre Cestovanie", Description = "Komplexné cestovné poistenie pre dovolenky a služobné cesty. Krytie liečebných nákladov.", Category = "Cestovanie a voľný čas", SubCategory = "Cestovné poistenie", Rating = 4.8, RatingCount = 160, DistanceKm = 2.5, ClosesAt = "17:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Potrebujem cestovné poistenie do zahraničia"
+            },
+            new() {
+                Title = "Asistenčné služby na cestách", Provider = "Global Asistencia", Description = "Nonstop asistenčné služby na cestách v rámci SR a Európy. Odťah, opravy na mieste.", Category = "Cestovanie a voľný čas", SubCategory = "Cestovné poistenie", Rating = 4.7, RatingCount = 110, DistanceKm = 7.0, ClosesAt = "24:00", Price = "individuálne", ImageUrl = GetRandomImageUrl(),
+                NLquery = "Asistenčná služba na ceste, odťahovka"
+            }
+        };
+    }
 }
