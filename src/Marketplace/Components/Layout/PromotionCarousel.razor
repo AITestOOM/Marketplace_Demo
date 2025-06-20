@@ -1,6 +1,8 @@
 @using MudBlazor
 @using Marketplace.Components.Pages
 @using static Marketplace.Components.Pages.Home 
+@using static Marketplace.Components.Layout.MainLayout
+
 @if (Offers != null && Offers.Any())
 {
     <MudCarousel Class="mud-elevation-25" Style="height:140px; border-radius: 3px;"
@@ -43,15 +45,6 @@
 </style>
 
 @code {
-    // Definition of Offer class (assumed structure)
-    // public class Offer
-    // {
-    //     public string ImageUrl { get; set; }
-    //     public string Title { get; set; }
-    //     public string Provider { get; set; } // Used as subtitle
-    //     // other properties...
-    // }
-
     [Parameter] public List<Offer> Offers { get; set; } = new();
     [Parameter] public EventCallback<Offer> OnOfferClick { get; set; }
 }

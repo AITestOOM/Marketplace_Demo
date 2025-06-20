@@ -1,21 +1,23 @@
 ﻿@using MudBlazor
+@using static Marketplace.Components.Pages.Home
+@using static Marketplace.Components.Layout.MainLayout
+@using System.Timers
 
 <div class="search-container-wrapper">
-    @* Section 1: Header with Back Button - This is now handled by the text field's icon *@
     <MudTextField T="string"
                   Placeholder="Hľadať služby a produkty..."
                   Variant="Variant.Outlined"
                   @bind-Value="searchTerm"
                   Immediate="true"
                   Adornment="Adornment.End"
-                  AdornmentIcon="@AdornmentIcon"
+                  AdornmentIcon="@(string.IsNullOrEmpty(searchTerm) ? Icons.Material.Filled.Close : Icons.Material.Filled.Search)"
                   OnAdornmentClick="OnAdornmentClick"
                   AdornmentColor="Color.Primary"
                   Class="search-input-field" />
 
-    @* The rest of your component remains unchanged *@
-    @if (recentSearches.Any())
+    @if (string.IsNullOrEmpty(searchTerm))
     {
+        @* Recent Searches Section *@
         <div class="recent-searches-section">
             <div class="recent-header">
                 <h3 class="recent-title">Nedávne vyhľadávania</h3>
@@ -32,103 +34,115 @@
             </ul>
         </div>
     }
+    else
+    {
+        @* Search Results Section *@
+        <div class="search-results-section">
+            <div class="d-flex justify-space-between align-center my-4">
+                <MudText Typo="Typo.h6">Navrhované služby</MudText>
+                <MudIconButton Icon="@Icons.Material.Filled.FilterList" />
+            </div>
 
+            <MudTabs Elevation="0" Rounded="true" PanelClass="mt-4">
+                <MudTabPanel Text="Služby">
+                    <MudStack Spacing="2">
+                        @foreach (var offer in FilteredOffers)
+                        {
+                            <OfferCard Offer="offer" OnOrderClick="@(() => OnOfferClick.InvokeAsync(offer))" />
+                        }
+                    </MudStack>
+                </MudTabPanel>
+                <MudTabPanel Text="Obchodníci">
+                    <MudText>Obsah pre obchodníkov bude dostupný čoskoro.</MudText>
+                </MudTabPanel>
+            </MudTabs>
+        </div>
+    }
 </div>
 
 <style>
     .search-container-wrapper {
         background-color: #121315;
         color: #e0e0e0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         padding: 16px;
         height: 100vh;
     }
 
-    /* --- Search Bar Styles for MudTextField --- */
+    /* --- Search Bar Styles --- */
     .search-input-field .mud-input-control {
         background-color: #1D1E23;
     }
-
     .search-input-field .mud-input-root {
         padding-left: 16px !important;
     }
-
     .search-input-field .mud-input {
         color: #e0e0e0 !important;
     }
-
     .search-input-field .mud-input-slot.mud-input-slot-outlined {
         border-radius: 3px;
-        border-color: #0081EC !important; /* Make the border blue by default */
+        border-color: #30343a !important;
     }
-
     .search-input-field fieldset {
-        border-color: #0081EC !important; /* Ensure border color stays blue */
+        border-color: #30343a !important;
+    }
+    .search-input-field.mud-input-focused fieldset {
+        border-color: #0081EC !important;
     }
 
-    .search-input-field .mud-input-label.mud-input-label-animated {
-        color: #808080 !important;
-    }
-
-    .search-input-field .mud-input-adornment-end .mud-icon-button .mud-icon-root {
-        transition: color 0.2s ease-in-out;
-    }
-
-    /* --- Recent Searches Styles --- */
-    .recent-searches-section {
+    /* --- Recent & Results Sections --- */
+    .recent-searches-section, .search-results-section {
         margin-top: 28px;
     }
-
     .recent-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 8px;
     }
-
     .recent-title {
         font-size: 1rem;
         font-weight: 600;
         color: #FFFFFF;
         margin: 0;
     }
-
     .clear-button {
         background: none;
         border: none;
-        color: #0081EC; /* Blue link color */
+        color: #0081EC;
         cursor: pointer;
         font-size: 0.9rem;
-        font-weight: 500;
-        padding: 4px;
     }
-
     .recent-list {
         list-style-type: none;
         padding: 0;
         margin: 0;
     }
-
     .recent-list-item {
         color: #a0a5ac;
         padding: 12px 4px;
         cursor: pointer;
-        transition: color 0.2s ease-in-out;
         border-bottom: 1px solid #2A2B31;
     }
 
-        .recent-list-item:hover {
-            color: #ffffff;
-        }
+    /* --- Tabs Styles --- */
+    .mud-tabs .mud-tab {
+        color: #808080 !important;
+        text-transform: none;
+    }
+    .mud-tabs .mud-tab.mud-tab-active {
+        color: #FFFFFF !important;
+    }
+    .mud-tabs .mud-tabs-indicator {
+        background-color: #0081EC !important;
+    }
 </style>
 
 @code {
+    [Parameter] public List<Offer> AllOffers { get; set; } = new();
     [Parameter] public EventCallback OnClose { get; set; }
+    [Parameter] public EventCallback<Offer> OnOfferClick { get; set; }
 
     private string? searchTerm;
-
-    // This property now shows a Close icon when the input is empty
-    private string AdornmentIcon => string.IsNullOrEmpty(searchTerm) ? Icons.Material.Filled.Close : Icons.Material.Filled.Search;
 
     private List<string> recentSearches = new List<string>
     {
@@ -138,16 +152,35 @@
         "donaska potravin trnava"
     };
 
+    private IEnumerable<Offer> FilteredOffers
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                return new List<Offer>();
+            }
+            // The search now checks Title, Provider, Description, Category, and SubCategory
+            return AllOffers.Where(o =>
+                o.Title.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                o.Provider.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                o.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                o.Category.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                o.SubCategory.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)
+            );
+        }
+    }
+
     private void OnAdornmentClick()
     {
-        // If the search term is empty, the icon is "Close", so we invoke the close action.
         if (string.IsNullOrEmpty(searchTerm))
         {
             OnClose.InvokeAsync();
         }
         else
         {
-            // If there is text, the icon is "Search". We can add search logic here later.
+            // In the future, this could trigger a more explicit search action.
+            // For now, the live filtering is sufficient.
             Console.WriteLine($"Searching for: {searchTerm}");
         }
     }
