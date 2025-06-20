@@ -10,7 +10,7 @@
                   @bind-Value="searchTerm"
                   Immediate="true"
                   Adornment="Adornment.End"
-                  AdornmentIcon="@(string.IsNullOrEmpty(searchTerm) ? Icons.Material.Filled.Close : Icons.Material.Filled.Search)"
+                  AdornmentIcon="Icons.Material.Filled.Close"
                   OnAdornmentClick="OnAdornmentClick"
                   AdornmentColor="Color.Primary"
                   Class="search-input-field" />
@@ -173,16 +173,7 @@
 
     private void OnAdornmentClick()
     {
-        if (string.IsNullOrEmpty(searchTerm))
-        {
-            OnClose.InvokeAsync();
-        }
-        else
-        {
-            // In the future, this could trigger a more explicit search action.
-            // For now, the live filtering is sufficient.
-            Console.WriteLine($"Searching for: {searchTerm}");
-        }
+        OnClose.InvokeAsync();
     }
 
     private void ClearRecentSearches()
