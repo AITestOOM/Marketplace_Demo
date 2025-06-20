@@ -33,7 +33,7 @@
                                 <MudIconButton Icon="@Icons.Material.Filled.FilterList" OnClick="ShowComingSoon" Style="color:#0081EC" />
                             </div>
                             <MudStack Spacing="2">
-                                @foreach (var offer in _offers.Skip(3).Take(8))
+                                @foreach (var offer in _offers.Skip(3).Take(5))
                                 {
                                     <OfferCard Offer="offer" OnOrderClick="HandleOrderClick" />
                                 }
