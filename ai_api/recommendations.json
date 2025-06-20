@@ -1,0 +1,88 @@
+{
+  "recommendations": [
+    {
+      "Title": "Pneuservis Ferko",
+      "Provider": "Ferko's Pneu",
+      "Description": "Rýchla oprava defektov a sezónne prezutie pneumatík za výhodné ceny.",
+      "Category": "Auto",
+      "SubCategory": "Výmena pneumatík",
+      "Rating": 4.8,
+      "RatingCount": 134,
+      "DistanceKm": 1.5,
+      "ClosesAt": "18:00",
+      "Price": "od 20 EUR",
+      "ImageUrl": "images/banner_auto.png",
+      "Reason": "Časté výdavky za auto"
+    },
+    {
+      "Title": "Servis klimatizácie a doplnenie chladiva",
+      "Provider": "AutoKlíma Servis Novák",
+      "Description": "Profesionálny servis autoklimatizácie, kontrola tesnosti a doplnenie chladiva.",
+      "Category": "Auto",
+      "SubCategory": "Servis",
+      "Rating": 4.9,
+      "RatingCount": 98,
+      "DistanceKm": 15.2,
+      "ClosesAt": "17:00",
+      "Price": "od 50EUR",
+      "ImageUrl": "GetRandomImageUrl()",
+      "Reason": "Pravidelný servis auta"
+    },
+    {
+      "Title": "Výmena oleja a filtrov",
+      "Provider": "Rýchloservis Starý Háj",
+      "Description": "Kvalitná a rýchla výmena motorového oleja a všetkých filtrov.",
+      "Category": "Auto",
+      "SubCategory": "Servis",
+      "Rating": 4.7,
+      "RatingCount": 212,
+      "DistanceKm": 2.1,
+      "ClosesAt": "18:00",
+      "Price": "od 80EUR",
+      "ImageUrl": "GetRandomImageUrl()",
+      "Reason": "Pravidelný servis auta"
+    },
+    {
+      "Title": "Hĺbkové čistenie automobilov (interiér)",
+      "Provider": "AutoČistota Detail",
+      "Description": "Detailné čistenie interiéru vozidla, tepovanie sedačiek, ošetrenie plastov.",
+      "Category": "Auto",
+      "SubCategory": "Čistenie",
+      "Rating": 5.0,
+      "RatingCount": 162,
+      "DistanceKm": 5.5,
+      "ClosesAt": "18:00",
+      "Price": "od 70EUR",
+      "ImageUrl": "GetRandomImageUrl()",
+      "Reason": "Starostlivosť o auto"
+    },
+    {
+      "Title": "Klíma Frozen",
+      "Provider": "Frozen Klíma SK",
+      "Description": "Predaj klimatizácií vrátane montáže v Bratislave a okolí.",
+      "Category": "Remeselníci",
+      "SubCategory": "Vykurovanie a chladenie",
+      "Rating": 4.7,
+      "RatingCount": 112,
+      "DistanceKm": 1.3,
+      "ClosesAt": "18:00",
+      "Price": "od 1079 EUR",
+      "ImageUrl": "images/banner_klima.png",
+      "Reason": "Oprava klimatizácie"
+    },
+     {
+        "Title": "Inštalatérske práce - oprava vodovodných batérií",
+        "Provider": "Vodár Peter Malý",
+        "Description": "Oprava kvapkajúcich batérií, výmena tesnení a drobné inštalatérske práce.",
+        "Category": "Remeselníci",
+        "SubCategory": "Vodoinštalácie",
+        "Rating": 4.9,
+        "RatingCount": 155,
+        "DistanceKm": 3.7,
+        "ClosesAt": "19:00",
+        "Price": "od 30EUR",
+        "ImageUrl": "GetRandomImageUrl()",
+        "Reason": "Oprava umývačky riadu"
+    }
+  ]
+}
