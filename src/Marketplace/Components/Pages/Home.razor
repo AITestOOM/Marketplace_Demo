@@ -6,8 +6,8 @@
 
 @*TODO 5zobrazit vsetky kategorie
 4Vysledkova obrazovka pre objednat
-3 obrazky pre offers
-2dorobenie obrazka do navrhovanych sluzieb a do karuselu *@
+3 obrazky pre offers *@
+
 
 <div class="dashboard-container">
     @switch (_currentStep)
@@ -229,10 +229,10 @@ new()
     ImageUrl = "images/banner_klima.png"
 },
             new() { Title = "Bezúčelový úver", Provider = "Tatra banka", Description = "Zoberte si Bezúčelový úverTB a zrýchlite si splácanie úveru s Extra splátkami", Category = "Auto", SubCategory = "Financovanie", Rating = 5, RatingCount = 1500, DistanceKm = 0.1, ClosesAt = "21:00", Price = "individuálne", ImageUrl="./Images/tb_logo.jpg" },
-            new() { Title = "Oprava defektu a prezutie pneumatík", Provider = "Pneuservis Ferko", Description = "Rýchla oprava defektov a sezónne prezutie pneumatík za výhodné ceny.", Category = "Auto", SubCategory = "Výmena pneumatík", Rating = 4.8, RatingCount = 134, DistanceKm = 1.5, ClosesAt = "18:00", Price = "od 20EUR", ImageUrl = GetRandomImageUrl() },
-            new() { Title = "Klimatizácie s montážou", Provider = "Klíma Frozen", Description = "Predaj klimatizácií vrátane montáže v Bratislave a okolí.", Category = "Remeselníci", SubCategory = "Vykurovanie a chladenie", Rating = 4.7, RatingCount = 112, DistanceKm = 1.3, ClosesAt = "18:00", Price = "od 1079 EUR", ImageUrl = GetRandomImageUrl() },
-            new() { Title = "Maliarske práce", Provider = "Maliar Picasso", Description = "Maľovanie v Bratislave a okolí.", Category = "Remeselníci", SubCategory = "Maliarske práce", Rating = 4.5, RatingCount = 72, DistanceKm = 0.8, ClosesAt = "16:00", Price = "od 2 EUR / m²", ImageUrl = GetRandomImageUrl() },
-            new() { Title = "Servis elektrobicyklov", Provider = "E-bike Karol", Description = "Kompletný servis elektrobicyklov.", Category = "Cestovanie a voľný čas", SubCategory = "Športové aktivity", Rating = 4.8, RatingCount = 89, DistanceKm = 1.1, ClosesAt = "20:00", Price = "od 109 EUR", ImageUrl = GetRandomImageUrl() },
+            new() { Title = "Oprava defektu a prezutie pneumatík", Provider = "Pneuservis Ferko", Description = "Rýchla oprava defektov a sezónne prezutie pneumatík za výhodné ceny.", Category = "Auto", SubCategory = "Výmena pneumatík", Rating = 4.8, RatingCount = 134, DistanceKm = 1.5, ClosesAt = "18:00", Price = "od 20EUR", ImageUrl = "./Images/Automoto1.jpg" },
+            new() { Title = "Klimatizácie s montážou", Provider = "Klíma Frozen", Description = "Predaj klimatizácií vrátane montáže v Bratislave a okolí.", Category = "Remeselníci", SubCategory = "Vykurovanie a chladenie", Rating = 4.7, RatingCount = 112, DistanceKm = 1.3, ClosesAt = "18:00", Price = "od 1079 EUR", ImageUrl = "./Images/Uctovnictvo1.jpg" },
+            new() { Title = "Maliarske práce", Provider = "Maliar Picasso", Description = "Maľovanie v Bratislave a okolí.", Category = "Remeselníci", SubCategory = "Maliarske práce", Rating = 4.5, RatingCount = 72, DistanceKm = 0.8, ClosesAt = "16:00", Price = "od 2 EUR / m²", ImageUrl = "./Images/MaliarskePrace1.jpg" },
+            new() { Title = "Servis elektrobicyklov", Provider = "E-bike Karol", Description = "Kompletný servis elektrobicyklov.", Category = "Cestovanie a voľný čas", SubCategory = "Športové aktivity", Rating = 4.8, RatingCount = 89, DistanceKm = 1.1, ClosesAt = "20:00", Price = "od 109 EUR", ImageUrl = "./Images/Hobby1.jpg" },
             new() { Title = "Servis klimatizácie a doplnenie chladiva", Provider = "AutoKlíma Servis Novák", Description = "Profesionálny servis autoklimatizácie, kontrola tesnosti a doplnenie chladiva.", Category = "Auto", SubCategory = "Servis", Rating = 4.9, RatingCount = 98, DistanceKm = 15.2, ClosesAt = "17:00", Price = "od 50EUR", ImageUrl = GetRandomImageUrl() },
             new() { Title = "Výmena oleja a filtrov", Provider = "Rýchloservis Starý Háj", Description = "Kvalitná a rýchla výmena motorového oleja a všetkých filtrov.", Category = "Auto", SubCategory = "Servis", Rating = 4.7, RatingCount = 212, DistanceKm = 2.1, ClosesAt = "18:00", Price = "od 80EUR", ImageUrl = GetRandomImageUrl() },
             new() { Title = "Oprava drobných karosárskych poškodení", Provider = "Karosár Jano", Description = "Opravy preliačin, škrabancov a iných drobných poškodení karosérie.", Category = "Auto", SubCategory = "Servis", Rating = 4.6, RatingCount = 76, DistanceKm = 8.4, ClosesAt = "17:30", Price = "od 50EUR", ImageUrl = GetRandomImageUrl() },
