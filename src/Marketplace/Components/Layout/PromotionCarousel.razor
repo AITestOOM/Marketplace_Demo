@@ -1,7 +1,6 @@
 @using MudBlazor
 @using Marketplace.Components.Pages
-@using static Marketplace.Components.Pages.Home
-
+@using static Marketplace.Components.Pages.Home 
 @if (Offers != null && Offers.Any())
 {
     <MudCarousel Class="mud-elevation-25" Style="height:140px; border-radius: 3px;"
@@ -10,15 +9,22 @@
 
         @foreach (var offerItem in Offers)
         {
-            <MudCarouselItem>
+            <MudCarouselItem Transition="Transition.Slide">
                 <div class="clickable-carousel-item" @onclick="@(() => OnOfferClick.InvokeAsync(offerItem))">
-                    <MudCard Style="@($"background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{offerItem.ImageUrl}'); background-size: cover; background-position: center; height: 100%;")" Elevation="0">
-                        <MudCardContent>
-                            <div class="d-flex justify-space-between align-start" style="width: 100%;">
-                                <div>
-                                    <MudText Style="color: #FFFFFF; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 16px; font-weight: 700; line-height: 1.3;">@offerItem.Title</MudText>
-                                    <MudText Style="color: #FFFFFF; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.3; opacity: 0.9;">@offerItem.Provider</MudText>
-                                </div>
+                    <MudCard Style="background-color: #20242B; height: 100%;" Elevation="0">
+                        <MudCardContent Style="display: flex; align-items: center; justify-content: space-between; width: 100%; height: 100%; padding: 12px 24px;">
+                            <!-- Text Section (Left) -->
+                            <div style="flex-basis: 58%; display: flex; flex-direction: column; justify-content: center;">
+                                <MudText Style="color: #FFFFFF; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 24px; font-weight: 700; line-height: 1.2;">
+                                    @offerItem.Title
+                                </MudText>
+                                <MudText Style="color: #B0B0B0; font-family: 'Nimbus Sans D OT', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.3; margin-top: 4px;">
+                                    @offerItem.Description <!-- This is used as the subtitle -->
+                                </MudText>
+                            </div>
+                            <!-- Image Section (Right) -->
+                            <div style="flex-basis: 40%; display: flex; align-items: center; justify-content: center; height: 100%; margin-left:16px;">
+                                <img src="@offerItem.ImageUrl" alt="@offerItem.Title" style="max-height: 110px; max-width: 100%; object-fit: contain;" />
                             </div>
                         </MudCardContent>
                     </MudCard>
@@ -37,6 +43,15 @@
 </style>
 
 @code {
+    // Definition of Offer class (assumed structure)
+    // public class Offer
+    // {
+    //     public string ImageUrl { get; set; }
+    //     public string Title { get; set; }
+    //     public string Provider { get; set; } // Used as subtitle
+    //     // other properties...
+    // }
+
     [Parameter] public List<Offer> Offers { get; set; } = new();
     [Parameter] public EventCallback<Offer> OnOfferClick { get; set; }
 }
