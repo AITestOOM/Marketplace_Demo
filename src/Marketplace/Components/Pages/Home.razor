@@ -4,6 +4,11 @@
 @using System.Globalization
 @inject IDialogService DialogService
 
+@*TODO 5zobrazit vsetky kategorie
+4Vysledkova obrazovka pre objednat
+3 obrazky pre offers
+2dorobenie obrazka do navrhovanych sluzieb a do karuselu *@
+
 <div class="dashboard-container">
     @switch (_currentStep)
     {
@@ -17,7 +22,7 @@
                     <MudIconButton Icon="@Icons.Material.Filled.FilterList" />
                 </div>
                 <MudStack Spacing="2">
-                    @foreach (var offer in _offers.Take(5))
+                    @foreach (var offer in _offers.Take(5).Skip(3))
                     {
                         <OfferCard Offer="offer" OnOrderClick="HandleOrderClickNoCat" />
                     }
@@ -181,6 +186,48 @@
     {
         _offers = new List<Offer>
         {
+            new()
+{
+    Title = "E-bike Karol",
+    Provider = "Karol's E-Bikes",
+    Description = "Kompletný servis elektrobicyklov.",
+    Category = "Cestovanie a voľný čas",
+    SubCategory = "Športové aktivity",
+    Rating = 4.8,
+    RatingCount = 89,
+    DistanceKm = 1.1,
+    ClosesAt = "20:00",
+    Price = "od 109 EUR",
+    ImageUrl = "images/banner_bicykel.png"
+},
+new()
+{
+    Title = "Pneuservis Ferko",
+    Provider = "Ferko's Pneu",
+    Description = "Rýchla oprava defektov a sezónne prezutie pneumatík za výhodné ceny.",
+    Category = "Auto",
+    SubCategory = "Výmena pneumatík",
+    Rating = 4.8,
+    RatingCount = 134,
+    DistanceKm = 1.5,
+    ClosesAt = "18:00",
+    Price = "od 20 EUR",
+    ImageUrl = "images/banner_auto.png"
+},
+new()
+{
+    Title = "Klíma Frozen",
+    Provider = "Frozen Klíma SK",
+    Description = "Predaj klimatizácií vrátane montáže v Bratislave a okolí.",
+    Category = "Remeselníci",
+    SubCategory = "Vykurovanie a chladenie",
+    Rating = 4.7,
+    RatingCount = 112,
+    DistanceKm = 1.3,
+    ClosesAt = "18:00",
+    Price = "od 1079 EUR",
+    ImageUrl = "images/banner_klima.png"
+},
             new() { Title = "Bezúčelový úver", Provider = "Tatra banka", Description = "Zoberte si Bezúčelový úverTB a zrýchlite si splácanie úveru s Extra splátkami", Category = "Auto", SubCategory = "Financovanie", Rating = 5, RatingCount = 1500, DistanceKm = 0.1, ClosesAt = "21:00", Price = "individuálne", ImageUrl="./Images/tb_logo.jpg" },
             new() { Title = "Oprava defektu a prezutie pneumatík", Provider = "Pneuservis Ferko", Description = "Rýchla oprava defektov a sezónne prezutie pneumatík za výhodné ceny.", Category = "Auto", SubCategory = "Výmena pneumatík", Rating = 4.8, RatingCount = 134, DistanceKm = 1.5, ClosesAt = "18:00", Price = "od 20EUR", ImageUrl = GetRandomImageUrl() },
             new() { Title = "Klimatizácie s montážou", Provider = "Klíma Frozen", Description = "Predaj klimatizácií vrátane montáže v Bratislave a okolí.", Category = "Remeselníci", SubCategory = "Vykurovanie a chladenie", Rating = 4.7, RatingCount = 112, DistanceKm = 1.3, ClosesAt = "18:00", Price = "od 1079 EUR", ImageUrl = GetRandomImageUrl() },
