@@ -4,17 +4,13 @@
 @using System.Globalization
 @inject IDialogService DialogService
 
-@*TODO 5zobrazit vsetky kategorie
-4Vysledkova obrazovka pre objednat
-3 obrazky pre offers
-2dorobenie obrazka do navrhovanych sluzieb a do karuselu *@
 
 <div class="dashboard-container">
     @switch (_currentStep)
     {
         case 1:
             @* The main dashboard view *@
-            <PromotionCarousel Offers="_offers.Take(3).ToList()" OnOfferClick="HandleOrderClickNoCat" />
+            <PromotionCarousel Offers="_offers.Take(3).ToList()" OnOfferClick="HandleOrderClick" />
             <CategoryCarousel Categories="_categories" OnCategoryClick="HandleCategoryClick" />
             <div class="services-section">
                 <div class="d-flex justify-space-between align-center mb-2">
@@ -22,9 +18,9 @@
                     <MudIconButton Icon="@Icons.Material.Filled.FilterList" />
                 </div>
                 <MudStack Spacing="2">
-                    @foreach (var offer in _offers.Take(5).Skip(3))
+                    @foreach (var offer in _offers.Skip(3).Take(8))
                     {
-                        <OfferCard Offer="offer" OnOrderClick="HandleOrderClickNoCat" />
+                        <OfferCard Offer="offer" OnOrderClick="HandleOrderClick" />
                     }
                 </MudStack>
             </div>
@@ -32,22 +28,28 @@
 
         case 2:
             @* The detailed view for the selected category *@
-            <ServiceListView Offers="_offers" 
-                             Category="_selectedCategory"
-                             OnBackClick="@(() => SetStep(1))" 
+            <ServiceListView AllOffers="_offers"
+                             SelectedCategory="_selectedCategory"
+                             OnBackClick="@(() => SetStep(1))"
                              OnOrderClick="@(HandleOrderClick)" />
             break;
-            
+
         case 3:
-             @* This step is ready for your final Order page *@
-             <Order Offer="_selectedOffer" OnBackClick="@(HandleOnBackClick)" />
+            @* The Order page, which now knows which step to go back to *@
+            <Order Offer="_selectedOffer" PreviousStep="_previousStep" OnBackClick="HandleOnBackClick" OnConfirmOrder="HandleConfirmOrder" />
+            break;
+            
+        case 4:
+            @* The new order confirmation screen *@
+            <OrderConfirmation OnViewOrder="ShowComingSoon" OnClose="@(() => SetStep(1))" />
             break;
     }
 </div>
 
 
 @code {
-    private int _currentStep = 1;
+   private int _currentStep = 1;
+    private int _previousStep;
     private List<Category> _categories = new();
     private List<Offer> _offers = new();
     private Category _selectedCategory;
@@ -91,32 +93,19 @@
     private void HandleOrderClick(Offer offer)
     {
         _selectedOffer = offer;
+        _previousStep = _currentStep; // Store the step we are coming from
         SetStep(3);
     }
-
-    private void HandleOrderClickNoCat(Offer offer)
+    
+    private void HandleConfirmOrder()
     {
-        _selectedCategory = null;
-        _selectedOffer = offer;
-        SetStep(3);
+        SetStep(4);
     }
 
-
-    private void HandleOnBackClick(Offer offer)
+    // This method now receives the step to go back to from the Order page
+    private void HandleOnBackClick(int step)
     {
-        if (offer == null)
-        {
-            SetStep(1);
-        }
-        else if (_selectedCategory == null)
-        {
-            SetStep(1);
-        }
-        else
-        {
-            _selectedOffer = offer;
-            SetStep(2);
-        }
+        SetStep(step);
     }
 
     private void SetStep(int step)
@@ -124,6 +113,12 @@
         _currentStep = step;
         StateHasChanged();
     }
+
+    private async Task ShowComingSoon()
+    {
+        await DialogService.ShowAsync<ComingSoonDialog>("Funkcia v Príprave");
+    }
+
 
         private void LoadCategories() => _categories = new List<Category>
     {
@@ -229,10 +224,10 @@ new()
     ImageUrl = "images/banner_klima.png"
 },
             new() { Title = "Bezúčelový úver", Provider = "Tatra banka", Description = "Zoberte si Bezúčelový úverTB a zrýchlite si splácanie úveru s Extra splátkami", Category = "Auto", SubCategory = "Financovanie", Rating = 5, RatingCount = 1500, DistanceKm = 0.1, ClosesAt = "21:00", Price = "od 6,49 % p.a.", ImageUrl="./Images/tb_logo.jpg" },
-            new() { Title = "Oprava defektu a prezutie pneumatík", Provider = "Pneuservis Ferko", Description = "Rýchla oprava defektov a sezónne prezutie pneumatík za výhodné ceny.", Category = "Auto", SubCategory = "Výmena pneumatík", Rating = 4.8, RatingCount = 134, DistanceKm = 1.5, ClosesAt = "18:00", Price = "od 20 EUR", ImageUrl = GetRandomImageUrl() },
-            new() { Title = "Klimatizácie s montážou", Provider = "Klíma Frozen", Description = "Predaj klimatizácií vrátane montáže v Bratislave a okolí.", Category = "Remeselníci", SubCategory = "Vykurovanie a chladenie", Rating = 4.7, RatingCount = 112, DistanceKm = 1.3, ClosesAt = "18:00", Price = "od 1079 EUR", ImageUrl = GetRandomImageUrl() },
-            new() { Title = "Maliarske práce", Provider = "Maliar Picasso", Description = "Maľovanie v Bratislave a okolí.", Category = "Remeselníci", SubCategory = "Maliarske práce", Rating = 4.5, RatingCount = 72, DistanceKm = 0.8, ClosesAt = "16:00", Price = "od 2 EUR / m²", ImageUrl = GetRandomImageUrl() },
-            new() { Title = "Servis elektrobicyklov", Provider = "E-bike Karol", Description = "Kompletný servis elektrobicyklov.", Category = "Cestovanie a voľný čas", SubCategory = "Športové aktivity", Rating = 4.8, RatingCount = 89, DistanceKm = 1.1, ClosesAt = "20:00", Price = "od 109 EUR", ImageUrl = GetRandomImageUrl() },
+            new() { Title = "Oprava defektu a prezutie pneumatík", Provider = "Pneuservis Ferko", Description = "Rýchla oprava defektov a sezónne prezutie pneumatík za výhodné ceny.", Category = "Auto", SubCategory = "Výmena pneumatík", Rating = 4.8, RatingCount = 134, DistanceKm = 1.5, ClosesAt = "18:00", Price = "od 20 EUR", ImageUrl="./Images/Automoto1.jpg" },
+            new() { Title = "Klimatizácie s montážou", Provider = "Klíma Frozen", Description = "Predaj klimatizácií vrátane montáže v Bratislave a okolí.", Category = "Remeselníci", SubCategory = "Vykurovanie a chladenie", Rating = 4.7, RatingCount = 112, DistanceKm = 1.3, ClosesAt = "18:00", Price = "od 1079 EUR", ImageUrl="./Images/klima1.jpg" },
+            new() { Title = "Maliarske práce", Provider = "Maliar Picasso", Description = "Maľovanie v Bratislave a okolí.", Category = "Remeselníci", SubCategory = "Maliarske práce", Rating = 4.5, RatingCount = 72, DistanceKm = 0.8, ClosesAt = "16:00", Price = "od 2 EUR / m²", ImageUrl="./Images/MaliarskePrace1.jpg" },
+            new() { Title = "Servis elektrobicyklov", Provider = "E-bike Karol", Description = "Kompletný servis elektrobicyklov.", Category = "Cestovanie a voľný čas", SubCategory = "Športové aktivity", Rating = 4.8, RatingCount = 89, DistanceKm = 1.1, ClosesAt = "20:00", Price = "od 109 EUR", ImageUrl="./Images/Hobby1.jpg" },
             new() { Title = "Servis klimatizácie a doplnenie chladiva", Provider = "AutoKlíma Servis Novák", Description = "Profesionálny servis autoklimatizácie, kontrola tesnosti a doplnenie chladiva.", Category = "Auto", SubCategory = "Servis", Rating = 4.9, RatingCount = 98, DistanceKm = 15.2, ClosesAt = "17:00", Price = "od 50EUR", ImageUrl = GetRandomImageUrl() },
             new() { Title = "Výmena oleja a filtrov", Provider = "Rýchloservis Starý Háj", Description = "Kvalitná a rýchla výmena motorového oleja a všetkých filtrov.", Category = "Auto", SubCategory = "Servis", Rating = 4.7, RatingCount = 212, DistanceKm = 2.1, ClosesAt = "18:00", Price = "od 80EUR", ImageUrl = GetRandomImageUrl() },
             new() { Title = "Oprava drobných karosárskych poškodení", Provider = "Karosár Jano", Description = "Opravy preliačin, škrabancov a iných drobných poškodení karosérie.", Category = "Auto", SubCategory = "Servis", Rating = 4.6, RatingCount = 76, DistanceKm = 8.4, ClosesAt = "17:30", Price = "od 50EUR", ImageUrl = GetRandomImageUrl() },

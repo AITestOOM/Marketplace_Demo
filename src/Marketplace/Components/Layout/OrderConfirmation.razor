@@ -1,0 +1,69 @@
+﻿@using MudBlazor
+
+<div class="confirmation-container">
+    <div class="confirmation-content">
+        <div class="icon-wrapper">
+            <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="48" cy="48" r="47.4" stroke="#00CF8B" stroke-width="1.2"/>
+                <path d="M28.5 48.9L42.3 62.7L67.5 37.5" stroke="#00CF8B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        
+        <MudText Typo="Typo.h5" Class="confirmation-title">Objednávka bola úspešne vytvorená.</MudText>
+    </div>
+
+    <div class="confirmation-actions">
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true" Class="action-button" OnClick="@(() => OnViewOrder.InvokeAsync())">Prezrieť objednávku</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" Class="action-button" OnClick="@(() => OnClose.InvokeAsync())">Zatvoriť</MudButton>
+    </div>
+</div>
+
+<style>
+    .confirmation-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #121315;
+        height: 100vh;
+        padding: 16px;
+        box-sizing: border-box;
+    }
+    .confirmation-content {
+        text-align: center;
+        margin-top: 20vh;
+    }
+    .icon-wrapper {
+        margin-bottom: 24px;
+    }
+    .confirmation-title {
+        color: #FFFFFF;
+        font-weight: 700;
+    }
+    .confirmation-actions {
+        width: 100%;
+        max-width: 358px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 32px;
+    }
+    .action-button.mud-button-outlined {
+        border-color: #0081EC !important;
+        color: #FFFFFF !important;
+        padding: 12px 0;
+        text-transform: none;
+        font-size: 1rem;
+    }
+    .action-button.mud-button-filled {
+        background-color: #0081EC !important;
+        padding: 12px 0;
+        text-transform: none;
+        font-size: 1rem;
+    }
+</style>
+
+@code {
+    [Parameter] public EventCallback OnViewOrder { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+}

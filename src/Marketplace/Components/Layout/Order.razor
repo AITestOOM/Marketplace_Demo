@@ -4,7 +4,7 @@
 
 <div class="order-view" Style="background-color: #0F0F11 !important; min-height: 100vh !important; padding-bottom: 90px !important;">
     <MudPaper Elevation="0" Square="true" Class="d-flex align-center pa-3" Style=" background-color: #1D1E23 !important; position: sticky !important; top: 0 !important; z-index: 10 !important; border-bottom: 1px solid #2A2B31 !important; margin-bottom: 5px !important;">
-        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" OnClick="@(() => OnBackClick.InvokeAsync(Offer))" Edge="Edge.Start" Style="color: #0081EC !important; margin-left: -4px !important;" />
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" OnClick="@(() => OnBackClick.InvokeAsync(PreviousStep))" Edge="Edge.Start" Style="color: #0081EC !important; margin-left: -4px !important;" />
         <MudText Style=" font-weight: 700 !important; font-size: 22px !important; color: #F7F7F7 !important; margin-left: 12px !important; ">Objednávka</MudText>
     </MudPaper>
 
@@ -37,12 +37,12 @@
         </MudPaper>
 
         <div Class="pa-4" Style="background: #1D1E23 !important; border-bottom: 1px solid #2A2B31 !important; margin-bottom: 5px !important;
-                                --mud-palette-text-primary: #FFFFFF !important;
-                                --mud-palette-text-secondary: #808080 !important;
-                                --mud-palette-lines-inputs: #4A4B50 !important;
-                                --mud-palette-primary: #0081EC !important;
-                                --mud-input-label-inputcontrol-outlined-margin-top: -6px !important;">
-            <MudTextField T="string" Label="Vyberte termín" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.CalendarToday" AdornmentColor="Color.Primary" InputStyle="color: #FFFFFF !important;" />
+                          --mud-palette-text-primary: #FFFFFF !important;
+                          --mud-palette-text-secondary: #808080 !important;
+                          --mud-palette-lines-inputs: #4A4B50 !important;
+                          --mud-palette-primary: #0081EC !important;
+                          --mud-input-label-inputcontrol-outlined-margin-top: -6px !important;">
+            <MudDatePicker Label="Vyberte termín" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.CalendarToday" AdornmentColor="Color.Primary" InputStyle="color: #FFFFFF !important;" />
         </div>
 
         <MudPaper Elevation="0" Square="true" Class="pa-4" Style="background-color: #1D1E23 !important; border-bottom: 1px solid #2A2B31 !important;">
@@ -61,30 +61,26 @@
     </div>
 
     <div Style="position: fixed !important; bottom: 0 !important; left:0 !important; right: 0 !important; width: 100% !important; max-width: inherit !important; background-color: #1D1E23 !important; padding: 16px !important; box-sizing: border-box !important; border-top: 1px solid #2A2B31 !important;">
-        <MudButton FullWidth="true" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Style="height: 48px !important; border-radius: 4px !important; background-color: #0081EC !important; font-size: 16px !important; text-transform: none !important; font-weight: 500 !important;">
+        <MudButton FullWidth="true" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Style="height: 48px !important; border-radius: 4px !important; background-color: #0081EC !important; font-size: 16px !important; text-transform: none !important; font-weight: 500 !important;"
+                   OnClick="@(() => OnConfirmOrder.InvokeAsync())">
             Objednať
         </MudButton>
     </div>
 </div>
 
 @code {
-    [Parameter]
-    public Offer Offer { get; set; } = new Offer
-    {
-        Provider = "Shine & Clean Auto",
-        Title = "Kompletné čistenie auta",
-        Description = "Ručné umývanie vozidla so šetrnou chémiou.",
-        Price = "30 EUR"
-    };
-    [Parameter] public EventCallback<Offer> OnBackClick { get; set; }
+    [Parameter] public Offer Offer { get; set; } = new();
+    [Parameter] public int PreviousStep { get; set; }
+    [Parameter] public EventCallback<int> OnBackClick { get; set; }
+    [Parameter] public EventCallback OnConfirmOrder { get; set; }
 
-    private string? SelectedPaymentMethod { get; set; } = "ihned"; // Default to "Zaplatiť ihneď"
+    private string? SelectedPaymentMethod { get; set; } = "ihned";
 
     private string GetPaymentOptionStyle(string paymentMethodIdentifier)
     {
-        string optionBackgroundColor = "#1D1E23"; // Darker background for options, like example
-        string unselectedBorderColor = "#343B4E"; // Grey-blue border from example
-        string selectedBorderColor = "#0081EC";   // App's primary blue for consistency
+        string optionBackgroundColor = "#1D1E23";
+        string unselectedBorderColor = "#343B4E";
+        string selectedBorderColor = "#0081EC";
         string commonStyle = $"background-color: {optionBackgroundColor} !important; border-radius: 6px !important; cursor: pointer !important; padding: 16px !important;";
 
         if (SelectedPaymentMethod == paymentMethodIdentifier)
@@ -96,12 +92,4 @@
             return $"{commonStyle} border: 1.5px solid {unselectedBorderColor} !important;";
         }
     }
-
-    // public class Offer // Definition provided for completeness if not elsewhere.
-    // {
-    //     public string? Provider { get; set; }
-    //     public string? Title { get; set; }
-    //     public string? Description { get; set; }
-    //     public string? Price { get; set; }
-    // }
 }
