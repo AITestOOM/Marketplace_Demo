@@ -16,19 +16,103 @@ Jasné, tu je text preformátovaný do Markdownu:
 
 *   ~~Deployed projekt (Deprecated): SME Marketplace - Dashboard~~
 
---
-## API: 
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=GEMINI_API_KEY" \
-  -H 'Content-Type: application/json' \
-  -X POST \
-  -d '{
-    "contents": [
-      {
-        "parts": [
-          {
-            "text": "Explain how AI works in a few words"
-          }
-        ]
+
+
+
+# Financial Recommendation & Service Search Server
+
+
+## API Endpoints
+
+### 1. Get Financial Recommendations
+
+*   **Endpoint:** `GET /recommend`
+*   **Description:** Analyzes `transactions.json` and `services.json` to provide service recommendations.
+*   **Example Request:**
+    Open your browser or use `curl`:
+    ```bash
+    curl http://localhost:3000/recommend
+    ```
+*   **Example Successful Response (200 OK):**
+    The response will be a JSON object containing a list of recommended services, each with a `Reason` (in Slovak).
+    ```json
+    {
+      "recommendations": [
+        {
+          "Title": "Pneuservis Ferko",
+          "Provider": "Ferko's Pneu",
+          "Description": "Rýchla oprava defektov a sezónne prezutie pneumatík za výhodné ceny.",
+          "Category": "Auto",
+          "SubCategory": "Výmena pneumatík",
+          "Rating": 4.8,
+          "RatingCount": 134,
+          "DistanceKm": 1.5,
+          "ClosesAt": "18:00",
+          "Price": "od 20 EUR",
+          "ImageUrl": "images/banner_auto.png",
+          "Reason": "Časté výdavky za auto."
+        }
+        // ... other recommendations
+      ]
+    }
+    ```
+    If no recommendations are suitable, it will return:
+    ```json
+    {
+      "recommendations": []
+    }
+    ```
+
+### 2. Search for Services
+
+*   **Endpoint:** `GET /search`
+*   **Description:** Searches `services.json` for services matching the provided query.
+*   **Query Parameter:**
+    *   `query` (required): The user's search term (e.g., "leaking toilet", "need new tires").
+*   **Example Request:**
+    Open your browser or use `curl`:
+    ```bash
+    curl "http://localhost:3000/search?query=My%20toilet%20is%20leaking"
+    ```
+    or
+    ```bash
+    curl "http://localhost:3000/search?query=oprava%20pokazenej%20klimatizácie"
+    ```
+*   **Example Successful Response (200 OK):**
+    The response will be a JSON object containing a list of matching services, each with a `Reason` (in Slovak) why it's relevant.
+    ```json
+    {
+      "recommendations": [
+        {
+          "Title": "Inštalatér NONSTOP",
+          "Provider": "Vodoinštalácie Majster",
+          "Description": "Opravy prasknutého potrubia, tečúcich WC a batérií.",
+          "Category": "Remeselníci",
+          "SubCategory": "Inštalatér",
+          "Rating": 4.9,
+          "RatingCount": 205,
+          "DistanceKm": 2.1,
+          "ClosesAt": "24/7",
+          "Price": "od 50 EUR",
+          "ImageUrl": "images/banner_instalater.png",
+          "Reason": "Relevantné pre tečúce WC."
+        }
+        // ... other matching services
+      ]
+    }
+    ```
+    If no services match the query, it will return:
+    ```json
+    {
+      "recommendations": []
+    }
+    ```
+*   **Example Error Response (400 Bad Request - Missing query):**
+    ```json
+    {
+      "error": {
+        "message": "Missing or empty query parameter.",
+        "type": "ClientInputError"
       }
-    ]
-  }'
+    }
+    ```
