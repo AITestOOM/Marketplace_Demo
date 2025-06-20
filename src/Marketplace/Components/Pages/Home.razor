@@ -28,8 +28,8 @@
 
         case 2:
             @* The detailed view for the selected category *@
-            <ServiceListView AllOffers="_offers"
-                             SelectedCategory="_selectedCategory"
+            <ServiceListView Offers="_offers"
+                             Category="_selectedCategory"
                              OnBackClick="@(() => SetStep(1))"
                              OnOrderClick="@(HandleOrderClick)" />
             break;
@@ -199,7 +199,7 @@ new()
 {
     Title = "Pneuservis Ferko",
     Provider = "Ferko's Pneu",
-    Description = "Rýchla oprava defektov a sezónne prezutie pneumatík za výhodné ceny.",
+    Description = "Rýchla oprava defektov a sezónne prezutie pneumatík.",
     Category = "Auto",
     SubCategory = "Výmena pneumatík",
     Rating = 4.8,
