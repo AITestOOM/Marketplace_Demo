@@ -1,4 +1,4 @@
-﻿@using MudBlazor
+@using MudBlazor
 @using static Marketplace.Components.Pages.Home
 @using static Marketplace.Components.Layout.MainLayout
 @using System.Timers
@@ -42,7 +42,7 @@
             </div>
 
             <MudTabs Elevation="0" Rounded="true" PanelClass="mt-4">
-                <MudTabPanel Text="Služby">
+                <MudTabPanel Text="Služby" Style="margin-left: 18px;">
                     <MudStack Spacing="2">
                         @foreach (var offer in FilteredOffers)
                         {
