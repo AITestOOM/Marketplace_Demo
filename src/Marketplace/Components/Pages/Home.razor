@@ -4,14 +4,13 @@
 @using System.Globalization
 @inject IDialogService DialogService
 
-
 <div class="dashboard-container">
     @switch (_currentStep)
     {
         case 1:
             @* The main dashboard view *@
             <PromotionCarousel Offers="_offers.Take(3).ToList()" OnOfferClick="HandleOrderClick" />
-            <CategoryCarousel Categories="_categories" OnCategoryClick="HandleCategoryClick" />
+            <CategoryCarousel Categories="_categories" OnCategoryClick="HandleCategoryClick" OnShowAllClick="@(() => SetStep(5))" />
             <div class="services-section">
                 <div class="d-flex justify-space-between align-center mb-2">
                     <MudText Typo="Typo.h6" Style="font-weight: 700;">Navrhované služby</MudText>
@@ -43,12 +42,17 @@
             @* The new order confirmation screen *@
             <OrderConfirmation OnViewOrder="ShowComingSoon" OnClose="@(() => SetStep(1))" />
             break;
+            
+        case 5:
+            @* The new screen showing all categories *@
+            <AllCategoriesView Categories="_categories" OnCategoryClick="HandleCategoryClick" OnBackClick="@(() => SetStep(1))" />
+            break;
     }
 </div>
 
 
 @code {
-   private int _currentStep = 1;
+    private int _currentStep = 1;
     private int _previousStep;
     private List<Category> _categories = new();
     private List<Offer> _offers = new();

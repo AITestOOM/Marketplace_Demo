@@ -1,0 +1,57 @@
+﻿@using MudBlazor
+@using static Marketplace.Components.Pages.Home
+
+<div class="all-categories-container">
+    <MudPaper Elevation="0" Square="true" Class="all-categories-header">
+        <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" OnClick="@(() => OnBackClick.InvokeAsync())" Edge="Edge.Start" Color="Color.Primary" />
+        <MudText Typo="Typo.h5">Kategórie</MudText>
+    </MudPaper>
+
+    <MudList T="string" Clickable="true" Class="category-list">
+        @foreach (var category in Categories)
+        {
+            <MudListItem OnClick="@(() => OnCategoryClick.InvokeAsync(category))" Class="category-list-item">
+                <div class="d-flex align-center">
+                    <MudAvatar Class="category-icon-bg" Style="@($"background-color: {category.BackgroundColor};")">
+                        @((MarkupString)category.IconSvg)
+                    </MudAvatar>
+                    <div class="ml-4">
+                        <MudText>@category.Name</MudText>
+                        <MudText Typo="Typo.body2" Class="category-subtitle">@string.Join(", ", category.Filters.Take(3))</MudText>
+                    </div>
+                </div>
+            </MudListItem>
+        }
+    </MudList>
+</div>
+
+<style>
+    .all-categories-container {
+        background-color: #121315;
+        min-height: 100vh;
+    }
+    .all-categories-header {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        background-color: #1D1E23;
+        border-bottom: 1px solid #2A2B31;
+    }
+    .category-list .mud-list-item {
+        border-bottom: 1px solid #2A2B31;
+        padding: 16px 8px;
+    }
+    .category-icon-bg {
+        width: 44px;
+        height: 44px;
+    }
+    .category-subtitle {
+        color: #808080;
+    }
+</style>
+
+@code {
+    [Parameter] public List<Category> Categories { get; set; } = new();
+    [Parameter] public EventCallback<Category> OnCategoryClick { get; set; }
+    [Parameter] public EventCallback OnBackClick { get; set; }
+}

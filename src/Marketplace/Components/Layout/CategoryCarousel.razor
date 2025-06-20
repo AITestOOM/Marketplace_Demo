@@ -2,13 +2,12 @@
 @using Marketplace.Components.Pages
 @using static Marketplace.Components.Pages.Home
 
-<div style="margin-top:25px" class="category-section">
-    <div  class="d-flex justify-space-between align-center mb-2">
+<div class="category-section">
+    <div class="d-flex justify-space-between align-center mb-2">
         <MudText Typo="Typo.h6" Style="font-weight: 700;">Navrhované kategórie</MudText>
-        <MudLink Href="#" Typo="Typo.body2" Style="color: #0081EC; text-decoration: none;">Zobraziť všetky</MudLink>
+        <MudLink Href="#" Typo="Typo.body2" Style="color: #0081EC; text-decoration: none;" @onclick="() => OnShowAllClick.InvokeAsync()">Zobraziť všetky</MudLink>
     </div>
-    
-    <MudPaper Elevation="0" Class="category-scroll-container">
+    <div class="horizontal-scroll">
         @foreach (var category in Categories)
         {
             <div class="category-card mud-clickable" @onclick="() => OnCategoryClick.InvokeAsync(category)">
@@ -18,60 +17,54 @@
                 <p class="category-text">@category.Name</p>
             </div>
         }
-    </MudPaper>
+    </div>
 </div>
 
 <style>
     .category-section {
         margin-bottom: 24px;
     }
-
-    .category-scroll-container {
+    .horizontal-scroll {
         display: flex;
         overflow-x: auto;
         gap: 8px;
-        background-color: transparent !important;
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
         padding-bottom: 8px;
     }
-
-    .category-scroll-container::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, and Opera */
+    .horizontal-scroll::-webkit-scrollbar {
+        display: none;
     }
-
     .category-card {
         background-color: #1D1E23;
         border-radius: 3px;
         width: 108px;
-        height: 109px; /* Reverted to fixed height */
+        height: 109px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center; /* Vertically center content */
+        justify-content: center;
         flex-shrink: 0;
         gap: 8px;
-        padding: 8px; /* Simplified padding */
+        padding: 8px;
         box-sizing: border-box;
     }
-
     .category-icon-bg {
         width: 44px;
         height: 44px;
     }
-
     .category-text {
         font-family: 'Nimbus Sans D OT', sans-serif;
         font-size: 14px;
         color: #808080;
         margin: 0;
-        text-align: center; 
+        text-align: center;
         line-height: 1.2;
     }
 </style>
 
 @code {
     [Parameter] public List<Category> Categories { get; set; } = new();
-
     [Parameter] public EventCallback<Category> OnCategoryClick { get; set; }
+    [Parameter] public EventCallback OnShowAllClick { get; set; }
 }
