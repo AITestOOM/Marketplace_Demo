@@ -146,10 +146,10 @@
 
     private List<string> recentSearches = new List<string>
     {
-        "vymena pneumatik",
-        "kadernictvo",
-        "oprava karoserie",
-        "donaska potravin trnava"
+        "kvapká mi kohútik",
+        "potrebujem vymeniť zásuvku",
+        "mám deravý výfuk",
+        "potrebujem opraviť topánky"
     };
 
     private IEnumerable<Offer> FilteredOffers
@@ -166,6 +166,7 @@
                 o.Provider.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
                 o.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
                 o.Category.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                o.NLquery.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
                 o.SubCategory.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)
             );
         }
